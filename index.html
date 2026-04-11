@@ -3,172 +3,183 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rikhin Kavuru | Researcher, Developer, Founder</title>
-    <meta name="description" content="Portfolio of Rikhin Kavuru - Researcher in Computational Biochemistry & Neuroscience, Founder of ViraHacks, and Award-winning Developer.">
-    
-    <!-- Fonts -->
+    <title>Rikhin Kavuru | Portfolio</title>
+    <meta name="description" content="Personal portfolio of Rikhin Kavuru - Researcher, Builder, and Scholar.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-obsidian text-slate selection:bg-amber selection:text-obsidian">
-    
-    <!-- Background Grid Effect -->
-    <div id="grid-canvas" class="fixed inset-0 pointer-events-none opacity-20"></div>
-    <div class="glow-effect" id="mouse-glow"></div>
+<body>
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-    <nav class="fixed top-0 left-0 w-full z-50 border-b border-amber/10 bg-obsidian/80 backdrop-blur-md px-6 py-4 flex justify-between items-center">
-        <div class="font-mono text-amber font-bold tracking-tighter text-xl">RK_VOID</div>
-        <div class="hidden md:flex gap-8 font-mono text-sm uppercase tracking-widest">
-            <a href="#experience" class="hover:text-amber transition-colors">Experience</a>
-            <a href="#research" class="hover:text-amber transition-colors">Research</a>
-            <a href="#projects" class="hover:text-amber transition-colors">Projects</a>
-            <a href="#academic" class="hover:text-amber transition-colors">Academic</a>
-        </div>
-        <div class="flex gap-4 text-lg">
-            <a href="https://www.linkedin.com/in/rikhin-kavuru-29sb0926/" target="_blank" class="hover:text-amber transition-colors"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.instagram.com/rikhinkavuru_/" target="_blank" class="hover:text-amber transition-colors"><i class="fab fa-instagram"></i></a>
+    <nav id="main-nav">
+        <div class="nav-container">
+            <div class="logo">RK</div>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#research">Research</a>
+                <a href="#projects">Projects</a>
+                <a href="#achievements">Achievements</a>
+            </div>
         </div>
     </nav>
 
-    <main class="relative z-10 pt-32 px-6 max-w-7xl mx-auto">
-        
-        <!-- Hero Section -->
-        <section id="hero" class="min-h-[70vh] flex flex-col justify-center">
-            <div class="mb-4 inline-block px-3 py-1 border border-amber/30 rounded-full text-xs font-mono text-amber uppercase tracking-widest animate-pulse">
-                System Online: v2.0.26
-            </div>
-            <h1 class="text-6xl md:text-8xl font-outfit font-black mb-6 tracking-tight leading-none text-white">
-                RIKHIN <span class="text-amber">KAVURU</span>
-            </h1>
-            <div class="font-mono text-xl md:text-2xl text-slate-400 max-w-2xl leading-relaxed">
-                <span id="terminal-text"></span><span class="animate-blink">_</span>
-            </div>
-        </section>
-
-        <!-- Bento Stats Section -->
-        <section id="academic" class="py-24">
-            <h2 class="section-title">Academic_Specifications</h2>
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                <div class="stats-card md:col-span-2">
-                    <label>SAT_SCORE</label>
-                    <div class="value">1580<span class="total">/1600</span></div>
-                    <p class="text-xs mt-2 text-slate-500">PSAT: 1520/1520 (Perfect)</p>
-                </div>
-                <div class="stats-card">
-                    <label>AMC_12A</label>
-                    <div class="value">144</div>
-                </div>
-                <div class="stats-card">
-                    <label>AIME_QUAL</label>
-                    <div class="value">11</div>
-                </div>
-                <div class="stats-card md:col-span-4 bg-amber/5">
-                    <label>AP_PROTOCOL_COMPLETED</label>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2">
-                        <div class="ap-item"><span>5</span> Physics C: Mech</div>
-                        <div class="ap-item"><span>5</span> Physics C: E&M</div>
-                        <div class="ap-item"><span>5</span> Calc AB/BC</div>
-                        <div class="ap-item"><span>5</span> Comp Sci A/P</div>
-                        <div class="ap-item"><span>5</span> US History</div>
-                        <div class="ap-item"><span>5</span> World History</div>
-                        <div class="ap-item"><span>5</span> US Govt & Pol</div>
-                    </div>
+    <main>
+        <section id="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="tagline">Researcher, Architect, & Scholar</span>
+                    <h1 class="reveal-text">Rikhin <span class="italic">Kavuru</span></h1>
+                    <p class="hero-sub">Exploring the intersections of biological computation, creative intelligence, and language models.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section id="experience" class="py-24 border-t border-amber/10">
-            <h2 class="section-title">Operational_Experience</h2>
-            <div class="space-y-12">
-                <div class="exp-item group">
-                    <div class="exp-header">
-                        <h3 class="text-2xl font-bold text-white group-hover:text-amber transition-colors">Data Science Intern</h3>
-                        <span class="font-mono text-amber">Adaptyv | Jan 2026 - Present</span>
+        <section id="research">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-num">01</span>
+                    <h2>Research & Innovation</h2>
+                </div>
+                <div class="grid list-layout">
+                    <div class="card research-card">
+                        <div class="card-meta">2x ISEF Qualifier ('25 & '26)</div>
+                        <h3>Molecular Docking & RNA Inference</h3>
+                        <p>Research in CBIO category spanning molecular docking to identify ATP Analogs targeting Kinase and RNA inference fine-tuning.</p>
+                        <div class="tags">
+                            <span>Bioinformatics</span>
+                            <span>Molecular Docking</span>
+                            <span>RNAi</span>
+                        </div>
                     </div>
-                    <p class="exp-body">Processing and analyzing protein screening datasets to support experimental research workflows. Developing data visualization tools for experimental results and trends.</p>
-                </div>
-                <div class="exp-item group">
-                    <div class="exp-header">
-                        <h3 class="text-2xl font-bold text-white group-hover:text-amber transition-colors">Founder</h3>
-                        <span class="font-mono text-amber">Vira / ViraHacks | Dec 2025 - Present</span>
+                    <div class="card research-card">
+                        <div class="card-meta">EMNLP & NeurIPS (In Progress)</div>
+                        <h3>Zero-Shot Chain-of-Thought Reasoning</h3>
+                        <p>Investigating the sensitivity of LLM reasoning to trigger phrase variations in Zero-Shot CoT environments.</p>
+                        <div class="tags">
+                            <span>NLP</span>
+                            <span>LLM Interpretability</span>
+                            <span>Prompt Engineering</span>
+                        </div>
                     </div>
-                    <p class="exp-body">Organizing hackathons to solve clinical challenges. Onboarded 20+ chapters across the US, impacting 1000+ students. Driving innovation in healthcare infrastructure.</p>
-                    <a href="https://www.virahacks.com/" class="text-xs font-mono text-amber mt-2 inline-block underline decoration-amber/30">virahacks.com</a>
-                </div>
-                <div class="exp-item group">
-                    <div class="exp-header">
-                        <h3 class="text-2xl font-bold text-white group-hover:text-amber transition-colors">Computational Neuroscience Researcher</h3>
-                        <span class="font-mono text-amber">MedARC | Oct 2025 - Present</span>
-                    </div>
-                    <p class="exp-body">Developing deep learning models to decode functional MRI (fMRI) brain scans into interpretable neural representations using novel flat map representations.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Research Section -->
-        <section id="research" class="py-24 border-t border-amber/10">
-            <h2 class="section-title">Scientific_Records</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="research-card">
-                    <div class="text-xs font-mono text-amber mb-2">[ISEF_QUAL_25_26]</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Molecular Docking & RNA Inference</h3>
-                    <p class="text-sm leading-relaxed text-slate-400">Research spanning from RNA inference fine-tuning to molecular docking to identify ATP Analogs to Target Kinase in the CBIO category.</p>
-                </div>
-                <div class="research-card">
-                    <div class="text-xs font-mono text-amber mb-2">[EMNLP_NEURIPS_SUBMISSION]</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Zero-Shot Chain-of-Thought Sensitivity</h3>
-                    <p class="text-sm leading-relaxed text-slate-400">Investigating "How Sensitive Is Zero-Shot Chain-of-Thought Reasoning to Trigger Phrase Variation?" targeting top-tier AI conferences.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Projects Section -->
-        <section id="projects" class="py-24 border-t border-amber/10">
-            <h2 class="section-title">Product_Deployment</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Auteur -->
-                <div class="project-card h-full flex flex-col">
-                    <div class="project-tag">Congressional App Challenge Winner</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">Auteur</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">AI Copilot for Adobe AfterEffects. Built with React, Rust, and Python. Features a custom Rust ExtendScript code validator for ultra-fast performance.</p>
-                    <div class="flex gap-4">
-                        <a href="https://www.congressionalappchallenge.us/25-in03/" class="btn-primary">View Probe</a>
-                    </div>
-                </div>
-                <!-- TestScan -->
-                <div class="project-card h-full flex flex-col">
-                    <div class="project-tag">GPT-4o Vision Utility</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">TestScan</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">Extracts every question from videos using vision models. Solves them with step-by-step reasoning. Optimized for massive homework sets.</p>
-                    <div class="flex gap-4">
-                        <a href="https://testscan.vercel.app/" class="btn-primary">Launch App</a>
-                    </div>
-                </div>
-                <!-- TwoFace -->
-                <div class="project-card h-full flex flex-col">
-                    <div class="project-tag">App Store Release</div>
-                    <h3 class="text-2xl font-bold text-white mb-4">TwoFace Games</h3>
-                    <p class="text-sm text-slate-400 mb-6 flex-grow">Custom implementation of the "Imposter" party game pattern. Published on the App Store to solve specific features gaps in existing apps.</p>
-                    <div class="flex gap-4">
-                        <a href="https://apps.apple.com/us/app/twoface-games/id6761439165" class="btn-primary">App Store</a>
+                    <div class="card research-card">
+                        <div class="card-meta">Diamond Challenge International Finalist</div>
+                        <h3>Transformer-Based Fluency Assessment</h3>
+                        <p>Developed a mobile application bridging speech therapy and wellness using gamified training and adaptive practice models.</p>
+                        <div class="tags">
+                            <span>Mobile Dev</span>
+                            <span>Wellness</span>
+                            <span>Transformers</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-num">02</span>
+                    <h2>Selected Works</h2>
+                </div>
+                <div class="grid project-grid">
+                    <div class="project-card">
+                        <div class="project-info">
+                            <span class="project-cat">Creative Tooling</span>
+                            <h3>Auteur</h3>
+                            <p>AI Copilot for Adobe AfterEffects. Built with a custom Rust ExtendScript validator for rapid feedback loops.</p>
+                            <div class="project-links">
+                                <a href="https://www.congressionalappchallenge.us/25-in03/" class="btn-text">Congressional App Challenge Winner →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card large">
+                        <div class="project-info">
+                            <span class="project-cat">Leadership & Impact</span>
+                            <h3>ViraHacks</h3>
+                            <p>Founded a national organization hosting clinical hackathons. We've onboarded 20+ chapters and impacted over 1000 students, bridging the gap between clinical challenges and local software talent.</p>
+                            <div class="project-links">
+                                <a href="https://www.virahacks.com/" class="btn-text">virahacks.com →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-info">
+                            <span class="project-cat">Utility / Vision AI</span>
+                            <h3>TestScan</h3>
+                            <p>Extracts questions from video frames and solves them via GPT-4o Vision with step-by-step reasoning.</p>
+                            <div class="project-links">
+                                <a href="https://testscan.vercel.app/" class="btn-text">Live Demo →</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-info">
+                            <span class="project-cat">Mobile Gaming</span>
+                            <h3>TwoFace Games</h3>
+                            <p>A custom social game built for local play, now published and loved on the App Store.</p>
+                            <div class="project-links">
+                                <a href="https://apps.apple.com/us/app/twoface-games/id6761439165" class="btn-text">App Store →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="achievements">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-num">03</span>
+                    <h2>Scholastic Standing</h2>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <span class="stat-value">1580</span>
+                        <span class="stat-label">SAT Score</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">144</span>
+                        <span class="stat-label">AMC 12A</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value">11</span>
+                        <span class="stat-label">AIME Score</span>
+                    </div>
+                </div>
+                <div class="ap-scores">
+                    <p><strong>Advanced Placement:</strong> 5's on AP World, US History, Physics C (E&M + Mech), Calc AB/BC, US Gov, CSA, & CSP.</p>
+                    <p><strong>DECA:</strong> ICDC Qualifier & Top 10 International Finance Test Score.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="connect">
+            <div class="container">
+                <div class="connect-wrap">
+                    <h2>Let's build the unusual.</h2>
+                    <p>Always open to research collaborations, technical discussions, or just a coffee chat about the future of vision and reasoning systems.</p>
+                    <a href="mailto:hello@rikhin.com" class="btn-primary">Get in Touch →</a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="footer-wrap">
+                    <p>© 2026 Rikhin Kavuru</p>
+                    <div class="socials">
+                        <a href="#">LinkedIn</a>
+                        <a href="#">GitHub</a>
+                        <a href="#">Email</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </main>
 
-    <footer class="py-12 border-t border-amber/10 text-center font-mono text-xs opacity-50">
-        &copy; 2026 RIKHIN KAVURU. ALL SYSTEMS OPERATIONAL.
-    </footer>
-
-    <script src="script.js"></script>
+    <script type="module" src="main.js"></script>
 </body>
 </html>

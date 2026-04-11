@@ -1,0 +1,25 @@
+{
+  "name": "personal-portfolio",
+  "version": "1.0.0",
+  "description": "Rikhin Kavuru Portfolio - Technical Sophistication v1.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rikhinkavuru/personalwebsite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rikhinkavuru/personalwebsite/issues"
+  },
+  "homepage": "https://github.com/rikhinkavuru/personalwebsite#readme",
+  "devDependencies": {
+    "vite": "^8.0.8"
+  }
+}
