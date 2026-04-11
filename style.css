@@ -1,0 +1,207 @@
+:root {
+    --obsidian: #0A0A0B;
+    --amber: #FFB300;
+    --amber-muted: rgba(255, 179, 0, 0.4);
+    --slate: #94A3B8;
+    --white: #FFFFFF;
+    --grid-line: rgba(255, 179, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--obsidian);
+    color: var(--slate);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.font-outfit { font-family: 'Outfit', sans-serif; }
+.font-mono { font-family: 'JetBrains Mono', monospace; }
+
+/* Grid Background */
+#grid-canvas {
+    background-image: 
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+}
+
+#mouse-glow {
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(255, 179, 0, 0.08) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s;
+}
+
+/* Typography & General */
+.section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+    color: var(--amber);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.section-title::after {
+    content: '';
+    height: 1px;
+    background: var(--amber-muted);
+    flex-grow: 1;
+}
+
+/* Hero Section */
+.animate-blink {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
+
+/* Bento Stats */
+.stats-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px border var(--amber-muted);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 179, 0, 0.1);
+}
+
+.stats-card:hover {
+    background: rgba(255, 179, 0, 0.03);
+    border-color: var(--amber);
+    transform: translateY(-2px);
+}
+
+.stats-card label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--amber);
+    display: block;
+    margin-bottom: 1rem;
+    opacity: 0.7;
+}
+
+.stats-card .value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+}
+
+.stats-card .total {
+    font-size: 1rem;
+    opacity: 0.3;
+}
+
+.ap-item {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--slate);
+    border-left: 2px solid var(--amber-muted);
+    padding-left: 0.75rem;
+}
+
+.ap-item span {
+    color: var(--amber);
+    font-weight: bold;
+}
+
+/* Experience */
+.exp-item {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 2rem;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 1rem;
+}
+
+.exp-body {
+    max-width: 800px;
+    line-height: 1.6;
+}
+
+/* Research */
+.research-card {
+    padding: 2rem;
+    border-left: 1px solid rgba(255, 179, 0, 0.2);
+    background: linear-gradient(90deg, rgba(255, 179, 0, 0.02) 0%, transparent 100%);
+}
+
+/* Projects */
+.project-card {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.5rem;
+    transition: all 0.4s ease;
+}
+
+.project-card:hover {
+    border-color: var(--amber);
+    background: rgba(255, 179, 0, 0.02);
+    transform: scale(1.02);
+}
+
+.project-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.1rem;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    font-family: 'JetBrains Mono', monospace;
+    text-decoration: none;
+    font-size: 0.75rem;
+    transition: all 0.3s;
+}
+
+.btn-primary:hover {
+    background: var(--amber);
+    color: var(--obsidian);
+}
+
+/* Utilities */
+.bg-obsidian { background-color: var(--obsidian); }
+.text-amber { color: var(--amber); }
+.text-slate { color: var(--slate); }
+.border-amber { border-color: var(--amber); }
+
+@media (max-width: 768px) {
+    .exp-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
