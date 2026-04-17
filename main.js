@@ -7,8 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // ─── Text Scramble Effect (Option C) ───
     const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*';
     const SCRAMBLE_DURATION = 600;
-    const SCRAMBLE_FPS = 30;
-    const FRAME_INTERVAL = 1000 / SCRAMBLE_FPS;
 
     function scrambleText(el) {
         const original = el.getAttribute('data-original') || el.textContent;
@@ -49,7 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ─── Scroll Reveal with Blur ───
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let prefersReducedMotion = motionQuery.matches;
+    motionQuery.addEventListener('change', (e) => {
+        prefersReducedMotion = e.matches;
+    });
 
     const revealObserver = new IntersectionObserver(
         (entries) => {
