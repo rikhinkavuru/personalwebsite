@@ -89,7 +89,7 @@ a {
     width: 48px;
     height: 48px;
     border-color: var(--accent);
-    background: rgba(200, 184, 154, 0.08);
+    background: color-mix(in srgb, var(--accent) 8%, transparent);
 }
 
 @media (hover: hover) and (pointer: fine) {

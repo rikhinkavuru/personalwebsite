@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const cursorRing = document.querySelector('.cursor-ring');
 
     if (cursorDot && cursorRing && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const RING_LAG_FACTOR = 0.12;
         let mouseX = 0, mouseY = 0;
         let ringX = 0, ringY = 0;
         let cursorVisible = false;
@@ -67,8 +68,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         function animateRing() {
-            ringX += (mouseX - ringX) * 0.12;
-            ringY += (mouseY - ringY) * 0.12;
+            ringX += (mouseX - ringX) * RING_LAG_FACTOR;
+            ringY += (mouseY - ringY) * RING_LAG_FACTOR;
             cursorRing.style.transform =
                 `translate(calc(${ringX}px - 50%), calc(${ringY}px - 50%))`;
             requestAnimationFrame(animateRing);
