@@ -226,6 +226,20 @@ nav {
     color: var(--text);
 }
 
+.mobile-theme-toggle {
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color 150ms ease;
+}
+
+.mobile-theme-toggle:hover,
+.mobile-theme-toggle:focus-visible {
+    color: var(--accent);
+}
+
 /* ─── Layout ─── */
 main {
     padding: 0 40px;
@@ -615,8 +629,25 @@ footer {
         padding-left: 32px;
     }
 
+    .about-body p {
+        font-size: 16px;
+    }
+
     .contact-handles {
         flex-direction: column;
         gap: 12px;
+    }
+}
+
+/* ─── Touch / No-Hover Devices ─── */
+@media (hover: none) {
+    .work-blurb {
+        max-height: 200px;
+        opacity: 1;
+        padding-top: 10px;
+    }
+
+    .work-row:active .work-name {
+        color: var(--accent);
     }
 }

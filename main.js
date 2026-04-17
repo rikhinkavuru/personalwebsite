@@ -5,15 +5,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ─── Theme Toggle ───
-    const themeToggle = document.querySelector('.theme-toggle');
+    const themeToggles = document.querySelectorAll('.theme-toggle');
 
     function applyTheme(mode) {
         if (mode === 'light') {
             document.documentElement.classList.add('light');
-            if (themeToggle) themeToggle.textContent = '\u263E'; // crescent moon
+            themeToggles.forEach((btn) => { btn.textContent = '\u263E'; }); // crescent moon
         } else {
             document.documentElement.classList.remove('light');
-            if (themeToggle) themeToggle.textContent = '\u2600'; // sun
+            themeToggles.forEach((btn) => { btn.textContent = '\u2600'; }); // sun
         }
     }
 
@@ -26,14 +26,14 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTheme('dark');
     }
 
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
+    themeToggles.forEach((btn) => {
+        btn.addEventListener('click', () => {
             const isLight = document.documentElement.classList.contains('light');
             const next = isLight ? 'dark' : 'light';
             applyTheme(next);
             localStorage.setItem('theme', next);
         });
-    }
+    });
 
     // ─── Custom Cursor ───
     const cursorDot = document.querySelector('.cursor-dot');
