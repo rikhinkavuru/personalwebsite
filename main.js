@@ -1,66 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Custom Cursor Logic
-    const dot = document.querySelector('.cursor-dot');
-    const outline = document.querySelector('.cursor-outline');
+    // Intersection Observer — fade-up on scroll
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        },
+        { threshold: 0.08 }
+    );
 
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
+    // Tag elements that should animate
+    const selectors = [
+        '.hero-badge',
+        '.hero h1',
+        '.hero-sub',
+        '.hero-actions',
+        '.section-label',
+        '.bento-item',
+        '.research-row',
+        '.section-contact h2',
+        '.section-contact p',
+        '.section-contact .btn-primary',
+    ];
 
-        dot.style.left = `${posX}px`;
-        dot.style.top = `${posY}px`;
-
-        outline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
+    selectors.forEach((sel) => {
+        document.querySelectorAll(sel).forEach((el) => {
+            el.classList.add('fade-up');
+            observer.observe(el);
+        });
     });
 
-    // Hover effect for links
-    const links = document.querySelectorAll('a, .card, .project-card, .btn-primary');
-    links.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            outline.style.width = '60px';
-            outline.style.height = '60px';
-            outline.style.borderColor = 'var(--accent)';
-            outline.style.backgroundColor = 'rgba(212, 163, 115, 0.05)';
-        });
-        link.addEventListener('mouseleave', () => {
-            outline.style.width = '32px';
-            outline.style.height = '32px';
-            outline.style.borderColor = 'var(--text-primary)';
-            outline.style.backgroundColor = 'transparent';
-        });
+    // Add stagger class to bento grid and research list
+    document.querySelectorAll('.bento, .research-list').forEach((el) => {
+        el.classList.add('stagger');
     });
 
-    // Intersection Observer for Reveal Animations
-    const observerOptions = {
-        threshold: 0.1
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+    // Smooth-scroll for nav links (in case browser doesn't support scroll-behavior)
+    document.querySelectorAll('nav a[href^="#"]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            const target = document.querySelector(link.getAttribute('href'));
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
             }
         });
-    }, observerOptions);
-
-    const revealElements = document.querySelectorAll('.card, .project-card, .stat-item');
-    revealElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-        observer.observe(el);
     });
-
-    // Add visible class styling via JS or inject to CSS
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .visible {
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-    `;
-    document.head.appendChild(style);
 });
