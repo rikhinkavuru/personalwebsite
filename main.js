@@ -4,7 +4,90 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('loaded');
     });
 
-    // ─── Text Scramble Effect (Option C) ───
+    // ─── Theme Toggle ───
+    const themeToggle = document.querySelector('.theme-toggle');
+
+    function applyTheme(mode) {
+        if (mode === 'light') {
+            document.documentElement.classList.add('light');
+            if (themeToggle) themeToggle.textContent = '\u263E'; // crescent moon
+        } else {
+            document.documentElement.classList.remove('light');
+            if (themeToggle) themeToggle.textContent = '\u2600'; // sun
+        }
+    }
+
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        applyTheme('light');
+    } else {
+        applyTheme('dark');
+    }
+
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            const isLight = document.documentElement.classList.contains('light');
+            const next = isLight ? 'dark' : 'light';
+            applyTheme(next);
+            localStorage.setItem('theme', next);
+        });
+    }
+
+    // ─── Custom Cursor ───
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorRing = document.querySelector('.cursor-ring');
+
+    if (cursorDot && cursorRing && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        const RING_LAG_FACTOR = 0.12;
+        let mouseX = 0, mouseY = 0;
+        let ringX = 0, ringY = 0;
+        let cursorVisible = false;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (!cursorVisible) {
+                cursorVisible = true;
+                cursorDot.style.opacity = '1';
+                cursorRing.style.opacity = '1';
+            }
+            cursorDot.style.transform =
+                `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursorDot.style.opacity = '0';
+            cursorRing.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursorDot.style.opacity = '1';
+            cursorRing.style.opacity = '1';
+        });
+
+        function animateRing() {
+            ringX += (mouseX - ringX) * RING_LAG_FACTOR;
+            ringY += (mouseY - ringY) * RING_LAG_FACTOR;
+            cursorRing.style.transform =
+                `translate(calc(${ringX}px - 50%), calc(${ringY}px - 50%))`;
+            requestAnimationFrame(animateRing);
+        }
+        animateRing();
+
+        // Hover expansion on interactive elements
+        document.querySelectorAll('a, button, .work-row').forEach((el) => {
+            el.addEventListener('mouseenter', () => cursorRing.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => cursorRing.classList.remove('hovered'));
+        });
+
+        // Start hidden until first mouse move
+        cursorDot.style.opacity = '0';
+        cursorRing.style.opacity = '0';
+    }
+
+    // ─── Text Scramble Effect ───
     const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%&*';
     const SCRAMBLE_DURATION = 600;
 
@@ -20,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const elapsed = timestamp - startTime;
             const progress = Math.min(elapsed / SCRAMBLE_DURATION, 1);
 
-            // Characters settle from left to right
             const settledCount = Math.floor(progress * length);
             let result = '';
 
@@ -59,9 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
 
-                    // Trigger scramble on elements with data-scramble
                     if (entry.target.hasAttribute('data-scramble') && !prefersReducedMotion) {
-                        // Small delay so reveal and scramble feel sequential
                         setTimeout(() => scrambleText(entry.target), 100);
                     }
 
@@ -72,17 +152,14 @@ document.addEventListener('DOMContentLoaded', () => {
         { threshold: 0.1 }
     );
 
-    // Tag elements for reveal animation
     const revealSelectors = [
-        '.hero-name',
-        '.hero-headline',
-        '.hero-meta',
+        '.hero-quote',
+        '.hero-attribution',
         '.hero-scroll',
         '.section-marker',
         '.work-row',
         '.about-opener',
         '.about-body p',
-        '.about-now',
         '.contact-email',
         '.contact-handles',
     ];
@@ -103,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (target) {
                 e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth' });
-                // Close mobile overlay if open
                 closeMobileOverlay();
             }
         });
@@ -132,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
         overlayClose.addEventListener('click', closeMobileOverlay);
     }
 
-    // Close overlay when clicking a link inside it
     if (mobileOverlay) {
         mobileOverlay.querySelectorAll('a').forEach((link) => {
             link.addEventListener('click', () => {
