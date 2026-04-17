@@ -4,125 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rikhin Kavuru</title>
-    <meta name="description" content="Rikhin Kavuru — Researcher, builder, and creator at the intersection of biology, AI, and design.">
+    <meta name="description" content="Rikhin Kavuru — Researcher and builder at the intersection of biology, AI, and computation.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <nav>
-        <a href="#" class="nav-logo">rikhin kavuru</a>
-        <div class="nav-pill">
+        <a href="#" class="nav-name">rikhin kavuru</a>
+        <div class="nav-links">
             <a href="#work">Work</a>
-            <a href="#research">Research</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
         </div>
+        <button class="nav-toggle" aria-label="Open menu">/</button>
     </nav>
+
+    <div class="mobile-overlay" aria-hidden="true">
+        <button class="mobile-overlay-close" aria-label="Close menu">&times;</button>
+        <a href="#work">Work</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
 
     <main>
         <section class="hero">
-            <div class="hero-badge">Open to collaborations</div>
-            <h1>I research <em>biological&nbsp;computation</em> and build tools that think differently.</h1>
-            <p class="hero-sub">Researcher &amp; builder exploring LLM reasoning, molecular docking, and creative AI tooling.</p>
-            <div class="hero-actions">
-                <a href="#work" class="btn-primary">See my work</a>
-                <a href="mailto:hello@rikhin.com" class="btn-ghost">hello@rikhin.com</a>
+            <span class="hero-name">rikhin kavuru</span>
+            <h1 class="hero-headline" data-scramble>Most breakthroughs start with a question no one thought to ask.</h1>
+            <div class="hero-meta">
+                <span class="hero-role">Researcher &amp; builder. Available for collaborations.</span>
+            </div>
+            <span class="hero-scroll">scroll</span>
+        </section>
+
+        <div class="spacer"></div>
+
+        <section id="work" class="work-section">
+            <div class="section-marker">
+                <span class="section-marker-line"></span>
+                <span class="section-marker-label">Selected work</span>
+            </div>
+
+            <div class="work-list">
+                <a href="https://www.congressionalappchallenge.us/25-in03/" class="work-row" target="_blank" rel="noopener noreferrer">
+                    <span class="work-num">01</span>
+                    <span class="work-name" data-scramble>Auteur</span>
+                    <span class="work-detail">2025</span>
+                    <span class="work-detail">Creative AI</span>
+                </a>
+                <a class="work-row">
+                    <span class="work-num">02</span>
+                    <span class="work-name" data-scramble>Inkr</span>
+                    <span class="work-detail">2025</span>
+                    <span class="work-detail">SaaS Platform</span>
+                </a>
+                <a class="work-row">
+                    <span class="work-num">03</span>
+                    <span class="work-name" data-scramble>Spocal</span>
+                    <span class="work-detail">2025</span>
+                    <span class="work-detail">Speech AI</span>
+                </a>
+                <a href="https://www.virahacks.com/" class="work-row" target="_blank" rel="noopener noreferrer">
+                    <span class="work-num">04</span>
+                    <span class="work-name" data-scramble>Vira</span>
+                    <span class="work-detail">2024</span>
+                    <span class="work-detail">Organization</span>
+                </a>
+                <a class="work-row">
+                    <span class="work-num">05</span>
+                    <span class="work-name" data-scramble>Neural Decoding</span>
+                    <span class="work-detail">2025</span>
+                    <span class="work-detail">Neuroscience</span>
+                </a>
+                <a class="work-row">
+                    <span class="work-num">06</span>
+                    <span class="work-name" data-scramble>STAT3 Drug Discovery</span>
+                    <span class="work-detail">2025</span>
+                    <span class="work-detail">Biochemistry</span>
+                </a>
+                <a class="work-row">
+                    <span class="work-num">07</span>
+                    <span class="work-name" data-scramble>Adaptyv Bio</span>
+                    <span class="work-detail">2026</span>
+                    <span class="work-detail">Protein Engineering</span>
+                </a>
             </div>
         </section>
 
-        <section id="work" class="section">
-            <div class="section-label">Selected Work</div>
-            <div class="bento">
-                <a href="https://www.congressionalappchallenge.us/25-in03/" class="bento-item bento-wide" target="_blank" rel="noopener noreferrer">
-                    <div class="bento-tag">Congressional App Challenge Winner</div>
-                    <h2>Auteur</h2>
-                    <p>AI Copilot for Adobe After Effects. Built with a custom Rust ExtendScript validator for rapid feedback loops.</p>
-                    <span class="bento-arrow">&nearr;</span>
-                </a>
-                <a href="https://www.virahacks.com/" class="bento-item" target="_blank" rel="noopener noreferrer">
-                    <div class="bento-tag">20+ Chapters · 1000+ Students</div>
-                    <h2>ViraHacks</h2>
-                    <p>National org hosting clinical hackathons — bridging healthcare challenges with local talent.</p>
-                    <span class="bento-arrow">&nearr;</span>
-                </a>
-                <a href="https://testscan.vercel.app/" class="bento-item" target="_blank" rel="noopener noreferrer">
-                    <div class="bento-tag">Vision AI</div>
-                    <h2>TestScan</h2>
-                    <p>Extracts questions from video frames, solves them via GPT-4o with step-by-step reasoning.</p>
-                    <span class="bento-arrow">&nearr;</span>
-                </a>
-                <a href="https://apps.apple.com/us/app/twoface-games/id6761439165" class="bento-item bento-wide" target="_blank" rel="noopener noreferrer">
-                    <div class="bento-tag">Published on App Store</div>
-                    <h2>TwoFace Games</h2>
-                    <p>A custom social game built for local play — now published and loved on iOS.</p>
-                    <span class="bento-arrow">&nearr;</span>
-                </a>
+        <div class="spacer"></div>
+
+        <section id="about" class="about-section">
+            <h2 class="about-opener" data-scramble>I started writing code to answer questions my biology textbook left open.</h2>
+
+            <div class="about-body">
+                <p>I'm Rikhin. I build things at the intersection of biology and computation — not because it's a trendy intersection, but because the problems there are genuinely hard and the tools to solve them don't exist yet. So I make them.</p>
+
+                <p>At Adaptyv Bio, I work on protein screening data — binding curves, expression levels, the kind of messy real-world datasets that don't behave like textbook examples. Before that, I spent time at MedARC decoding fMRI brain scans into interpretable neural representations using deep learning. That research is currently under review at ICML. At Purdue, I ran computational drug discovery targeting the STAT3 protein, docking thousands of compounds from ZINC and ChEMBL libraries against SH2 and DNA-binding domains.</p>
+
+                <p>On the building side: Auteur is an AI copilot for Adobe After Effects that won the Congressional App Challenge. It has an autonomous agent mode that researches documentation, generates ExtendScript code, and keeps iterating until the task is done. Inkr is a mentorship platform that scaled to 60,000 users. Vira is a healthcare hackathon organization I founded — 20 chapters across America, over a thousand students building things that matter.</p>
+
+                <p>I think in systems. I'm drawn to problems where the answer requires understanding something at multiple levels of abstraction simultaneously — molecular interactions and neural architectures, user behavior and recommendation logic, biological signals and statistical noise. The work I care about sits in those overlaps.</p>
+            </div>
+
+            <div class="about-now">
+                <span class="about-now-label">Now</span>
+                <p>Interning at Adaptyv Bio, analyzing protein functionality data</p>
+                <p>Research under review at ICML — functional MRI decoding</p>
+                <p>Building Spocal — transformer-based fluency assessment</p>
+                <p>Reading about information geometry and neural manifolds</p>
             </div>
         </section>
 
-        <section id="research" class="section">
-            <div class="section-label">Research</div>
-            <div class="research-list">
-                <div class="research-row">
-                    <div class="research-meta">
-                        <span class="research-badge">2x ISEF Qualifier</span>
-                        <span class="research-year">'25 &amp; '26</span>
-                    </div>
-                    <div class="research-body">
-                        <h3>Molecular Docking &amp; RNA Inference</h3>
-                        <p>CBIO research spanning molecular docking to identify ATP analogs targeting Kinase and RNA inference fine-tuning.</p>
-                    </div>
-                    <div class="research-tags">
-                        <span>Bioinformatics</span>
-                        <span>RNAi</span>
-                    </div>
-                </div>
-                <div class="research-row">
-                    <div class="research-meta">
-                        <span class="research-badge">EMNLP &amp; NeurIPS</span>
-                        <span class="research-year">In Progress</span>
-                    </div>
-                    <div class="research-body">
-                        <h3>Zero-Shot Chain-of-Thought Reasoning</h3>
-                        <p>Investigating the sensitivity of LLM reasoning to trigger phrase variations in Zero-Shot CoT environments.</p>
-                    </div>
-                    <div class="research-tags">
-                        <span>NLP</span>
-                        <span>LLM Interpretability</span>
-                    </div>
-                </div>
-                <div class="research-row">
-                    <div class="research-meta">
-                        <span class="research-badge">Diamond Challenge</span>
-                        <span class="research-year">Int'l Finalist</span>
-                    </div>
-                    <div class="research-body">
-                        <h3>Transformer-Based Fluency Assessment</h3>
-                        <p>Mobile app bridging speech therapy and wellness using gamified training and adaptive practice models.</p>
-                    </div>
-                    <div class="research-tags">
-                        <span>Transformers</span>
-                        <span>Mobile</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="spacer-sm"></div>
 
-        <section id="contact" class="section section-contact">
-            <h2>Let's build something&nbsp;unusual.</h2>
-            <p>Open to research collaborations, technical conversations, or a&nbsp;chat about vision &amp; reasoning systems.</p>
-            <a href="mailto:hello@rikhin.com" class="btn-primary">Get in touch &nearr;</a>
+        <section id="contact" class="contact-section">
+            <a href="mailto:hello@rikhin.com" class="contact-email" data-scramble>hello@rikhin.com</a>
+            <div class="contact-handles">
+                <a href="https://github.com/rikhinkavuru" target="_blank" rel="noopener noreferrer">github.com/rikhinkavuru</a>
+                <a href="https://linkedin.com/in/rikhinkavuru" target="_blank" rel="noopener noreferrer">linkedin.com/in/rikhinkavuru</a>
+            </div>
         </section>
     </main>
 
     <footer>
-        <span>&copy; 2026 Rikhin Kavuru</span>
-        <div class="footer-links">
-            <a href="#">LinkedIn</a>
-            <a href="#">GitHub</a>
-            <a href="mailto:hello@rikhin.com">Email</a>
+        <div class="footer-line"></div>
+        <div class="footer-content">
+            <span>rikhin kavuru</span>
+            <span>All rights reserved 2026</span>
         </div>
     </footer>
 
