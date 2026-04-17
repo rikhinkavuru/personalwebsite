@@ -353,7 +353,7 @@ a.work-row {
 }
 
 a.work-row::after {
-    content: '↗';
+    content: '↗' / '';
     font-size: 18px;
     color: var(--accent);
     margin-left: auto;
