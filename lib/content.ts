@@ -6,7 +6,7 @@ export const profile = {
   interests: ["machine learning", "computational biology"],
   email: "rikhinkavuru@gmail.com",
   github: "https://github.com/rikhinkavuru",
-  linkedin: "https://www.linkedin.com/in/rikhinkavuru",
+  linkedin: "https://www.linkedin.com/in/rikhin-kavuru-29sb0926/",
 };
 
 export type Experience = {
@@ -21,45 +21,39 @@ export const experience: Experience[] = [
   {
     org: "Convexia (YC S25)",
     role: "Machine Learning Engineer",
-    detail:
-      "Training models that predict whether a drug asset will succeed in clinical trials, scored against historical programs.",
+    detail: "Predicting which drugs actually survive clinical trials.",
     when: "Current",
     current: true,
   },
   {
     org: "Broad Institute of MIT and Harvard",
     role: "ML Research Intern",
-    detail:
-      "Building machine learning methods for phylogenetics, drug design, and clinical informatics. Currently on SPECTRA under Dr. Yasha Ektefaie.",
+    detail: "ML for drug design and phylogenetics. Currently on SPECTRA.",
     when: "Current",
     current: true,
   },
   {
     org: "Yale Department of Neurology",
     role: "Computational Biology Research Assistant",
-    detail:
-      "Mapped spatial cell interactions in brain tissue from multiple sclerosis patients to test candidate biomarkers for disease progression.",
+    detail: "Mapped how cells talk to each other in MS brain tissue.",
     when: "2026",
   },
   {
     org: "MedARC",
     role: "Computational Neuroscience Researcher",
-    detail:
-      "Built deep learning models that decode fMRI brain scans into interpretable neural representations. Under review at ICML.",
+    detail: "Taught models to read fMRI scans. Under review at ICML.",
     when: "2025",
   },
   {
     org: "Adaptyv Bio",
     role: "Data Science Intern",
-    detail:
-      "Ran the statistical analysis behind protein screening experiments. One of six interns taken from 400+ applicants.",
+    detail: "Protein screening stats. One of six taken from 400+ applicants.",
     when: "2025",
   },
   {
     org: "Purdue University Fort Wayne",
     role: "Computational Biochemistry Researcher",
-    detail:
-      "Screened thousands of compounds against the STAT3 protein and docked the best candidates under Dr. Arjun Sharma.",
+    detail: "Docked thousands of compounds at STAT3 looking for a hit.",
     when: "2024-25",
   },
 ];
@@ -74,37 +68,33 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: "Telo",
-    detail:
-      "Automated, decentralized plants that make shortage-critical sterile injectables next to the hospitals that need them.",
+    detail: "Making injectables next door to the hospitals that run out.",
     current: true,
   },
   {
     name: "Calma",
-    detail:
-      "An independent verification lab for deterministic code, built for the finance industry.",
+    detail: "Verification lab for finance code that can't afford to be wrong.",
     href: "https://github.com/rikhinkavuru/calma",
   },
   {
     name: "Inkr",
-    detail:
-      "A platform that matches students with research mentors, now past 60,000 users.",
+    detail: "Matching students with research mentors. Past 60,000 of them.",
     href: "https://inkr.pro",
   },
   {
     name: "Linkd",
-    detail: "A daily word chain game with over 45,000 daily players.",
+    detail: "A word chain game 45,000 people play every day.",
     href: "https://linkddaily.com",
   },
   {
     name: "Auteur",
     detail:
-      "An After Effects extension that edits video from plain language, with an agent mode that reads the docs and writes its own ExtendScript until the task is finished. Won the Congressional App Challenge.",
+      "Edits After Effects from plain English. Won the Congressional App Challenge.",
     href: "https://www.congressionalappchallenge.us/25-in03/",
   },
   {
     name: "Spocal",
-    detail:
-      "A transformer-based tool that scores spoken fluency. Qualified for the Diamond Challenge finals.",
+    detail: "Scores how fluently you speak. Diamond Challenge finalist.",
   },
 ];
 
@@ -121,7 +111,7 @@ export const research: Paper[] = [
     track: "Full paper track",
     title:
       "How Much of Genomic Language Model Variant-Effect Prediction Is Base Composition?",
-    note: "Pending publication in PMLR",
+    note: "Pending in PMLR",
   },
   {
     venue: "ISMB 2026",
@@ -169,20 +159,17 @@ export const leadership: Role[] = [
   {
     title: "Founder",
     org: "ViraHacks",
-    detail:
-      "A healthcare hackathon network that has grown to 20+ chapters and more than 1,100 students.",
+    detail: "Healthcare hackathons. 20+ chapters, 1,100+ students so far.",
   },
   {
     title: "Primary Director of Indiana",
     org: "Research Student Connection",
-    detail:
-      "Building partnerships between labs and high schools so students can get into real research.",
+    detail: "Opening lab doors to high schoolers across Indiana.",
   },
   {
     title: "President",
     org: "Key Club",
-    detail:
-      "Running the school's largest club: 120+ members and thousands of volunteer hours a year.",
+    detail: "The school's biggest club and a lot of volunteer hours.",
   },
 ];
 
