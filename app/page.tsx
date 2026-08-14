@@ -157,9 +157,7 @@ export default function Home() {
                       </span>
                     )}
                   </div>
-                  <p className="font-serif italic text-sm leading-relaxed">
-                    {paper.title}
-                  </p>
+                  <p className="text-sm leading-relaxed">{paper.title}</p>
                   <p className="text-xs text-muted mt-1">{paper.track}</p>
                 </div>
               ))}

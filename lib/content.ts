@@ -21,39 +21,45 @@ export const experience: Experience[] = [
   {
     org: "Convexia (YC S25)",
     role: "Machine Learning Engineer",
-    detail: "Clinical trial success prediction · Sparse biomedical data",
+    detail:
+      "Training models that predict whether a drug asset will succeed in clinical trials, scored against historical programs.",
     when: "Current",
     current: true,
   },
   {
     org: "Broad Institute of MIT and Harvard",
     role: "ML Research Intern",
-    detail: "SPECTRA under Dr. Yasha Ektefaie · Phylogenetics and drug design",
+    detail:
+      "Building machine learning methods for phylogenetics, drug design, and clinical informatics. Currently on SPECTRA under Dr. Yasha Ektefaie.",
     when: "Current",
     current: true,
   },
   {
     org: "Yale Department of Neurology",
     role: "Computational Biology Research Assistant",
-    detail: "Spatial image integration · MS biomarker analysis",
+    detail:
+      "Mapped spatial cell interactions in brain tissue from multiple sclerosis patients to test candidate biomarkers for disease progression.",
     when: "2026",
   },
   {
     org: "MedARC",
     role: "Computational Neuroscience Researcher",
-    detail: "fMRI decoding · Interpretable neural representations",
+    detail:
+      "Built deep learning models that decode fMRI brain scans into interpretable neural representations. Under review at ICML.",
     when: "2025",
   },
   {
     org: "Adaptyv Bio",
     role: "Data Science Intern",
-    detail: "1 of 6 selected from 400+ applicants · Protein screening data",
+    detail:
+      "Ran the statistical analysis behind protein screening experiments. One of six interns taken from 400+ applicants.",
     when: "2025",
   },
   {
     org: "Purdue University Fort Wayne",
     role: "Computational Biochemistry Researcher",
-    detail: "STAT3 drug discovery under Dr. Arjun Sharma · ZINC and ChEMBL",
+    detail:
+      "Screened thousands of compounds against the STAT3 protein and docked the best candidates under Dr. Arjun Sharma.",
     when: "2024-25",
   },
 ];
@@ -69,35 +75,36 @@ export const projects: Project[] = [
   {
     name: "Telo",
     detail:
-      "Decentralized automated plants manufacturing shortage-critical sterile injectables near the hospitals that use them",
+      "Automated, decentralized plants that make shortage-critical sterile injectables next to the hospitals that need them.",
     current: true,
   },
   {
     name: "Calma",
-    detail: "Independent verification lab for deterministic code in finance",
+    detail:
+      "An independent verification lab for deterministic code, built for the finance industry.",
     href: "https://github.com/rikhinkavuru/calma",
   },
   {
     name: "Inkr",
     detail:
-      "AI-powered platform connecting students with research mentors · 60,000+ users",
+      "A platform that matches students with research mentors, now past 60,000 users.",
     href: "https://inkr.pro",
   },
   {
     name: "Linkd",
-    detail: "Daily word chain game · 45,000+ daily users",
+    detail: "A daily word chain game with over 45,000 daily players.",
     href: "https://linkddaily.com",
   },
   {
     name: "Auteur",
     detail:
-      "After Effects extension that edits video from natural language, with an autonomous agent mode · Congressional App Challenge winner",
+      "An After Effects extension that edits video from plain language, with an agent mode that reads the docs and writes its own ExtendScript until the task is finished. Won the Congressional App Challenge.",
     href: "https://www.congressionalappchallenge.us/25-in03/",
   },
   {
     name: "Spocal",
     detail:
-      "Transformer-based speech fluency assessment · Diamond Challenge Finals",
+      "A transformer-based tool that scores spoken fluency. Qualified for the Diamond Challenge finals.",
   },
 ];
 
@@ -162,21 +169,24 @@ export const leadership: Role[] = [
   {
     title: "Founder",
     org: "ViraHacks",
-    detail: "20+ healthcare hackathon chapters across America · 1100+ students",
+    detail:
+      "A healthcare hackathon network that has grown to 20+ chapters and more than 1,100 students.",
   },
   {
     title: "Primary Director of Indiana",
     org: "Research Student Connection",
-    detail: "Partnering labs and high schools to open research to students",
+    detail:
+      "Building partnerships between labs and high schools so students can get into real research.",
   },
   {
     title: "President",
     org: "Key Club",
-    detail: "School's largest club, 120+ members · 1000s of volunteer hours",
+    detail:
+      "Running the school's largest club: 120+ members and thousands of volunteer hours a year.",
   },
 ];
 
 export const footer = {
   lineOne: "Homestead High School · Class of 2027",
-  lineTwo: "4.839 GPA · Rank 1 of 563",
+  lineTwo: "Valedictorian",
 };
