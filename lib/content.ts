@@ -2,9 +2,8 @@ export const profile = {
   handle: "~/rikhin",
   firstName: "Rikhin",
   lastName: "Kavuru",
-  // TODO: swap for your city if you want the location shown, e.g. "West Lafayette, IN · Broad Institute"
-  eyebrow: "Broad Institute of MIT and Harvard",
-  interests: ["computational biology", "machine learning"],
+  eyebrow: "Fort Wayne, IN · Convexia",
+  interests: ["machine learning", "computational biology"],
   email: "rikhinkavuru@gmail.com",
   github: "https://github.com/rikhinkavuru",
   linkedin: "https://www.linkedin.com/in/rikhinkavuru",
@@ -12,6 +11,7 @@ export const profile = {
 
 export type Experience = {
   org: string;
+  role: string;
   detail: string;
   when: string;
   current?: boolean;
@@ -19,26 +19,42 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    org: "Broad Institute of MIT and Harvard",
-    detail: "SPECTRA · Computational biology under Dr. Yasha Ektefaie",
+    org: "Convexia (YC S25)",
+    role: "Machine Learning Engineer",
+    detail: "Clinical trial success prediction · Sparse biomedical data",
     when: "Current",
     current: true,
   },
   {
-    org: "Adaptyv Bio",
-    detail: "Protein screening data · Binding curves and expression levels",
+    org: "Broad Institute of MIT and Harvard",
+    role: "ML Research Intern",
+    detail: "SPECTRA under Dr. Yasha Ektefaie · Phylogenetics and drug design",
     when: "Current",
     current: true,
+  },
+  {
+    org: "Yale Department of Neurology",
+    role: "Computational Biology Research Assistant",
+    detail: "Spatial image integration · MS biomarker analysis",
+    when: "2026",
   },
   {
     org: "MedARC",
+    role: "Computational Neuroscience Researcher",
     detail: "fMRI decoding · Interpretable neural representations",
     when: "2025",
   },
   {
-    org: "Purdue University",
-    detail: "STAT3 molecular docking · ZINC and ChEMBL libraries",
+    org: "Adaptyv Bio",
+    role: "Data Science Intern",
+    detail: "1 of 6 selected from 400+ applicants · Protein screening data",
     when: "2025",
+  },
+  {
+    org: "Purdue University Fort Wayne",
+    role: "Computational Biochemistry Researcher",
+    detail: "STAT3 drug discovery under Dr. Arjun Sharma · ZINC and ChEMBL",
+    when: "2024-25",
   },
 ];
 
@@ -46,42 +62,77 @@ export type Project = {
   name: string;
   detail: string;
   href?: string;
+  current?: boolean;
 };
 
 export const projects: Project[] = [
   {
-    name: "Linkd",
-    detail: "Word chain game that reached 60k+ players",
-    href: "https://linkddaily.com",
+    name: "Telo",
+    detail:
+      "Decentralized automated plants manufacturing shortage-critical sterile injectables near the hospitals that use them",
+    current: true,
   },
   {
     name: "Calma",
-    detail: "Independent verification lab for AI agents in finance",
+    detail: "Independent verification lab for deterministic code in finance",
     href: "https://github.com/rikhinkavuru/calma",
   },
   {
+    name: "Inkr",
+    detail:
+      "AI-powered platform connecting students with research mentors · 60,000+ users",
+    href: "https://inkr.pro",
+  },
+  {
+    name: "Linkd",
+    detail: "Daily word chain game · 45,000+ daily users",
+    href: "https://linkddaily.com",
+  },
+  {
     name: "Auteur",
-    detail: "AI copilot for After Effects · Congressional App Challenge winner",
+    detail:
+      "After Effects extension that edits video from natural language, with an autonomous agent mode · Congressional App Challenge winner",
     href: "https://www.congressionalappchallenge.us/25-in03/",
   },
   {
-    name: "Vira",
-    detail: "Healthcare hackathon org · 20 chapters, 1000+ students",
-    href: "https://www.virahacks.com/",
-  },
-  {
     name: "Spocal",
-    detail: "Transformer-based speech fluency assessment",
+    detail:
+      "Transformer-based speech fluency assessment · Diamond Challenge Finals",
+  },
+];
+
+export type Paper = {
+  venue: string;
+  track: string;
+  title: string;
+  note?: string;
+};
+
+export const research: Paper[] = [
+  {
+    venue: "MLCB 2026",
+    track: "Full paper track",
+    title:
+      "How Much of Genomic Language Model Variant-Effect Prediction Is Base Composition?",
+    note: "Pending publication in PMLR",
   },
   {
-    name: "TwoFace Games",
-    detail: "Imposter-style party game shipped on the App Store",
-    href: "https://apps.apple.com/us/app/twoface-games/id6761439165",
+    venue: "ISMB 2026",
+    track: "DREAM Challenges track",
+    title:
+      "Single-Seed Benchmarks Are Unreliable for LLM Coding Agents on Bioinformatics Tasks",
   },
   {
-    name: "TestScan",
-    detail: "Video frame extraction + GPT-4o Vision question solving",
-    href: "https://testscan.vercel.app/",
+    venue: "IEEE BIBM 2025",
+    track: "Trustworthy AI for Biomedical Discovery track",
+    title:
+      "Three Routes to Failure: An Interpretable Diagnosis of Task Difficulty and Negative-Set Contamination in Genomic Sequence-Classification Benchmarks",
+  },
+  {
+    venue: "INFORMS 2025",
+    track: "Large Language Models track",
+    title:
+      "Measurement Reliability in LLM Agent Evaluation: Variance, Judge Non-Determinism, and the Limits of Benchmark Inference",
   },
 ];
 
@@ -92,16 +143,40 @@ export type Recognition = {
 
 // primary: true renders a filled orange dot, false renders a hollow circle.
 export const recognition: Recognition[] = [
+  { label: "7th Internationally · HOSA ILC 2026", primary: true },
+  { label: "USAMO Qualifier", primary: true },
   { label: "Congressional App Challenge Winner", primary: true },
-  { label: "agentDX accepted to BIBM 2026", primary: true },
-  { label: "fMRI decoding under review at ICML", primary: true },
-  { label: "Linkd · 60,000+ players", primary: true },
-  { label: "Vira · 20 chapters nationwide" },
-  { label: "TwoFace Games · App Store release" },
+  { label: "2x HOSA State Champion", primary: true },
+  { label: "Google AI Data Center Community Fellow" },
+  { label: "Cambridge Re:think Essay Honorable Mention" },
+  { label: "IHSAA Tennis State Runner-Up" },
 ];
 
-// TODO: replace with your school and class year
+export type Role = {
+  title: string;
+  org: string;
+  detail: string;
+};
+
+export const leadership: Role[] = [
+  {
+    title: "Founder",
+    org: "ViraHacks",
+    detail: "20+ healthcare hackathon chapters across America · 1100+ students",
+  },
+  {
+    title: "Primary Director of Indiana",
+    org: "Research Student Connection",
+    detail: "Partnering labs and high schools to open research to students",
+  },
+  {
+    title: "President",
+    org: "Key Club",
+    detail: "School's largest club, 120+ members · 1000s of volunteer hours",
+  },
+];
+
 export const footer = {
-  lineOne: "Rikhin Kavuru",
-  lineTwo: "All rights reserved 2026",
+  lineOne: "Homestead High School · Class of 2027",
+  lineTwo: "4.839 GPA · Rank 1 of 563",
 };

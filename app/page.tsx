@@ -3,9 +3,11 @@ import ScrollReveal from "@/components/ScrollReveal";
 import {
   experience,
   footer,
+  leadership,
   profile,
   projects,
   recognition,
+  research,
 } from "@/lib/content";
 
 const delay = (i: number) => (i === 0 ? "" : ` delay-${Math.min(i, 6)}`);
@@ -29,12 +31,15 @@ export default function Home() {
               {profile.handle}
               <span className="blink text-accent">_</span>
             </span>
-            <nav className="flex gap-6">
+            <nav className="flex gap-4 sm:gap-6">
               <a href="#work" className="text-muted hover:text-ink transition-colors">
                 work
               </a>
               <a href="#projects" className="text-muted hover:text-ink transition-colors">
                 projects
+              </a>
+              <a href="#research" className="text-muted hover:text-ink transition-colors">
+                research
               </a>
               <a href={mailto} className="text-accent">
                 contact
@@ -80,11 +85,12 @@ export default function Home() {
                   <div className="flex justify-between items-start gap-4 mb-1">
                     <h3 className="font-medium">{role.org}</h3>
                     <span
-                      className={`text-xs shrink-0 ${role.current ? "text-accent" : "text-muted"}`}
+                      className={`text-xs shrink-0 pt-1 ${role.current ? "text-accent" : "text-muted"}`}
                     >
                       {role.when}
                     </span>
                   </div>
+                  <p className="text-sm">{role.role}</p>
                   <p className="text-sm text-muted">{role.detail}</p>
                 </div>
               ))}
@@ -99,8 +105,15 @@ export default function Home() {
               {projects.map((project, i) => {
                 const body = (
                   <>
-                    <div className="flex justify-between gap-4 mb-2">
-                      <h3 className="font-medium">{project.name}</h3>
+                    <div className="flex justify-between items-start gap-4 mb-2">
+                      <h3 className="font-medium">
+                        {project.name}
+                        {project.current && (
+                          <span className="text-xs text-accent font-normal ml-2">
+                            Current
+                          </span>
+                        )}
+                      </h3>
                       {project.href && <span className="text-accent">↗</span>}
                     </div>
                     <p className="text-sm text-muted">{project.detail}</p>
@@ -129,9 +142,33 @@ export default function Home() {
             </div>
           </section>
 
+          <section id="research" className="py-16 border-t border-rule">
+            <h2 className="text-xs text-muted uppercase tracking-wider mb-8 fade-up">
+              03 — Research
+            </h2>
+            <div className="space-y-8">
+              {research.map((paper, i) => (
+                <div key={paper.venue} className={`fade-up${delay(i)}`}>
+                  <div className="flex justify-between items-start gap-4 mb-1">
+                    <h3 className="font-medium">{paper.venue}</h3>
+                    {paper.note && (
+                      <span className="text-xs text-accent shrink-0 pt-1">
+                        {paper.note}
+                      </span>
+                    )}
+                  </div>
+                  <p className="font-serif italic text-sm leading-relaxed">
+                    {paper.title}
+                  </p>
+                  <p className="text-xs text-muted mt-1">{paper.track}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
           <section className="py-16 border-t border-rule">
             <h2 className="text-xs text-muted uppercase tracking-wider mb-8 fade-up">
-              03 — Recognition
+              04 — Recognition
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm fade-up">
               {recognition.map((item) => (
@@ -140,6 +177,25 @@ export default function Home() {
                     {item.primary ? "●" : "○"}
                   </span>{" "}
                   {item.label}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section className="py-16 border-t border-rule">
+            <h2 className="text-xs text-muted uppercase tracking-wider mb-8 fade-up">
+              05 — Leadership
+            </h2>
+            <div className="space-y-8">
+              {leadership.map((role, i) => (
+                <div key={role.org} className={`fade-up${delay(i)}`}>
+                  <div className="flex justify-between items-start gap-4 mb-1">
+                    <h3 className="font-medium">{role.org}</h3>
+                    <span className="text-xs text-muted shrink-0 pt-1">
+                      {role.title}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted">{role.detail}</p>
                 </div>
               ))}
             </div>
