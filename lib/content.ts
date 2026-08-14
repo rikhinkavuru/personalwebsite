@@ -21,39 +21,39 @@ export const experience: Experience[] = [
   {
     org: "Convexia (YC S25)",
     role: "Machine Learning Engineer",
-    detail: "Predicting which drugs actually survive clinical trials.",
+    detail: "Models that predict clinical trial success for drug assets.",
     when: "Current",
     current: true,
   },
   {
     org: "Broad Institute of MIT and Harvard",
     role: "ML Research Intern",
-    detail: "ML for drug design and phylogenetics. Currently on SPECTRA.",
+    detail: "ML methods for drug design and phylogenetics. Currently on SPECTRA.",
     when: "Current",
     current: true,
   },
   {
     org: "Yale Department of Neurology",
     role: "Computational Biology Research Assistant",
-    detail: "Mapped how cells talk to each other in MS brain tissue.",
+    detail: "Spatial mapping of cell interactions in MS brain tissue.",
     when: "2026",
   },
   {
     org: "MedARC",
     role: "Computational Neuroscience Researcher",
-    detail: "Taught models to read fMRI scans. Under review at ICML.",
+    detail: "Deep learning models that decode fMRI scans. Under review at ICML.",
     when: "2025",
   },
   {
     org: "Adaptyv Bio",
     role: "Data Science Intern",
-    detail: "Protein screening stats. One of six taken from 400+ applicants.",
+    detail: "Protein screening analysis. One of six interns from 400+ applicants.",
     when: "2025",
   },
   {
     org: "Purdue University Fort Wayne",
     role: "Computational Biochemistry Researcher",
-    detail: "Docked thousands of compounds at STAT3 looking for a hit.",
+    detail: "Virtual screening and molecular docking against STAT3.",
     when: "2024-25",
   },
 ];
@@ -68,33 +68,33 @@ export type Project = {
 export const projects: Project[] = [
   {
     name: "Telo",
-    detail: "Making injectables next door to the hospitals that run out.",
+    detail: "Decentralized plants making shortage-critical sterile injectables.",
     current: true,
   },
   {
     name: "Calma",
-    detail: "Verification lab for finance code that can't afford to be wrong.",
+    detail: "Independent verification lab for deterministic code in finance.",
     href: "https://github.com/rikhinkavuru/calma",
   },
   {
     name: "Inkr",
-    detail: "Matching students with research mentors. Past 60,000 of them.",
+    detail: "Platform matching students with research mentors. 60K+ users.",
     href: "https://inkr.pro",
   },
   {
     name: "Linkd",
-    detail: "A word chain game 45,000 people play every day.",
+    detail: "Daily word chain game. 45K+ daily players.",
     href: "https://linkddaily.com",
   },
   {
     name: "Auteur",
     detail:
-      "Edits After Effects from plain English. Won the Congressional App Challenge.",
+      "AI copilot for After Effects. Won the Congressional App Challenge.",
     href: "https://www.congressionalappchallenge.us/25-in03/",
   },
   {
     name: "Spocal",
-    detail: "Scores how fluently you speak. Diamond Challenge finalist.",
+    detail: "Transformer-based speech fluency scoring. Diamond Challenge finalist.",
   },
 ];
 
@@ -159,17 +159,17 @@ export const leadership: Role[] = [
   {
     title: "Founder",
     org: "ViraHacks",
-    detail: "Healthcare hackathons. 20+ chapters, 1,100+ students so far.",
+    detail: "Healthcare hackathons across 20+ chapters and 1,100+ students.",
   },
   {
     title: "Primary Director of Indiana",
     org: "Research Student Connection",
-    detail: "Opening lab doors to high schoolers across Indiana.",
+    detail: "Connecting Indiana high schoolers with research labs.",
   },
   {
     title: "President",
     org: "Key Club",
-    detail: "The school's biggest club and a lot of volunteer hours.",
+    detail: "The school's largest club. 120+ members.",
   },
 ];
 
