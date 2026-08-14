@@ -1,14 +1,9 @@
 /**
  * Canonical origin for metadata, OG tags, sitemap, and robots.
- *
- * Set NEXT_PUBLIC_SITE_URL once the real domain is live. On Vercel it falls
- * back to the production URL of the project, and locally to localhost.
+ * Override with NEXT_PUBLIC_SITE_URL if the site ever moves.
  */
 export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  (process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : "http://localhost:3000");
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://rikhin.virahacks.com";
 
 export const siteName = "Rikhin Kavuru";
 

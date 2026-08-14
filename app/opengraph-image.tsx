@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { colors } from "@/lib/site";
 import { profile } from "@/lib/content";
+import { logoAspect, logoDataUri } from "@/lib/logo";
 
 export const alt = "Rikhin Kavuru — machine learning and computational biology";
 export const size = { width: 1200, height: 630 };
@@ -44,8 +45,17 @@ export default function OpengraphImage() {
           }}
         />
 
-        <div style={{ display: "flex", fontSize: 26, color: colors.muted }}>
-          {profile.eyebrow}
+        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoDataUri(colors.ink)}
+            width={Math.round(72 * logoAspect)}
+            height={72}
+            alt=""
+          />
+          <div style={{ display: "flex", fontSize: 26, color: colors.muted }}>
+            {profile.eyebrow}
+          </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

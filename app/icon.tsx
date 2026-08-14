@@ -1,10 +1,13 @@
 import { ImageResponse } from "next/og";
 import { colors } from "@/lib/site";
+import { logoAspect, logoDataUri } from "@/lib/logo";
 
 export const size = { width: 32, height: 32 };
 export const contentType = "image/png";
 
 export default function Icon() {
+  const height = 26;
+
   return new ImageResponse(
     (
       <div
@@ -15,23 +18,14 @@ export default function Icon() {
           alignItems: "center",
           justifyContent: "center",
           background: colors.ink,
-          color: colors.bg,
-          fontSize: 22,
-          fontWeight: 500,
-          letterSpacing: -1,
-          position: "relative",
         }}
       >
-        R
-        <div
-          style={{
-            position: "absolute",
-            bottom: 5,
-            right: 5,
-            width: 6,
-            height: 2,
-            background: colors.accent,
-          }}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoDataUri(colors.bg)}
+          width={Math.round(height * logoAspect)}
+          height={height}
+          alt=""
         />
       </div>
     ),

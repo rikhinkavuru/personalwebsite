@@ -1,10 +1,13 @@
 import { ImageResponse } from "next/og";
 import { colors } from "@/lib/site";
+import { logoAspect, logoDataUri } from "@/lib/logo";
 
 export const size = { width: 180, height: 180 };
 export const contentType = "image/png";
 
 export default function AppleIcon() {
+  const height = 116;
+
   return new ImageResponse(
     (
       <div
@@ -15,23 +18,14 @@ export default function AppleIcon() {
           alignItems: "center",
           justifyContent: "center",
           background: colors.ink,
-          color: colors.bg,
-          fontSize: 108,
-          fontWeight: 500,
-          letterSpacing: -4,
-          position: "relative",
         }}
       >
-        R
-        <div
-          style={{
-            position: "absolute",
-            bottom: 30,
-            right: 30,
-            width: 30,
-            height: 8,
-            background: colors.accent,
-          }}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={logoDataUri(colors.bg)}
+          width={Math.round(height * logoAspect)}
+          height={height}
+          alt=""
         />
       </div>
     ),
