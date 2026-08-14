@@ -1,25 +1,30 @@
 {
   "name": "personal-portfolio",
-  "version": "1.0.0",
-  "description": "Rikhin Kavuru Portfolio - Technical Sophistication v1.0",
-  "main": "script.js",
+  "version": "2.0.0",
+  "description": "Rikhin Kavuru — personal site",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vite"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rikhinkavuru/personalwebsite.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/rikhinkavuru/personalwebsite/issues"
+  "dependencies": {
+    "next": "^15.5.4",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
-  "homepage": "https://github.com/rikhinkavuru/personalwebsite#readme",
   "devDependencies": {
-    "vite": "^8.0.8"
+    "@tailwindcss/postcss": "^4.1.13",
+    "@types/node": "^24.5.2",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5.9.2"
   }
 }
