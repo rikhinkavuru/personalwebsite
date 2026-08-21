@@ -135,11 +135,6 @@ export const socialCards = {
     followers: null as number | null,
     following: null as number | null,
   },
-  email: {
-    address: "rikhin@virahacks.com",
-    name: "Rikhin Kavuru",
-    avatar: "/avatar.jpg",
-  },
 };
 
 export type Experience = {

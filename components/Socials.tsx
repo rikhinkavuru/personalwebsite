@@ -1,7 +1,7 @@
 import { profile } from "@/lib/content";
+import EmailButton from "./EmailButton";
 import NowPlaying from "./NowPlaying";
 import {
-  EmailCard,
   GitHubCard,
   HoverCard,
   InstagramCard,
@@ -11,13 +11,6 @@ import {
 
 const iconClass =
   "relative inline-flex size-9 items-center justify-center rounded-xl bg-foreground text-primary transition-colors hover:bg-surface-hover";
-
-const MailIcon = () => (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4" aria-hidden="true">
-    <rect width="20" height="16" x="2" y="4" rx="2" />
-    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-  </svg>
-);
 
 const GitHubIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="size-4" aria-hidden="true">
@@ -59,25 +52,20 @@ const ArrowIcon = () => (
  * once its URL is set.
  */
 export default function Socials() {
-  const mailto = `mailto:${profile.email}`;
-  const hasBooking = Boolean(profile.bookingUrl);
 
   return (
     <div className="flex flex-wrap items-center gap-2">
       <a
-        href={hasBooking ? profile.bookingUrl : mailto}
-        {...(hasBooking ? { target: "_blank", rel: "noreferrer" } : {})}
+        href={profile.bookingUrl}
+        target="_blank"
+        rel="noreferrer"
         className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 text-sm font-medium text-bg transition-opacity hover:opacity-80"
       >
         Get in touch
         <ArrowIcon />
       </a>
 
-      <HoverCard card={<EmailCard />}>
-        <a href={mailto} aria-label="Email" className={iconClass}>
-          <MailIcon />
-        </a>
-      </HoverCard>
+      <EmailButton />
 
       <HoverCard card={<InstagramCard />}>
         <a

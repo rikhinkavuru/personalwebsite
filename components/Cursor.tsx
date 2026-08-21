@@ -41,7 +41,8 @@ export default function Cursor() {
         dot.current.style.transform = `translate(${targetX - 2}px, ${targetY - 2}px)`;
       }
       const el = e.target as HTMLElement | null;
-      const hovering = !!el?.closest("a, button, [role='button']");
+      const target = el?.closest("a, button, [role='button']");
+      const hovering = !!target && !target.hasAttribute("data-plain-cursor");
       ring.current?.classList.toggle("hovering", hovering);
       if (ring.current) {
         ring.current.dataset.scale = hovering ? "2" : "1";
