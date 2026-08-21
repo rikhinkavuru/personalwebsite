@@ -9,6 +9,7 @@ export const profile = {
   linkedin: "https://www.linkedin.com/in/rikhin-kavuru-29sb0926/",
   /** Set to your profile URL to show the Instagram icon. */
   instagram: "https://www.instagram.com/rikhin.kavuru/",
+  twitter: "https://x.com/rikhinkavuru",
   /** Set to a cal.com or Calendly URL to enable the "Book a call" button. */
   bookingUrl: "",
 };
@@ -56,21 +57,22 @@ export type Postcard = {
 };
 
 export const postcards: Record<string, Postcard> = {
-  fortWayne: {
-    id: "fortWayne",
+  home: {
+    id: "home",
     thumb: "/postcards/fort-wayne-thumb.jpg",
     full: "/postcards/fort-wayne.jpg",
-    alt: "Fort Wayne, Indiana",
-    caption: "Fort Wayne, Indiana",
+    // PLACEHOLDER caption: the supplied photo is a coastal road, not Fort Wayne.
+    alt: "Coast road",
+    caption: "Coast road",
     exif: "",
     rotate: -4,
   },
-  boston: {
-    id: "boston",
-    thumb: "/postcards/boston-thumb.jpg",
-    full: "/postcards/boston.jpg",
-    alt: "Cambridge, Massachusetts",
-    caption: "Kendall Square, Cambridge",
+  sf: {
+    id: "sf",
+    thumb: "/postcards/sf-thumb.jpg",
+    full: "/postcards/sf.jpg",
+    alt: "San Francisco Bay",
+    caption: "Looking out over the Bay, San Francisco",
     exif: "",
     rotate: 3,
   },

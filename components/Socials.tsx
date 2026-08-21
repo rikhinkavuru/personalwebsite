@@ -37,6 +37,12 @@ const InstagramIcon = () => (
   </svg>
 );
 
+const XIcon = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" className="size-4" aria-hidden="true">
+    <path d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z" />
+  </svg>
+);
+
 const ArrowIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" className="size-3.5" aria-hidden="true">
     <path d="M5 12h14M13 6l6 6-6 6" />
@@ -65,11 +71,9 @@ export default function Socials() {
         <ArrowIcon />
       </a>
 
-      {hasBooking && (
-        <a href={mailto} aria-label="Email" className={iconClass}>
-          <MailIcon />
-        </a>
-      )}
+      <a href={mailto} aria-label="Email" className={iconClass}>
+        <MailIcon />
+      </a>
 
       <HoverCard card={<InstagramCard />}>
         <a
@@ -94,6 +98,18 @@ export default function Socials() {
           <LinkedInIcon />
         </a>
       </HoverCard>
+
+      {profile.twitter && (
+        <a
+          href={profile.twitter}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="X"
+          className={iconClass}
+        >
+          <XIcon />
+        </a>
+      )}
 
       <HoverCard card={<GitHubCard />}>
         <a

@@ -25,7 +25,7 @@ export default function ExperiencePage() {
               Experience
             </h2>
             <p className="mt-2 text-base text-muted">
-              Everywhere I&apos;ve worked, current first.
+              To live is to learn, and to learn is to live.
             </p>
           </StaggerItem>
 

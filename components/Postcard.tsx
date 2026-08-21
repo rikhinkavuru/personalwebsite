@@ -37,7 +37,14 @@ const BLUR_LAYERS = [
   { blur: 12, mask: "linear-gradient(transparent 82%, black 93%)" },
 ];
 
-export default function Postcard({ card }: { card: PostcardData }) {
+export default function Postcard({
+  card,
+  tight = false,
+}: {
+  card: PostcardData;
+  /** Drop the right margin when punctuation follows, as kominko does. */
+  tight?: boolean;
+}) {
   const [open, setOpen] = useState(false);
   const [failed, setFailed] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -79,7 +86,7 @@ export default function Postcard({ card }: { card: PostcardData }) {
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`View postcard of ${card.alt}`}
-        className="relative mx-1.5 my-[-0.2em] inline-block aspect-3/2 h-[1.8em] cursor-pointer bg-white p-[2px] align-middle shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        className={`relative my-[-0.2em] inline-block aspect-3/2 h-[1.8em] cursor-pointer bg-[#efece5] p-[3px] align-middle shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-[#3a3733] ${tight ? "ml-1.5" : "mx-1.5"}`}
         style={{ borderRadius: 4 }}
         initial={{ rotate: card.rotate }}
         whileHover={{ rotate: 0, scale: 1.35, y: -2 }}
@@ -117,7 +124,7 @@ export default function Postcard({ card }: { card: PostcardData }) {
                   role="dialog"
                   aria-modal="true"
                   aria-label={card.alt}
-                  className="w-[min(88vw,100vh,56rem)] bg-white p-2 shadow-2xl sm:p-3"
+                  className="w-[min(88vw,100vh,56rem)] bg-[#efece5] p-2 shadow-2xl sm:p-3"
                   style={{ borderRadius: 18 }}
                   initial={{ scale: 0.92, opacity: 0, y: 12 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}

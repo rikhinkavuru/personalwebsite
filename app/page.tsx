@@ -6,6 +6,7 @@ import ProfileHeader from "@/components/ProfileHeader";
 import { Badge, Row, SectionHeading } from "@/components/Rows";
 import Socials from "@/components/Socials";
 import { Stagger, StaggerItem } from "@/components/Stagger";
+import { MarkedName } from "@/components/Mark";
 import { hasPublicFile } from "@/lib/assets";
 import { experience, footer, postcards, projects, research } from "@/lib/content";
 
@@ -15,8 +16,8 @@ const featuredExperience = experience.filter((job) => job.current);
 // Resolved at build time. Rendering a postcard whose file is missing and then
 // removing it on mount reflowed the paragraph mid-animation, which is what
 // made the whole load sequence stutter.
-const showFortWayne = hasPublicFile(postcards.fortWayne.thumb);
-const showBoston = hasPublicFile(postcards.boston.thumb);
+const showHome = hasPublicFile(postcards.home.thumb);
+const showSf = hasPublicFile(postcards.sf.thumb);
 
 export default function Home() {
   return (
@@ -25,29 +26,23 @@ export default function Home() {
         <ProfileHeader />
 
         <Stagger>
-          {/* PLACEHOLDER COPY. Deliberately short and personal so the postcards
-              carry it, rather than restating the Experience list below. */}
+          {/* PLACEHOLDER COPY, structured like kominko's: one paragraph with
+              the postcards and company marks set inline. */}
           <StaggerItem as="section" className="pt-6">
-            <div className="flex flex-col gap-4 text-base leading-[1.66] text-primary">
-              <p>
-                I&apos;m 17. I grew up in{" "}
-                <span className="whitespace-nowrap">
-                  Fort Wayne, Indiana
-                  {showFortWayne && <Postcard card={postcards.fortWayne} />}
-                </span>{" "}
-                and spend most of my time teaching machines to read biology.
-              </p>
-
-              <p>
-                The rest of it goes to tennis, arguing about benchmarks, and
-                flights to{" "}
-                <span className="whitespace-nowrap">
-                  Cambridge
-                  {showBoston && <Postcard card={postcards.boston} />}
-                </span>
-                .
-              </p>
-            </div>
+            <p className="max-w-[34rem] text-base leading-[1.75] font-medium tracking-[-0.02em] text-primary sm:text-xl">
+              17 y/o engineer from{" "}
+              <span className="whitespace-nowrap">
+                Fort Wayne, Indiana
+                {showHome && <Postcard card={postcards.home} />}
+              </span>{" "}
+              <span className="whitespace-nowrap">
+                now in San Francisco
+                {showSf && <Postcard card={postcards.sf} tight />}.
+              </span>{" "}
+              Previously at <MarkedName name="broad" label="Broad Institute" />.
+              Now working at <MarkedName name="convexia" label="Convexia" /> on
+              the ML team.
+            </p>
           </StaggerItem>
 
           <StaggerItem className="mt-6">

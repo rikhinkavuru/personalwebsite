@@ -1,23 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Bricolage_Grotesque, Instrument_Serif } from "next/font/google";
 import Cursor from "@/components/Cursor";
 import { profile } from "@/lib/content";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
-
-const bricolage = Bricolage_Grotesque({
-  subsets: ["latin"],
-  variable: "--font-bricolage",
-  display: "swap",
-});
-
-const instrumentSerif = Instrument_Serif({
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  variable: "--font-instrument-serif",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -111,7 +96,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${bricolage.variable} ${instrumentSerif.variable} antialiased`}
+      className="antialiased"
     >
       <head>
         {/* Static string defined above, never user input. */}

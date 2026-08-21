@@ -29,17 +29,20 @@ edge rather than sitting contained inside it).
 Replace any of them by dropping a new square PNG at the same path. Brand hover
 tints live in `marks` in `lib/content.ts`.
 
-## 3. Postcards
+## 3. Postcards — in, captions pending
 
 Two files per postcard: a small inline crop and the full image the modal opens.
-Both must be **3:2** or they will be cropped to it.
+Both are cropped to **3:2**.
 
 ```
-public/postcards/fort-wayne-thumb.jpg   ~200px wide
-public/postcards/fort-wayne.jpg         ~1600px wide
-public/postcards/boston-thumb.jpg       ~200px wide
-public/postcards/boston.jpg             ~1600px wide
+public/postcards/fort-wayne-thumb.jpg  +  fort-wayne.jpg
+public/postcards/sf-thumb.jpg          +  sf.jpg
 ```
+
+The `sf` pair is the San Francisco photo you sent. The `fort-wayne` pair is the
+other photo, but it shows a coastal road and a cruise ship, so its caption is a
+placeholder rather than "Fort Wayne, Indiana" — send the right shot or the
+right caption.
 
 Captions, alt text, and the EXIF line live in `postcards` in `lib/content.ts`.
 The `exif` field is blank by default; fill it in for kominko's
