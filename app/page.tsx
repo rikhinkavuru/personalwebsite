@@ -61,11 +61,10 @@ export default function Home() {
                 <Row
                   key={job.org}
                   title={job.org}
-                  subtitle={job.role}
                   detail={job.detail}
                   mark={job.mark}
                   href={job.href}
-                  logoSize={64}
+                  logoSize={48}
                   badge={<Badge solid={job.current}>{job.when}</Badge>}
                 />
               ))}

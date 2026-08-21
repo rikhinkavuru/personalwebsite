@@ -3,35 +3,6 @@
 /* Dark mode is class-driven so the pre-hydration script can set it with no flash. */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* Open Runde, the body face. Self-hosted from the upstream OFL release. */
-@font-face {
-  font-family: "Open Runde";
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/fonts/OpenRunde-Regular.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Open Runde";
-  font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url("/fonts/OpenRunde-Medium.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Open Runde";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/fonts/OpenRunde-Semibold.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Open Runde";
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url("/fonts/OpenRunde-Bold.woff2") format("woff2");
-}
 
 @theme {
   --color-bg: var(--bg);
@@ -45,8 +16,8 @@
   --color-muted: var(--text-muted);
   --color-accent: var(--accent);
 
-  --font-body: "Open Runde", ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-bricolage), "Open Runde", ui-sans-serif, sans-serif;
+  --font-body: "SF Pro", "SF Pro Display", -apple-system, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), "SF Pro", system-ui, sans-serif;
   --font-serif: var(--font-instrument-serif), Georgia, serif;
 
   /* kominko's entrance: blur + lift, resolving on a sharp ease-out curve. */

@@ -114,22 +114,6 @@ export default function RootLayout({
       className={`${bricolage.variable} ${instrumentSerif.variable} antialiased`}
     >
       <head>
-        {/* Preloaded so the body face is ready before first paint; a late
-            swap would reflow the bio mid-cascade. */}
-        <link
-          rel="preload"
-          href="/fonts/OpenRunde-Regular.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/OpenRunde-Medium.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
         {/* Static string defined above, never user input. */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>

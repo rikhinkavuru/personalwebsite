@@ -115,9 +115,26 @@ moves into the icon row beside GitHub and LinkedIn.
 
 ## 7. Bento artwork
 
-Each project's bento card is a composed image in `public/projects/`, built from
-screenshots: Telo is the mark in black on white, ViraHacks is its headline
-floated as a card, and Linkd and Inkr are phone screens on their brand colour.
+Each project's bento card is a composed image in `public/projects/`:
+
+| Card | Treatment |
+| --- | --- |
+| `telo.png` | Cream mark on a charcoal ground, as a flat graphic |
+| `virahacks.png` | A hackathon event card floated on light grey |
+| `linkd.png` | Two app screens on Linkd red |
+| `inkr.png` | Two site screens on indigo |
+
+Inkr's card is indigo rather than its own orange: Inkr's palette is essentially
+black-and-white with an orange dot, and orange sat too close to Linkd's red for
+the two tiles to read apart.
+
+Images are rendered at each slot's measured aspect ratio, so `object-cover`
+never crops the composition. If you change the `grow` weights in `LAYOUT`,
+re-measure and re-render or the phones will get clipped.
+
+The ViraHacks event card is generated from an HTML template; its source is in
+the scratch directory rather than the repo. Its date, location, and title are
+placeholder text.
 
 Swap any of them by replacing the file and updating that project's `shots`
 entry in `lib/content.ts`. Slot placement and the uneven column split live in
