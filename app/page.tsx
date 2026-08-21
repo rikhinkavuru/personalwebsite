@@ -17,7 +17,6 @@ const featuredExperience = experience.filter((job) => job.current);
 // removing it on mount reflowed the paragraph mid-animation, which is what
 // made the whole load sequence stutter.
 const showHome = hasPublicFile(postcards.home.thumb);
-const showSf = hasPublicFile(postcards.sf.thumb);
 
 export default function Home() {
   return (
@@ -31,16 +30,20 @@ export default function Home() {
           <StaggerItem as="section" className="pt-6">
             <p className="text-base leading-[2.1] font-medium tracking-[-0.02em] text-primary sm:text-xl">
               17 y/o engineer from Fort Wayne, Indiana
-              {showHome && <Postcard card={postcards.home} />}
-              {/* Kept together so the photo never wraps away from the place
-                  it illustrates. */}
-              <span className="whitespace-nowrap">
-                now in San Francisco
-                {showSf && <Postcard card={postcards.sf} tight />}.
-              </span>{" "}
-              Previously
-              comp bio research at <MarkedName name="yale" label="Yale" />.
-              Slingin drug microfactories @{" "}
+              {showHome && <Postcard card={postcards.home} tight />}. Previously
+              comp bio research at{" "}
+              <MarkedName
+                name="yale"
+                label="Yale"
+                href="https://medicine.yale.edu/neurology/"
+              />{" "}
+              and data science at{" "}
+              <MarkedName
+                name="adaptyv"
+                label="Adaptyv"
+                href="https://www.adaptyvbio.com/"
+              />
+              . Now slinging drug microfactories at{" "}
               <MarkedName name="teloMark" label="Telo" />.
             </p>
           </StaggerItem>
