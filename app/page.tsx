@@ -1,235 +1,180 @@
-import Cursor from "@/components/Cursor";
-import ScrollReveal from "@/components/ScrollReveal";
+import Link from "next/link";
+import Footer from "@/components/Footer";
+import { MarkedName } from "@/components/Mark";
+import NowPlaying from "@/components/NowPlaying";
+import Postcard from "@/components/Postcard";
+import ProfileHeader from "@/components/ProfileHeader";
+import Reveal from "@/components/Reveal";
+import { Badge, Row, SectionHeading } from "@/components/Rows";
+import Socials from "@/components/Socials";
 import {
   experience,
   footer,
   leadership,
-  profile,
+  postcards,
   projects,
   recognition,
   research,
 } from "@/lib/content";
 
-const delay = (i: number) => (i === 0 ? "" : ` delay-${Math.min(i, 6)}`);
-
 export default function Home() {
-  const mailto = `mailto:${profile.email}`;
-
   return (
     <>
-      <Cursor />
-      <ScrollReveal />
+      <main className="mx-auto w-full max-w-[660px] flex-1 px-4 pt-16 sm:px-6 sm:pt-24">
+        <ProfileHeader />
 
-      {/* Vertical column rules, desktop only */}
-      <div className="fixed left-[calc(50%-400px)] top-0 bottom-0 w-px bg-rule hidden lg:block" />
-      <div className="fixed right-[calc(50%-400px)] top-0 bottom-0 w-px bg-rule hidden lg:block" />
-
-      <main className="min-h-screen">
-        <div className="max-w-3xl mx-auto px-6">
-          <header className="py-6 border-b border-rule flex items-center justify-between text-xs">
-            <span className="text-muted">
-              {profile.handle}
-              <span className="blink text-accent">_</span>
-            </span>
-            <nav className="flex gap-4 sm:gap-6">
-              <a href="#work" className="text-muted hover:text-ink transition-colors">
-                work
-              </a>
-              <a href="#projects" className="text-muted hover:text-ink transition-colors">
-                projects
-              </a>
-              <a href="#research" className="text-muted hover:text-ink transition-colors">
-                research
-              </a>
-              <a href={mailto} className="text-accent">
-                contact
-              </a>
-            </nav>
-          </header>
-
-          <section className="py-24 fade-up">
-            <p className="text-xs text-muted mb-4">{profile.eyebrow}</p>
-            <h1 className="text-4xl md:text-5xl font-light mb-6">
-              <span className="font-serif italic">{profile.firstName}</span>{" "}
-              <span className="text-muted">{profile.lastName}</span>
-            </h1>
-            <p className="text-muted mb-8 leading-relaxed">
-              Interested in <span className="text-accent">{profile.interests[0]}</span> and{" "}
-              <span className="text-accent">{profile.interests[1]}</span>.
+        <section className="pt-6">
+          <div className="flex animate-fly-in flex-col gap-4 text-base leading-[1.66] text-primary [animation-delay:80ms]">
+            <p>
+              I build machine learning for biology. Right now that means{" "}
+              <MarkedName name="convexia" label="Convexia" />, where I train
+              models that predict whether a drug asset will survive its clinical
+              trial, and the{" "}
+              <MarkedName name="broad" label="Broad Institute" />, where I work
+              on ML methods for drug design and phylogenetics.
             </p>
-            <div className="flex gap-4 text-sm">
-              <a
-                href={mailto}
-                className="px-4 py-2 bg-ink text-bg hover:bg-accent transition-colors"
-              >
-                Get in touch →
-              </a>
-              <a
-                href={profile.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 border border-ink hover:bg-ink hover:text-bg transition-colors"
-              >
-                GitHub
-              </a>
-            </div>
-          </section>
 
-          <section id="work" className="py-16 border-t border-rule">
-            <h2 className="text-xs text-muted uppercase tracking-wider mb-8 fade-up">
-              01 — Experience
-            </h2>
-            <div className="space-y-8">
-              {experience.map((role, i) => (
-                <div key={role.org} className={`fade-up${delay(i)}`}>
-                  <div className="flex justify-between items-start gap-4 mb-1">
-                    <h3 className="font-medium">{role.org}</h3>
-                    <span
-                      className={`text-xs shrink-0 pt-1 ${role.current ? "text-accent" : "text-muted"}`}
-                    >
-                      {role.when}
-                    </span>
-                  </div>
-                  <p className="text-sm">{role.role}</p>
-                  <p className="text-sm text-muted">{role.detail}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+            <p>
+              I&apos;m 17, based in{" "}
+              <span className="whitespace-nowrap">
+                Fort Wayne, Indiana
+                <Postcard card={postcards.fortWayne} delay={150} />
+              </span>{" "}
+              for now, and most weeks I&apos;m somewhere between a wet lab, a
+              cluster, and a flight to{" "}
+              <span className="whitespace-nowrap">
+                Cambridge
+                <Postcard card={postcards.boston} delay={180} />
+              </span>
+              . Most of my time goes into benchmarks nobody trusts yet, or into
+              shipping something small and fast enough to be useful this week.
+            </p>
+          </div>
 
-          <section id="projects" className="py-16 border-t border-rule">
-            <h2 className="text-xs text-muted uppercase tracking-wider mb-8 fade-up">
-              02 — Projects
-            </h2>
-            <div className="space-y-6">
-              {projects.map((project, i) => {
-                const body = (
-                  <>
-                    <div className="flex justify-between items-start gap-4 mb-2">
-                      <h3 className="font-medium">
-                        {project.name}
-                        {project.current && (
-                          <span className="text-xs text-accent font-normal ml-2">
-                            Current
-                          </span>
-                        )}
-                      </h3>
-                      {project.href && <span className="text-accent">↗</span>}
-                    </div>
-                    <p className="text-sm text-muted">{project.detail}</p>
-                  </>
-                );
+          <div className="mt-6 animate-fly-in [animation-delay:140ms]">
+            <Socials />
+          </div>
 
-                return project.href ? (
-                  <a
-                    key={project.name}
-                    href={project.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`block p-4 border border-rule hover:border-accent transition-colors fade-up${delay(i)}`}
-                  >
-                    {body}
-                  </a>
-                ) : (
-                  <div
-                    key={project.name}
-                    className={`p-4 border border-rule fade-up${delay(i)}`}
-                  >
-                    {body}
-                  </div>
-                );
-              })}
-            </div>
-          </section>
+          <div className="mt-4 animate-fly-in [animation-delay:200ms]">
+            <NowPlaying />
+          </div>
+        </section>
 
-          <section id="research" className="py-16 border-t border-rule">
-            <h2 className="text-xs text-muted uppercase tracking-wider mb-8 fade-up">
-              03 — Research
-            </h2>
-            <div className="space-y-8">
-              {research.map((paper, i) => (
-                <div key={paper.venue} className={`fade-up${delay(i)}`}>
-                  <div className="flex justify-between items-start gap-4 mb-1">
-                    <h3 className="font-medium">{paper.venue}</h3>
-                    {paper.note && (
-                      <span className="text-xs text-accent shrink-0 pt-1">
-                        {paper.note}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-sm leading-relaxed">{paper.title}</p>
-                  <p className="text-xs text-muted mt-1">{paper.track}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+        <Section title="Experience" delay={0}>
+          {experience.map((job) => (
+            <Row
+              key={job.org}
+              title={job.org}
+              subtitle={job.role}
+              detail={job.detail}
+              mark={job.mark}
+              badge={<Badge solid={job.current}>{job.when}</Badge>}
+            />
+          ))}
+        </Section>
 
-          <section className="py-16 border-t border-rule">
-            <h2 className="text-xs text-muted uppercase tracking-wider mb-8 fade-up">
-              04 — Recognition
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-4 text-sm fade-up">
-              {recognition.map((item) => (
-                <div key={item.label}>
-                  <span className={item.primary ? "text-accent" : "text-muted"}>
-                    {item.primary ? "●" : "○"}
-                  </span>{" "}
-                  {item.label}
-                </div>
-              ))}
-            </div>
-          </section>
+        <Section title="Building">
+          {projects.map((project) => (
+            <Row
+              key={project.slug}
+              title={project.name}
+              detail={project.detail}
+              mark={project.mark}
+              href={`/projects/${project.slug}`}
+              badge={<Badge solid={project.current}>{project.role}</Badge>}
+            />
+          ))}
+          <SeeAll href="/projects">All projects</SeeAll>
+        </Section>
 
-          <section className="py-16 border-t border-rule">
-            <h2 className="text-xs text-muted uppercase tracking-wider mb-8 fade-up">
-              05 — Leadership
-            </h2>
-            <div className="space-y-8">
-              {leadership.map((role, i) => (
-                <div key={role.org} className={`fade-up${delay(i)}`}>
-                  <div className="flex justify-between items-start gap-4 mb-1">
-                    <h3 className="font-medium">{role.org}</h3>
-                    <span className="text-xs text-muted shrink-0 pt-1">
-                      {role.title}
-                    </span>
-                  </div>
-                  <p className="text-sm text-muted">{role.detail}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+        <Section title="Research">
+          {research.slice(0, 2).map((paper) => (
+            <Row
+              key={paper.title}
+              title={paper.venue}
+              detail={paper.title}
+              href={paper.href}
+              badge={<Badge>{paper.note ?? paper.track.replace(" track", "")}</Badge>}
+            />
+          ))}
+          <SeeAll href="/research">
+            All {research.length} papers
+          </SeeAll>
+        </Section>
 
-          <footer className="py-12 border-t border-rule text-sm">
-            <div className="flex justify-between items-center gap-4">
-              <div>
-                <p className="text-muted">{footer.lineOne}</p>
-                <p className="text-muted">{footer.lineTwo}</p>
-              </div>
-              <div className="flex gap-4">
-                <a
-                  href={profile.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted hover:text-accent transition-colors"
-                >
-                  gh
-                </a>
-                <a
-                  href={profile.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted hover:text-accent transition-colors"
-                >
-                  li
-                </a>
-                <a href={mailto} className="text-accent">
-                  email
-                </a>
-              </div>
-            </div>
-          </footer>
-        </div>
+        <Section title="Leading">
+          {leadership.map((role) => (
+            <Row
+              key={role.org}
+              title={role.org}
+              detail={role.detail}
+              mark={role.mark}
+              href={role.href}
+              badge={<Badge>{role.title}</Badge>}
+            />
+          ))}
+        </Section>
+
+        <Section title="Recognition">
+          <ul className="flex flex-col gap-2.5">
+            {recognition.map((item) => (
+              <li key={item.label} className="flex items-center gap-2.5">
+                <span
+                  aria-hidden="true"
+                  className={
+                    item.primary
+                      ? "size-1.5 shrink-0 rounded-full bg-primary"
+                      : "size-1.5 shrink-0 rounded-full border border-muted"
+                  }
+                />
+                <span className="text-base text-primary">{item.label}</span>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
+        <Reveal className="pt-14">
+          <p className="text-sm text-muted">{footer.lineOne}</p>
+          <p className="text-sm text-muted">{footer.lineTwo}</p>
+        </Reveal>
       </main>
+
+      <Footer />
     </>
   );
 }
+
+function Section({
+  title,
+  children,
+  delay = 0,
+}: {
+  title: string;
+  children: React.ReactNode;
+  delay?: number;
+}) {
+  return (
+    <section className="pt-14">
+      <Reveal delay={delay}>
+        <SectionHeading>{title}</SectionHeading>
+      </Reveal>
+      <Reveal delay={delay + 0.05}>
+        <div className="flex flex-col">{children}</div>
+      </Reveal>
+    </section>
+  );
+}
+
+function SeeAll({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="group mt-2 inline-flex items-center gap-1 text-sm font-medium text-muted transition-colors hover:text-primary"
+    >
+      {children}
+      <span className="transition-transform group-hover:translate-x-0.5">&rarr;</span>
+    </Link>
+  );
+}
+
+export const dynamic = "force-static";

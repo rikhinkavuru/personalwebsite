@@ -1,20 +1,20 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Newsreader } from "next/font/google";
+import { Bricolage_Grotesque, Instrument_Serif } from "next/font/google";
 import { profile } from "@/lib/content";
-import { colors, siteDescription, siteName, siteUrl } from "@/lib/site";
+import { siteDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-bricolage",
   display: "swap",
 });
 
-const newsreader = Newsreader({
+const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
-  style: ["italic"],
-  weight: ["300", "400"],
-  variable: "--font-newsreader",
+  weight: "400",
+  style: ["normal", "italic"],
+  variable: "--font-instrument-serif",
   display: "swap",
 });
 
@@ -56,9 +56,28 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: colors.bg,
-  colorScheme: "light",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#101010" },
+  ],
+  colorScheme: "light dark",
 };
+
+/**
+ * Applies the stored theme before first paint. Without this the page renders
+ * light and then snaps to dark on hydration.
+ */
+const themeScript = `
+(function () {
+  try {
+    var stored = localStorage.getItem("theme");
+    var dark = stored
+      ? stored === "dark"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    if (dark) document.documentElement.classList.add("dark");
+  } catch (e) {}
+})();
+`;
 
 const personSchema = {
   "@context": "https://schema.org",
@@ -88,12 +107,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${newsreader.variable}`}>
-      <body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`${bricolage.variable} ${instrumentSerif.variable} antialiased`}
+    >
+      <head>
+        {/* Static string defined above, never user input. */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
+      <body className="flex min-h-screen flex-col bg-bg">
         {children}
         <script
           type="application/ld+json"
-          // Static object built at module scope, not user input.
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
       </body>

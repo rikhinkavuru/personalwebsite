@@ -1,9 +1,9 @@
 import { ImageResponse } from "next/og";
-import { colors } from "@/lib/site";
 import { profile } from "@/lib/content";
 import { logoAspect, logoDataUri } from "@/lib/logo";
+import { colors, siteDescription } from "@/lib/site";
 
-export const alt = "Rikhin Kavuru — machine learning and computational biology";
+export const alt = "Rikhin Kavuru — machine learning for biology";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -19,69 +19,44 @@ export default function OpengraphImage() {
           justifyContent: "space-between",
           background: colors.bg,
           color: colors.ink,
-          padding: "72px 96px",
-          position: "relative",
+          padding: "80px 96px",
         }}
       >
-        {/* Column rules, same device as the site */}
-        <div
-          style={{
-            position: "absolute",
-            left: 48,
-            top: 0,
-            bottom: 0,
-            width: 1,
-            background: colors.rule,
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            right: 48,
-            top: 0,
-            bottom: 0,
-            width: 1,
-            background: colors.rule,
-          }}
-        />
-
-        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={logoDataUri(colors.ink)}
-            width={Math.round(72 * logoAspect)}
-            height={72}
+            width={Math.round(64 * logoAspect)}
+            height={64}
             alt=""
           />
-          <div style={{ display: "flex", fontSize: 26, color: colors.muted }}>
-            {profile.eyebrow}
+          <div style={{ display: "flex", fontSize: 28, color: colors.muted }}>
+            {profile.handle}
           </div>
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ display: "flex", fontSize: 112, letterSpacing: -3 }}>
-            <span>{profile.firstName}</span>
-            <span style={{ color: colors.muted, marginLeft: 24 }}>
-              {profile.lastName}
-            </span>
+          <div
+            style={{
+              display: "flex",
+              fontSize: 108,
+              fontWeight: 700,
+              letterSpacing: -4,
+            }}
+          >
+            {profile.fullName}
           </div>
           <div
             style={{
               display: "flex",
-              fontSize: 32,
+              fontSize: 34,
+              lineHeight: 1.4,
               color: colors.muted,
-              marginTop: 24,
+              marginTop: 20,
+              maxWidth: 900,
             }}
           >
-            <span>Interested in</span>
-            <span style={{ color: colors.accent, marginLeft: 10 }}>
-              {profile.interests[0]}
-            </span>
-            <span style={{ marginLeft: 10 }}>and</span>
-            <span style={{ color: colors.accent, marginLeft: 10 }}>
-              {profile.interests[1]}
-            </span>
-            <span>.</span>
+            {siteDescription}
           </div>
         </div>
 
@@ -92,14 +67,11 @@ export default function OpengraphImage() {
             alignItems: "center",
             fontSize: 24,
             color: colors.muted,
-            borderTop: `1px solid ${colors.rule}`,
+            borderTop: `1px solid ${colors.border}`,
             paddingTop: 28,
           }}
         >
-          <div style={{ display: "flex" }}>
-            <span>{profile.handle}</span>
-            <span style={{ color: colors.accent }}>_</span>
-          </div>
+          <div style={{ display: "flex" }}>Fort Wayne, Indiana</div>
           <div style={{ display: "flex" }}>Convexia · Broad Institute</div>
         </div>
       </div>

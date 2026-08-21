@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
-import { profile } from "@/lib/content";
+import Link from "next/link";
+import Footer from "@/components/Footer";
+import ProfileHeader from "@/components/ProfileHeader";
 
 export const metadata: Metadata = {
   title: "Not found",
@@ -9,39 +11,27 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <>
-      <div className="fixed left-[calc(50%-400px)] top-0 bottom-0 w-px bg-rule hidden lg:block" />
-      <div className="fixed right-[calc(50%-400px)] top-0 bottom-0 w-px bg-rule hidden lg:block" />
+      <main className="mx-auto w-full max-w-[660px] flex-1 px-4 pt-16 sm:px-6 sm:pt-24">
+        <ProfileHeader crumbs={[{ label: "404" }]} />
 
-      <main className="min-h-screen">
-        <div className="max-w-3xl mx-auto px-6">
-          <header className="py-6 border-b border-rule flex items-center justify-between text-xs">
-            <span className="text-muted">
-              {profile.handle}
-              <span className="blink text-accent">_</span>
-            </span>
-            <a href="/" className="text-accent">
-              home
-            </a>
-          </header>
+        <section className="pt-20">
+          <p className="text-sm font-medium text-muted">404</p>
+          <h2 className="mt-2 font-display text-3xl font-semibold text-primary">
+            Nothing here
+          </h2>
+          <p className="mt-2 text-base text-muted">That page does not exist.</p>
 
-          <section className="py-24">
-            <p className="text-xs text-muted mb-4">404</p>
-            <h1 className="text-4xl md:text-5xl font-light mb-6">
-              <span className="font-serif italic">Nothing</span>{" "}
-              <span className="text-muted">here</span>
-            </h1>
-            <p className="text-muted mb-8 leading-relaxed">
-              That page does not exist.
-            </p>
-            <a
-              href="/"
-              className="inline-block px-4 py-2 bg-ink text-bg text-sm hover:bg-accent transition-colors"
-            >
-              Back home →
-            </a>
-          </section>
-        </div>
+          <Link
+            href="/"
+            className="mt-6 inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 text-base font-medium text-bg transition-opacity hover:opacity-80"
+          >
+            Back home
+            <span aria-hidden="true">&rarr;</span>
+          </Link>
+        </section>
       </main>
+
+      <Footer />
     </>
   );
 }
