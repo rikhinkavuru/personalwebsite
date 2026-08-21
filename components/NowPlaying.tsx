@@ -1,15 +1,19 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
+import { nowPlaying } from "@/lib/content";
 
 export type Track = {
   title: string;
   artist?: string;
+  art?: string;
   url: string;
   /** True while Spotify reports active playback. */
   isPlaying: boolean;
 };
+
+const EASE = [0.32, 0.72, 0, 1] as const;
 
 /** Per-bar profile. Staggered and unequal so the four never move in lockstep. */
 const BARS = [
@@ -60,14 +64,14 @@ function Equalizer({ animate }: { animate: boolean }) {
 }
 
 /**
- * Animated equaliser that becomes a Spotify link once /api/spotify is wired up.
+ * Equaliser bars that reveal an album card on hover, and link to the track.
  *
- * The bars are always there and always moving: they read as an audio mark on
- * their own. When credentials exist the component adds the track name and
- * links out, and holds the bars still if playback is paused.
+ * The track is hardcoded in lib/content.ts. If /api/spotify ever returns a
+ * real one (credentials present), that takes over.
  */
 export default function NowPlaying({ className }: { className?: string }) {
-  const [track, setTrack] = useState<Track | null>(null);
+  const [live, setLive] = useState<Track | null>(null);
+  const [open, setOpen] = useState(false);
   const reduced = useReducedMotion();
 
   useEffect(() => {
@@ -78,9 +82,9 @@ export default function NowPlaying({ className }: { className?: string }) {
         const res = await fetch("/api/spotify");
         if (!res.ok) return;
         const data = (await res.json()) as Track | { track: null };
-        if (!cancelled && "title" in data) setTrack(data);
+        if (!cancelled && "title" in data) setLive(data);
       } catch {
-        // Offline or the route is unconfigured; the bare equaliser stays.
+        // Route unconfigured or offline; the hardcoded track stands.
       }
     };
 
@@ -93,33 +97,67 @@ export default function NowPlaying({ className }: { className?: string }) {
     };
   }, []);
 
-  const animate = !reduced && (track ? track.isPlaying : true);
+  const track = live ?? {
+    title: nowPlaying.title,
+    artist: nowPlaying.artist,
+    art: nowPlaying.art,
+    url: nowPlaying.url,
+    isPlaying: true,
+  };
 
-  // No credentials yet: an equaliser mark sized to match the icon buttons.
-  if (!track) {
-    return (
-      <span
-        role="img"
-        aria-label="Audio"
-        className={`inline-flex size-9 items-center justify-center text-muted ${className ?? ""}`}
-      >
-        <Equalizer animate={animate} />
-      </span>
-    );
-  }
+  const animate = !reduced && track.isPlaying;
 
   return (
-    <a
-      href={track.url}
-      target="_blank"
-      rel="noreferrer"
-      aria-label={
-        track.isPlaying ? `Now playing ${track.title}` : `Last played ${track.title}`
-      }
-      className={`inline-flex h-9 items-center gap-2 rounded-xl px-2 text-sm font-medium tracking-[-0.006em] text-muted transition-colors hover:bg-surface-hover hover:text-primary ${className ?? ""}`}
+    <span
+      className={`relative inline-flex ${className ?? ""}`}
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
     >
-      <Equalizer animate={animate} />
-      <span className="max-w-45 truncate">{track.title}</span>
-    </a>
+      <a
+        href={track.url}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`${track.isPlaying ? "Now playing" : "Last played"}: ${track.title} by ${track.artist}`}
+        onFocus={() => setOpen(true)}
+        onBlur={() => setOpen(false)}
+        className="inline-flex size-9 items-center justify-center rounded-xl text-muted transition-colors hover:text-primary"
+      >
+        <Equalizer animate={animate} />
+      </a>
+
+      <AnimatePresence>
+        {open && (
+          <motion.a
+            href={track.url}
+            target="_blank"
+            rel="noreferrer"
+            tabIndex={-1}
+            // Anchored above the bars so it never pushes layout around.
+            className="absolute bottom-full left-1/2 z-50 mb-2 block w-45 -translate-x-1/2 rounded-2xl bg-[#111214] p-3 shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
+            initial={{ opacity: 0, y: 6, scale: 0.94 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.97 }}
+            transition={{ duration: 0.2, ease: EASE }}
+          >
+            {track.art && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={track.art}
+                alt=""
+                className="mb-3 aspect-square w-full rounded-lg object-cover"
+              />
+            )}
+            <p className="truncate text-sm font-medium text-white">
+              {track.title}
+            </p>
+            {track.artist && (
+              <p className="mt-0.5 truncate text-xs font-semibold tracking-[0.08em] text-white/45 uppercase">
+                {track.artist}
+              </p>
+            )}
+          </motion.a>
+        )}
+      </AnimatePresence>
+    </span>
   );
 }

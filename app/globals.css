@@ -131,7 +131,56 @@ body {
   animation: var(--animate-fly-in);
 }
 
-/* Scroll-locked while the postcard modal is open. */
+/* Ring + dot cursor, restored from the previous design. The native cursor is
+   hidden only on real pointer devices, never on touch. */
+@media (hover: hover) and (pointer: fine) {
+  .cursor-active,
+  .cursor-active * {
+    cursor: none !important;
+  }
+}
+
+.cursor {
+  width: 20px;
+  height: 20px;
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
+  /* difference blending keeps the ring visible in both themes. */
+  mix-blend-mode: difference;
+  background-color: transparent;
+  opacity: 0;
+}
+
+.cursor.visible,
+.cursor-dot.visible {
+  opacity: 1;
+}
+
+.cursor.hovering {
+  background-color: #fff;
+  border-color: #fff;
+}
+
+.cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10001;
+  mix-blend-mode: difference;
+  opacity: 0;
+}
+
 body.modal-open {
   overflow: hidden;
 }
@@ -144,6 +193,11 @@ body.modal-open {
   .animate-fly-in,
   .cascade > * {
     animation: none;
+  }
+
+  .cursor,
+  .cursor-dot {
+    display: none;
   }
 
   *,

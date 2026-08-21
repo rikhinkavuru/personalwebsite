@@ -3,7 +3,11 @@ import type { ReactNode } from "react";
 import type { marks } from "@/lib/content";
 import { LogoTile } from "./Mark";
 
-/** Small pill used for roles, venues, and status. */
+/**
+ * Status label. Bare text rather than a filled pill, matching the previous
+ * design: `solid` marks something ongoing and takes the accent colour, while
+ * everything else (years, tracks) sits muted.
+ */
 export function Badge({
   children,
   solid = false,
@@ -15,8 +19,8 @@ export function Badge({
     <span
       className={
         solid
-          ? "inline-flex shrink-0 items-center rounded-lg bg-primary px-2 py-1 text-xs font-medium text-bg"
-          : "inline-flex shrink-0 items-center rounded-lg border border-border px-2 py-1 text-xs font-medium text-muted"
+          ? "shrink-0 text-xs font-medium text-accent"
+          : "shrink-0 text-xs text-muted"
       }
     >
       {children}

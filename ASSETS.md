@@ -5,13 +5,10 @@ missing images fall back to lettered tiles, and missing postcards remove
 themselves from the sentence. Drop a file in the right place and it appears; no
 code change needed unless noted.
 
-## 1. Profile photo
+## 1. Profile photo — done
 
-| Path | Notes |
-| --- | --- |
-| `public/avatar.jpg` | Square. 320×320 or larger. Displays at 80px, shrinks to 32px in the sticky header. |
-
-Until this exists the header shows an `RK` initials tile.
+`public/avatar.jpg`, centre-cropped square from the photo you sent. Replace by
+overwriting that path with another square image.
 
 ## 2. Logos — done
 
@@ -54,8 +51,14 @@ corresponding `<Postcard card={...} />` in `app/page.tsx`.
 
 ## 4. Spotify
 
-Needs three environment variables. Without them `/api/spotify` returns null and
-the track row stays hidden.
+The track is currently hardcoded in `nowPlaying` (lib/content.ts) to
+TELEKINESIS by Travis Scott, with the cover at `public/music/telekinesis.jpg`.
+Hovering the equaliser bars opens the album card, which links to the track.
+
+To swap it, change `nowPlaying` and drop a new square cover at that path.
+
+To make it live instead, set these three environment variables; whatever
+`/api/spotify` returns takes over from the hardcoded track.
 
 ```
 SPOTIFY_CLIENT_ID=
@@ -93,11 +96,9 @@ The equaliser bars are already on the page and already moving; credentials add
 the track name and make them link to Spotify. With a track playing the bars
 animate, and they hold still when playback is paused.
 
-## 5. Instagram
+## 5. Instagram — done
 
-Set `profile.instagram` in `lib/content.ts` to your profile URL. The icon is
-already in the row; until the URL exists it renders greyed out and inert rather
-than linking nowhere.
+Linked to `instagram.com/rikhin.kavuru`.
 
 ## 6. Book a call
 

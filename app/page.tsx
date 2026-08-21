@@ -1,4 +1,5 @@
 import Link from "next/link";
+import BentoGrid from "@/components/BentoGrid";
 import Footer from "@/components/Footer";
 import Postcard from "@/components/Postcard";
 import ProfileHeader from "@/components/ProfileHeader";
@@ -7,7 +8,9 @@ import Socials from "@/components/Socials";
 import { Stagger, StaggerItem } from "@/components/Stagger";
 import { experience, footer, postcards, projects, research } from "@/lib/content";
 
-const currentExperience = experience.filter((job) => job.current);
+// Top three by recency, not by `current`: Yale belongs on the home page
+// even though it has ended.
+const featuredExperience = experience.slice(0, 3);
 
 export default function Home() {
   return (
@@ -48,7 +51,7 @@ export default function Home() {
           <StaggerItem as="section" className="pt-14">
             <SectionHeading>Experience</SectionHeading>
             <div className="flex flex-col">
-              {currentExperience.map((job) => (
+              {featuredExperience.map((job) => (
                 <Row
                   key={job.org}
                   title={job.org}
@@ -56,7 +59,7 @@ export default function Home() {
                   detail={job.detail}
                   mark={job.mark}
                   href={job.href}
-                  badge={<Badge solid>{job.when}</Badge>}
+                  badge={<Badge solid={job.current}>{job.when}</Badge>}
                 />
               ))}
               <SeeAll href="/experience">All {experience.length} roles</SeeAll>
@@ -64,19 +67,8 @@ export default function Home() {
           </StaggerItem>
 
           <StaggerItem as="section" className="pt-14">
-            <SectionHeading>Building</SectionHeading>
-            <div className="flex flex-col">
-              {projects.map((project) => (
-                <Row
-                  key={project.slug}
-                  title={project.name}
-                  detail={project.detail}
-                  mark={project.mark}
-                  href={`/projects/${project.slug}`}
-                  badge={<Badge solid={project.current}>{project.role}</Badge>}
-                />
-              ))}
-            </div>
+            <SectionHeading>Projects</SectionHeading>
+            <BentoGrid projects={projects} />
           </StaggerItem>
 
           <StaggerItem as="section" className="pt-14">
@@ -89,7 +81,9 @@ export default function Home() {
                   detail={paper.title}
                   href={paper.href}
                   badge={
-                    <Badge>{paper.note ?? paper.track.replace(" track", "")}</Badge>
+                    <Badge solid={Boolean(paper.note)}>
+                      {paper.note ?? paper.track.replace(" track", "")}
+                    </Badge>
                   }
                 />
               ))}

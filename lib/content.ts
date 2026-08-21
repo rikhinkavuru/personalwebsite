@@ -8,7 +8,7 @@ export const profile = {
   github: "https://github.com/rikhinkavuru",
   linkedin: "https://www.linkedin.com/in/rikhin-kavuru-29sb0926/",
   /** Set to your profile URL to show the Instagram icon. */
-  instagram: "",
+  instagram: "https://www.instagram.com/rikhin.kavuru/",
   /** Set to a cal.com or Calendly URL to enable the "Book a call" button. */
   bookingUrl: "",
 };
@@ -76,6 +76,18 @@ export const postcards: Record<string, Postcard> = {
   },
 };
 
+/**
+ * Hardcoded now-playing track. /api/spotify overrides this at runtime once
+ * credentials exist; until then the card shows this.
+ */
+export const nowPlaying = {
+  title: "TELEKINESIS",
+  artist: "Travis Scott",
+  album: "UTOPIA",
+  art: "/music/telekinesis.jpg",
+  url: "https://open.spotify.com/track/1i9lZvlaDdWDPyXEE95aiq",
+};
+
 export type Experience = {
   org: string;
   role: string;
@@ -87,15 +99,6 @@ export type Experience = {
 };
 
 export const experience: Experience[] = [
-  {
-    org: "ViraHacks",
-    role: "Founder",
-    detail: "Healthcare hackathons across 20+ chapters and 1,100+ students.",
-    when: "Current",
-    mark: "virahacks",
-    href: "https://virahacks.com",
-    current: true,
-  },
   {
     org: "Convexia",
     role: "Machine Learning Engineer",
@@ -163,6 +166,18 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    slug: "virahacks",
+    name: "ViraHacks",
+    detail: "Healthcare hackathons across 20+ chapters and 1,100+ students.",
+    role: "Founder",
+    when: "Current",
+    href: "https://virahacks.com",
+    mark: "virahacks",
+    current: true,
+    shots: [],
+    tags: ["Community", "Healthcare", "1,100+ students"],
+  },
   {
     slug: "telo",
     name: "Telo",

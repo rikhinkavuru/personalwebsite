@@ -53,7 +53,7 @@ export default function Socials() {
       <a
         href={hasBooking ? profile.bookingUrl : mailto}
         {...(hasBooking ? { target: "_blank", rel: "noreferrer" } : {})}
-        className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 text-base font-medium text-bg transition-opacity hover:opacity-80"
+        className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 text-sm font-medium text-bg transition-opacity hover:opacity-80"
       >
         {hasBooking ? "Book a call" : "Get in touch"}
         <ArrowIcon />
