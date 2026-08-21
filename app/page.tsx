@@ -29,7 +29,7 @@ export default function Home() {
           {/* PLACEHOLDER COPY, structured like kominko's: one paragraph with
               the postcards and company marks set inline. */}
           <StaggerItem as="section" className="pt-6">
-            <p className="max-w-[27rem] text-base leading-[1.75] font-medium tracking-[-0.02em] text-primary sm:text-xl">
+            <p className="text-base leading-[1.9] font-medium tracking-[-0.02em] text-primary sm:text-xl">
               17 y/o engineer from{" "}
               <span className="whitespace-nowrap">
                 Fort Wayne, Indiana

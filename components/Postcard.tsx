@@ -86,12 +86,12 @@ export default function Postcard({
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`View postcard of ${card.alt}`}
-        className={`relative my-[-0.2em] inline-block aspect-3/2 h-[1.8em] cursor-pointer bg-[#f0ece3] p-[3px] align-middle shadow-md ring-1 ring-black/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-[#3a3733] ${tight ? "ml-1.5" : "mx-1.5"}`}
+        className={`relative my-[-0.2em] inline-block aspect-3/2 h-[1.8em] cursor-pointer bg-[#efeae0] p-[4px] align-middle shadow-[0_2px_8px_rgba(0,0,0,0.14)] ring-1 ring-black/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-[#3a3733] ${tight ? "ml-1.5" : "mx-1.5"}`}
         style={{ borderRadius: 4 }}
         initial={{ rotate: card.rotate }}
-        whileHover={{ rotate: 0, scale: 1.35, y: -2 }}
-        whileTap={{ scale: 1.15 }}
-        transition={{ duration: 0.28, ease: EASE }}
+        whileHover={{ rotate: card.rotate, scale: 1.1 }}
+        whileTap={{ rotate: card.rotate, scale: 1.04 }}
+        transition={{ duration: 0.22, ease: EASE }}
       >
         {/* Plain <img>: the thumb is optional, and the whole postcard hides
             itself if the file is not there yet. */}
