@@ -45,7 +45,10 @@ export function Row({
 }) {
   const body = (
     <div className="flex items-center gap-3 py-3">
-      <LogoTile name={mark} label={title} />
+      {/* No tile at all when the entry has no mark (papers, for instance).
+          A defined mark whose file is missing still gets its lettered
+          fallback, which is what keeps Experience rows aligned. */}
+      {mark && <LogoTile name={mark} label={title} />}
 
       <div className="min-w-0 flex-1">
         <p className="font-display text-base font-medium text-primary">
