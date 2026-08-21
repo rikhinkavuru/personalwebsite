@@ -1,10 +1,12 @@
 import { profile } from "@/lib/content";
 import NowPlaying from "./NowPlaying";
 import {
+  EmailCard,
   GitHubCard,
   HoverCard,
   InstagramCard,
   LinkedInCard,
+  XCard,
 } from "./SocialCard";
 
 const iconClass =
@@ -67,13 +69,15 @@ export default function Socials() {
         {...(hasBooking ? { target: "_blank", rel: "noreferrer" } : {})}
         className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 text-sm font-medium text-bg transition-opacity hover:opacity-80"
       >
-        {hasBooking ? "Book a call" : "Get in touch"}
+        Get in touch
         <ArrowIcon />
       </a>
 
-      <a href={mailto} aria-label="Email" className={iconClass}>
-        <MailIcon />
-      </a>
+      <HoverCard card={<EmailCard />}>
+        <a href={mailto} aria-label="Email" className={iconClass}>
+          <MailIcon />
+        </a>
+      </HoverCard>
 
       <HoverCard card={<InstagramCard />}>
         <a
@@ -100,15 +104,17 @@ export default function Socials() {
       </HoverCard>
 
       {profile.twitter && (
-        <a
-          href={profile.twitter}
-          target="_blank"
-          rel="noreferrer"
-          aria-label="X"
-          className={iconClass}
-        >
-          <XIcon />
-        </a>
+        <HoverCard card={<XCard />}>
+          <a
+            href={profile.twitter}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="X"
+            className={iconClass}
+          >
+            <XIcon />
+          </a>
+        </HoverCard>
       )}
 
       <HoverCard card={<GitHubCard />}>

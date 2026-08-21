@@ -104,17 +104,16 @@ animate, and they hold still when playback is paused.
 Hovering an icon opens a profile preview. Data lives in `socialCards`
 (lib/content.ts).
 
-GitHub's numbers are real, pulled from its public API. Instagram and LinkedIn
-have no public API, so their stats are `null` on purpose rather than invented:
-fill in `posts` / `followers` / `following` and `connections` and the cards
-grow those rows. The GitHub avatar is the default identicon at
+GitHub's numbers are real, pulled from its public API. Instagram, LinkedIn, and
+X have no public API, so their stats are `null` on purpose rather than invented:
+fill in `posts` / `followers` / `following` and `connections` and the cards grow
+those rows. The email card is a plain address preview. The GitHub avatar is the default identicon at
 `public/social/github-avatar.jpg` until you set a photo on GitHub.
 
-## 6. Book a call
+## 6. Book a call — done
 
-Set `profile.bookingUrl` in `lib/content.ts` to a cal.com or Calendly link. The
-primary button switches from "Get in touch" (mailto) to "Book a call", and email
-moves into the icon row beside GitHub and LinkedIn.
+"Get in touch" links to cal.com/rikhinkavuru/30min via `profile.bookingUrl`.
+The label stays "Get in touch" regardless; email has its own icon in the row.
 
 ## 7. Bento artwork
 

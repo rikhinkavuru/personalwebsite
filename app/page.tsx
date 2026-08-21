@@ -29,7 +29,7 @@ export default function Home() {
           {/* PLACEHOLDER COPY, structured like kominko's: one paragraph with
               the postcards and company marks set inline. */}
           <StaggerItem as="section" className="pt-6">
-            <p className="max-w-[34rem] text-base leading-[1.75] font-medium tracking-[-0.02em] text-primary sm:text-xl">
+            <p className="max-w-[27rem] text-base leading-[1.75] font-medium tracking-[-0.02em] text-primary sm:text-xl">
               17 y/o engineer from{" "}
               <span className="whitespace-nowrap">
                 Fort Wayne, Indiana
@@ -39,9 +39,9 @@ export default function Home() {
                 now in San Francisco
                 {showSf && <Postcard card={postcards.sf} tight />}.
               </span>{" "}
-              Previously at <MarkedName name="broad" label="Broad Institute" />.
-              Now working at <MarkedName name="convexia" label="Convexia" /> on
-              the ML team.
+              Previously comp bio research at{" "}
+              <MarkedName name="yale" label="Yale" />. Slingin drug
+              microfactories @ <MarkedName name="teloMark" label="Telo" />.
             </p>
           </StaggerItem>
 

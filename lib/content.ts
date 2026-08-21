@@ -4,14 +4,14 @@ export const profile = {
   fullName: "Rikhin Kavuru",
   handle: "@rikhin.kavuru",
   avatar: "/avatar.jpg",
-  email: "rikhinkavuru@gmail.com",
+  email: "rikhin@virahacks.com",
   github: "https://github.com/rikhinkavuru",
   linkedin: "https://www.linkedin.com/in/rikhin-kavuru-29sb0926/",
   /** Set to your profile URL to show the Instagram icon. */
   instagram: "https://www.instagram.com/rikhin.kavuru/",
   twitter: "https://x.com/rikhinkavuru",
   /** Set to a cal.com or Calendly URL to enable the "Book a call" button. */
-  bookingUrl: "",
+  bookingUrl: "https://cal.com/rikhinkavuru/30min",
 };
 
 /**
@@ -33,6 +33,8 @@ export const marks: Record<string, Mark> = {
   adaptyv: { src: "/logos/adaptyv.png", tint: "#5aa8cc", fallbackBg: "#5aa8cc" },
   purdue: { src: "/logos/purdue.png", tint: "#9d7f3d", fallbackBg: "#c7b28a" },
   telo: { src: "/logos/telo.png", tint: "#111111", fallbackBg: "#111111" },
+  /** Transparent-background mark, for setting inline on a white page. */
+  teloMark: { src: "/logos/telo-mark.png", tint: "#111111", fallbackBg: "#111111" },
   inkr: { src: "/logos/inkr.png", tint: "#f4501e", fallbackBg: "#f4501e" },
   linkd: { src: "/logos/linkd.png", tint: "#d32b25", fallbackBg: "#eaddcb" },
   virahacks: { src: "/logos/virahacks.png", tint: "#17843f", fallbackBg: "#17843f" },
@@ -120,9 +122,23 @@ export const socialCards = {
     name: "Rikhin Kavuru",
     headline: "Machine Learning Engineer at Convexia",
     location: "Fort Wayne, Indiana",
-    avatar: "/avatar.jpg",
+    avatar: "/social/x-avatar.jpg",
     /** Fill in to show "· 500+ connections". */
     connections: null as string | null,
+  },
+  x: {
+    handle: "rikhinkavuru",
+    name: "Rikhin Kavuru",
+    bio: "ml for biology. building Telo.",
+    avatar: "/social/x-avatar.jpg",
+    /** Fill in to show the followers/following row. */
+    followers: null as number | null,
+    following: null as number | null,
+  },
+  email: {
+    address: "rikhin@virahacks.com",
+    name: "Rikhin Kavuru",
+    avatar: "/avatar.jpg",
   },
 };
 

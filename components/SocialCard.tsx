@@ -159,6 +159,70 @@ export function GitHubCard() {
   );
 }
 
+export function XCard() {
+  const c = socialCards.x;
+  const hasStats = c.followers !== null || c.following !== null;
+
+  return (
+    <div className={`${shell} p-3`}>
+      <div className="flex items-center gap-3">
+        <img
+          src={c.avatar}
+          alt=""
+          className="block size-11 shrink-0 rounded-full object-cover"
+        />
+
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-semibold text-neutral-900">
+            {c.name}
+          </p>
+          <p className="truncate text-sm text-neutral-500">@{c.handle}</p>
+        </div>
+
+        <span className="shrink-0 rounded-full bg-neutral-900 px-3 py-1.5 text-xs font-semibold text-white">
+          Follow
+        </span>
+      </div>
+
+      <p className="mt-2 text-sm leading-snug text-neutral-700">{c.bio}</p>
+
+      {hasStats && (
+        <div className="mt-3 flex items-center gap-4 text-xs text-neutral-700">
+          <Stat value={c.following} label="Following" />
+          <Stat value={c.followers} label="Followers" />
+        </div>
+      )}
+    </div>
+  );
+}
+
+export function EmailCard() {
+  const c = socialCards.email;
+
+  return (
+    <div className={`${shell} p-3`}>
+      <div className="flex items-center gap-3">
+        <img
+          src={c.avatar}
+          alt=""
+          className="block size-11 shrink-0 rounded-full object-cover"
+        />
+
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-semibold text-neutral-900">
+            {c.name}
+          </p>
+          <p className="truncate text-sm text-neutral-500">{c.address}</p>
+        </div>
+      </div>
+
+      <div className="mt-3 rounded-lg bg-neutral-900 py-1.5 text-center text-sm font-semibold text-white">
+        Compose
+      </div>
+    </div>
+  );
+}
+
 function Stat({ value, label }: { value: number | null; label: string }) {
   if (value === null) return null;
 
