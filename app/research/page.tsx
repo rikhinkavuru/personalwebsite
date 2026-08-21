@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import ProfileHeader from "@/components/ProfileHeader";
-import Reveal from "@/components/Reveal";
 import { Badge } from "@/components/Rows";
+import { Stagger, StaggerItem } from "@/components/Stagger";
 import { research } from "@/lib/content";
 import { siteName } from "@/lib/site";
 
@@ -19,8 +19,8 @@ export default function ResearchPage() {
       <main className="mx-auto w-full max-w-[660px] flex-1 px-4 pt-16 sm:px-6 sm:pt-24">
         <ProfileHeader crumbs={[{ label: "Research" }]} />
 
-        <div className="pt-10">
-          <Reveal>
+        <Stagger className="pt-10">
+          <StaggerItem>
             <h2 className="font-display text-3xl font-semibold text-primary">
               Research
             </h2>
@@ -28,29 +28,34 @@ export default function ResearchPage() {
               Mostly on whether the benchmarks we trust actually measure what we
               think they measure.
             </p>
-          </Reveal>
+          </StaggerItem>
 
-          <ol className="mt-8 flex flex-col">
-            {research.map((paper, i) => {
-              const content = (
-                <div className="flex flex-col gap-2 py-4">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <span className="font-display text-base font-medium text-primary">
-                      {paper.venue}
-                    </span>
-                    <Badge>{paper.track}</Badge>
-                    {paper.note && <Badge solid>{paper.note}</Badge>}
+          {/* One item, not one per paper: an <ol> sitting between the motion
+              parent and its children would break variant propagation. */}
+          <StaggerItem className="mt-8">
+            <ol className="flex flex-col">
+              {research.map((paper) => {
+                const content = (
+                  <div className="flex flex-col gap-2 py-4">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="font-display text-base font-medium text-primary">
+                        {paper.venue}
+                      </span>
+                      <Badge>{paper.track}</Badge>
+                      {paper.note && <Badge solid>{paper.note}</Badge>}
+                    </div>
+
+                    <p className="text-base leading-[1.5] text-muted transition-colors group-hover:text-primary">
+                      {paper.title}
+                    </p>
                   </div>
+                );
 
-                  <p className="text-base leading-[1.5] text-muted transition-colors group-hover:text-primary">
-                    {paper.title}
-                  </p>
-                </div>
-              );
-
-              return (
-                <Reveal key={paper.title} delay={0.05 * i}>
-                  <li className="border-b border-border last:border-b-0">
+                return (
+                  <li
+                    key={paper.title}
+                    className="border-b border-border last:border-b-0"
+                  >
                     {paper.href ? (
                       <a
                         href={paper.href}
@@ -64,11 +69,11 @@ export default function ResearchPage() {
                       <div className="group -mx-4 px-4">{content}</div>
                     )}
                   </li>
-                </Reveal>
-              );
-            })}
-          </ol>
-        </div>
+                );
+              })}
+            </ol>
+          </StaggerItem>
+        </Stagger>
       </main>
 
       <Footer />

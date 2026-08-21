@@ -61,6 +61,28 @@
   }
 }
 
+/**
+ * Page-load cascade. Each direct child of `.cascade` flies in one after the
+ * next, top to bottom. `backwards` fill holds the 0% frame during the delay,
+ * so nothing flashes in early, and every child settles at its natural state
+ * once the animation ends.
+ *
+ * Pure CSS on purpose: it paints without waiting for hydration, so a slow or
+ * failed JS load can never leave the page blank.
+ */
+.cascade > * {
+  animation: fly-in 0.55s cubic-bezier(0.32, 0.72, 0, 1) backwards;
+}
+
+.cascade > *:nth-child(1) { animation-delay: 0.06s; }
+.cascade > *:nth-child(2) { animation-delay: 0.13s; }
+.cascade > *:nth-child(3) { animation-delay: 0.2s; }
+.cascade > *:nth-child(4) { animation-delay: 0.27s; }
+.cascade > *:nth-child(5) { animation-delay: 0.34s; }
+.cascade > *:nth-child(6) { animation-delay: 0.41s; }
+.cascade > *:nth-child(7) { animation-delay: 0.48s; }
+.cascade > *:nth-child(n + 8) { animation-delay: 0.55s; }
+
 :root {
   --bg: #ffffff;
   --surface: #ffffff;
@@ -119,7 +141,8 @@ body.modal-open {
     scroll-behavior: auto;
   }
 
-  .animate-fly-in {
+  .animate-fly-in,
+  .cascade > * {
     animation: none;
   }
 

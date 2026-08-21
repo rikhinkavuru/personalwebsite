@@ -13,25 +13,24 @@ code change needed unless noted.
 
 Until this exists the header shows an `RK` initials tile.
 
-## 2. Logos
+## 2. Logos — done
 
-Square, transparent PNG, 128×128 or larger. These fill both the inline marks in
-the bio sentence and the tiles in every list row.
+All nine tiles are in `public/logos/` as 256x256 full-bleed PNGs, built to read
+as app icons (the tile clips them to a rounded square, so they fill it edge to
+edge rather than sitting contained inside it).
 
-```
-public/logos/convexia.png
-public/logos/broad.png
-public/logos/yale.png
-public/logos/adaptyv.png
-public/logos/purdue.png
-public/logos/telo.png
-public/logos/inkr.png
-public/logos/linkd.png
-public/logos/virahacks.png
-```
+| Logo | Source |
+| --- | --- |
+| `telo.png`, `inkr.png`, `linkd.png` | Files you sent, trimmed and squared |
+| `convexia.png` | convexia.bio web clip |
+| `broad.png` | Blue mark cropped from the Broad wordmark |
+| `yale.png` | Yale School of Medicine shield |
+| `adaptyv.png` | adaptyvbio.com icon |
+| `purdue.png` | pfw.edu touch icon |
+| `virahacks.png` | virahacks.com favicon, inverted onto brand green |
 
-Each logo also has a `tint` in `lib/content.ts` — the brand colour the company
-name fades to on hover. Adjust those hexes to the real brand colours.
+Replace any of them by dropping a new square PNG at the same path. Brand hover
+tints live in `marks` in `lib/content.ts`.
 
 ## 3. Postcards
 
@@ -90,16 +89,23 @@ Getting them:
    `.env.local` locally and in the Vercel project's environment variables for
    production.
 
-The row shows the currently playing track with animated equaliser bars, and
-falls back to the last played track (bars still) when nothing is on.
+The equaliser bars are already on the page and already moving; credentials add
+the track name and make them link to Spotify. With a track playing the bars
+animate, and they hold still when playback is paused.
 
-## 5. Book a call
+## 5. Instagram
+
+Set `profile.instagram` in `lib/content.ts` to your profile URL. The icon is
+already in the row; until the URL exists it renders greyed out and inert rather
+than linking nowhere.
+
+## 6. Book a call
 
 Set `profile.bookingUrl` in `lib/content.ts` to a cal.com or Calendly link. The
 primary button switches from "Get in touch" (mailto) to "Book a call", and email
 moves into the icon row beside GitHub and LinkedIn.
 
-## 6. Project case studies
+## 7. Project case studies
 
 Each project already has a page at `/projects/<slug>`. Right now they show the
 logo, title, role, tags, one-line summary, and a link out.

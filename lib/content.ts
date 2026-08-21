@@ -7,6 +7,8 @@ export const profile = {
   email: "rikhinkavuru@gmail.com",
   github: "https://github.com/rikhinkavuru",
   linkedin: "https://www.linkedin.com/in/rikhin-kavuru-29sb0926/",
+  /** Set to your profile URL to show the Instagram icon. */
+  instagram: "",
   /** Set to a cal.com or Calendly URL to enable the "Book a call" button. */
   bookingUrl: "",
 };
@@ -24,15 +26,15 @@ export type Mark = {
 };
 
 export const marks: Record<string, Mark> = {
-  convexia: { src: "/logos/convexia.png", tint: "#1d4ed8", fallbackBg: "#1d4ed8" },
-  broad: { src: "/logos/broad.png", tint: "#0f4c81", fallbackBg: "#0f4c81" },
+  convexia: { src: "/logos/convexia.png", tint: "#12b866", fallbackBg: "#0a0c0b" },
+  broad: { src: "/logos/broad.png", tint: "#006ab2", fallbackBg: "#006ab2" },
   yale: { src: "/logos/yale.png", tint: "#00356b", fallbackBg: "#00356b" },
-  adaptyv: { src: "/logos/adaptyv.png", tint: "#111827", fallbackBg: "#111827" },
-  purdue: { src: "/logos/purdue.png", tint: "#9d7f3d", fallbackBg: "#9d7f3d" },
-  telo: { src: "/logos/telo.png", tint: "#0f766e", fallbackBg: "#0f766e" },
-  inkr: { src: "/logos/inkr.png", tint: "#7c3aed", fallbackBg: "#7c3aed" },
-  linkd: { src: "/logos/linkd.png", tint: "#ea580c", fallbackBg: "#ea580c" },
-  virahacks: { src: "/logos/virahacks.png", tint: "#dc2626", fallbackBg: "#dc2626" },
+  adaptyv: { src: "/logos/adaptyv.png", tint: "#5aa8cc", fallbackBg: "#5aa8cc" },
+  purdue: { src: "/logos/purdue.png", tint: "#9d7f3d", fallbackBg: "#c7b28a" },
+  telo: { src: "/logos/telo.png", tint: "#111111", fallbackBg: "#111111" },
+  inkr: { src: "/logos/inkr.png", tint: "#f4501e", fallbackBg: "#f4501e" },
+  linkd: { src: "/logos/linkd.png", tint: "#d32b25", fallbackBg: "#eaddcb" },
+  virahacks: { src: "/logos/virahacks.png", tint: "#17843f", fallbackBg: "#17843f" },
 };
 
 /**
@@ -85,6 +87,15 @@ export type Experience = {
 };
 
 export const experience: Experience[] = [
+  {
+    org: "ViraHacks",
+    role: "Founder",
+    detail: "Healthcare hackathons across 20+ chapters and 1,100+ students.",
+    when: "Current",
+    mark: "virahacks",
+    href: "https://virahacks.com",
+    current: true,
+  },
   {
     org: "Convexia",
     role: "Machine Learning Engineer",
@@ -220,40 +231,6 @@ export const research: Paper[] = [
     track: "Large Language Models track",
     title:
       "Measurement Reliability in LLM Agent Evaluation: Variance, Judge Non-Determinism, and the Limits of Benchmark Inference",
-  },
-];
-
-export type Recognition = {
-  label: string;
-  /** primary renders a filled dot, otherwise a hollow ring. */
-  primary?: boolean;
-};
-
-export const recognition: Recognition[] = [
-  { label: "7th Internationally · HOSA ILC 2026", primary: true },
-  { label: "USAMO Qualifier", primary: true },
-  { label: "Congressional App Challenge Winner", primary: true },
-  { label: "2x HOSA State Champion", primary: true },
-  { label: "Google AI Data Center Community Fellow" },
-  { label: "Cambridge Re:think Essay Honorable Mention" },
-  { label: "IHSAA Tennis State Runner-Up" },
-];
-
-export type Role = {
-  title: string;
-  org: string;
-  detail: string;
-  mark?: keyof typeof marks;
-  href?: string;
-};
-
-export const leadership: Role[] = [
-  {
-    title: "Founder",
-    org: "ViraHacks",
-    detail: "Healthcare hackathons across 20+ chapters and 1,100+ students.",
-    mark: "virahacks",
-    href: "https://virahacks.com",
   },
 ];
 

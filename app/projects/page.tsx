@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import ProfileHeader from "@/components/ProfileHeader";
-import Reveal from "@/components/Reveal";
+import { Stagger, StaggerItem } from "@/components/Stagger";
 import { Badge, Row } from "@/components/Rows";
 import { projects } from "@/lib/content";
 import { siteName } from "@/lib/site";
@@ -18,8 +18,8 @@ export default function ProjectsPage() {
       <main className="mx-auto w-full max-w-[660px] flex-1 px-4 pt-16 sm:px-6 sm:pt-24">
         <ProfileHeader crumbs={[{ label: "Projects" }]} />
 
-        <div className="pt-10">
-          <Reveal>
+        <Stagger className="pt-10">
+          <StaggerItem>
             <h2 className="font-display text-3xl font-semibold text-primary">
               Projects
             </h2>
@@ -27,9 +27,9 @@ export default function ProjectsPage() {
               Things I&apos;m building, and a few that are already out in the
               world.
             </p>
-          </Reveal>
+          </StaggerItem>
 
-          <Reveal delay={0.06} className="mt-8 flex flex-col">
+          <StaggerItem className="mt-8 flex flex-col">
             {projects.map((project) => (
               <Row
                 key={project.slug}
@@ -43,8 +43,8 @@ export default function ProjectsPage() {
                 }
               />
             ))}
-          </Reveal>
-        </div>
+          </StaggerItem>
+        </Stagger>
       </main>
 
       <Footer />

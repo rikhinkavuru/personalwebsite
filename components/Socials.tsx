@@ -1,4 +1,5 @@
 import { profile } from "@/lib/content";
+import NowPlaying from "./NowPlaying";
 
 const iconClass =
   "relative inline-flex size-9 items-center justify-center rounded-xl bg-foreground text-primary transition-colors hover:bg-surface-hover";
@@ -22,6 +23,14 @@ const LinkedInIcon = () => (
   </svg>
 );
 
+const InstagramIcon = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="size-4" aria-hidden="true">
+    <rect width="20" height="20" x="2" y="2" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.5" cy="6.5" r="1.25" fill="currentColor" stroke="none" />
+  </svg>
+);
+
 const ArrowIcon = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.25" strokeLinecap="round" strokeLinejoin="round" className="size-3.5" aria-hidden="true">
     <path d="M5 12h14M13 6l6 6-6 6" />
@@ -29,8 +38,11 @@ const ArrowIcon = () => (
 );
 
 /**
- * Primary CTA plus icon links. The "Book a call" button only renders once
- * `profile.bookingUrl` is set; otherwise email takes the primary slot.
+ * Primary CTA, icon links, then the now-playing equaliser on the same line.
+ *
+ * The CTA is "Book a call" once `profile.bookingUrl` is set, which pushes
+ * email down into the icon row. Instagram always renders, becoming a link
+ * once its URL is set.
  */
 export default function Socials() {
   const mailto = `mailto:${profile.email}`;
@@ -53,25 +65,27 @@ export default function Socials() {
         </a>
       )}
 
-      <a
-        href={profile.github}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="GitHub"
-        className={iconClass}
-      >
+      <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className={iconClass}>
         <GitHubIcon />
       </a>
 
-      <a
-        href={profile.linkedin}
-        target="_blank"
-        rel="noreferrer"
-        aria-label="LinkedIn"
-        className={iconClass}
-      >
+      <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className={iconClass}>
         <LinkedInIcon />
       </a>
+
+      {/* Shown either way so the row reads complete; it only becomes a link
+          once profile.instagram is filled in. */}
+      {profile.instagram ? (
+        <a href={profile.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className={iconClass}>
+          <InstagramIcon />
+        </a>
+      ) : (
+        <span role="img" aria-label="Instagram" className={`${iconClass} text-muted`}>
+          <InstagramIcon />
+        </span>
+      )}
+
+      <NowPlaying className="ml-1" />
     </div>
   );
 }

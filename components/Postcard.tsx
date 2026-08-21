@@ -37,13 +37,7 @@ const BLUR_LAYERS = [
   { blur: 12, mask: "linear-gradient(transparent 82%, black 93%)" },
 ];
 
-export default function Postcard({
-  card,
-  delay = 150,
-}: {
-  card: PostcardData;
-  delay?: number;
-}) {
+export default function Postcard({ card }: { card: PostcardData }) {
   const [open, setOpen] = useState(false);
   const [failed, setFailed] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -85,12 +79,8 @@ export default function Postcard({
         type="button"
         onClick={() => setOpen(true)}
         aria-label={`View postcard of ${card.alt}`}
-        className="relative mx-1.5 my-[-0.2em] inline-block aspect-3/2 h-[1.8em] animate-fly-in cursor-pointer bg-white p-[2px] align-middle shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-        style={{
-          borderRadius: 4,
-          animationDelay: `${delay}ms`,
-          animationDuration: "750ms",
-        }}
+        className="relative mx-1.5 my-[-0.2em] inline-block aspect-3/2 h-[1.8em] cursor-pointer bg-white p-[2px] align-middle shadow-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+        style={{ borderRadius: 4 }}
         initial={{ rotate: card.rotate }}
         whileHover={{ rotate: 0, scale: 1.35, y: -2 }}
         whileTap={{ scale: 1.15 }}

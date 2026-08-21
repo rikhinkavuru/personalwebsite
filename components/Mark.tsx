@@ -39,7 +39,7 @@ export function InlineMark({
         <FallbackImage
           src={mark.src}
           alt=""
-          className="absolute inset-0 h-full w-full object-contain"
+          className="absolute inset-0 h-full w-full object-cover"
           fallback={tile}
         />
       ) : (
@@ -124,7 +124,7 @@ export function LogoTile({
         <FallbackImage
           src={mark.src}
           alt=""
-          className="absolute inset-0 h-full w-full object-contain"
+          className="absolute inset-0 h-full w-full object-cover"
           fallback={tile}
         />
       ) : (
