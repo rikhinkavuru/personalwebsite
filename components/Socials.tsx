@@ -1,5 +1,11 @@
 import { profile } from "@/lib/content";
 import NowPlaying from "./NowPlaying";
+import {
+  GitHubCard,
+  HoverCard,
+  InstagramCard,
+  LinkedInCard,
+} from "./SocialCard";
 
 const iconClass =
   "relative inline-flex size-9 items-center justify-center rounded-xl bg-foreground text-primary transition-colors hover:bg-surface-hover";
@@ -65,25 +71,41 @@ export default function Socials() {
         </a>
       )}
 
-      <a href={profile.github} target="_blank" rel="noreferrer" aria-label="GitHub" className={iconClass}>
-        <GitHubIcon />
-      </a>
-
-      <a href={profile.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" className={iconClass}>
-        <LinkedInIcon />
-      </a>
-
-      {/* Shown either way so the row reads complete; it only becomes a link
-          once profile.instagram is filled in. */}
-      {profile.instagram ? (
-        <a href={profile.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className={iconClass}>
+      <HoverCard card={<InstagramCard />}>
+        <a
+          href={profile.instagram}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram"
+          className={iconClass}
+        >
           <InstagramIcon />
         </a>
-      ) : (
-        <span role="img" aria-label="Instagram" className={`${iconClass} text-muted`}>
-          <InstagramIcon />
-        </span>
-      )}
+      </HoverCard>
+
+      <HoverCard card={<LinkedInCard />}>
+        <a
+          href={profile.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+          className={iconClass}
+        >
+          <LinkedInIcon />
+        </a>
+      </HoverCard>
+
+      <HoverCard card={<GitHubCard />}>
+        <a
+          href={profile.github}
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub"
+          className={iconClass}
+        >
+          <GitHubIcon />
+        </a>
+      </HoverCard>
 
       <NowPlaying className="ml-1" />
     </div>

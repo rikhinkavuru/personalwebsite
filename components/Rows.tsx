@@ -39,6 +39,7 @@ export function Row({
   badge,
   mark,
   href,
+  logoSize = 32,
 }: {
   title: string;
   subtitle?: string;
@@ -46,13 +47,19 @@ export function Row({
   badge?: ReactNode;
   mark?: keyof typeof marks;
   href?: string;
+  /** Bump to 48 on three-line rows so the tile matches the text block. */
+  logoSize?: number;
 }) {
   const body = (
-    <div className="flex items-center gap-3 py-3">
+    <div className="flex items-start gap-3 py-3">
       {/* No tile at all when the entry has no mark (papers, for instance).
           A defined mark whose file is missing still gets its lettered
           fallback, which is what keeps Experience rows aligned. */}
-      {mark && <LogoTile name={mark} label={title} />}
+      {mark && (
+        <span className="mt-0.5 flex shrink-0">
+          <LogoTile name={mark} label={title} size={logoSize} />
+        </span>
+      )}
 
       <div className="min-w-0 flex-1">
         <p className="font-display text-base font-medium text-primary">
@@ -62,7 +69,7 @@ export function Row({
         {detail && <p className="text-sm text-muted">{detail}</p>}
       </div>
 
-      {badge}
+      <span className="mt-0.5">{badge}</span>
     </div>
   );
 

@@ -2,7 +2,7 @@ export const profile = {
   firstName: "Rikhin",
   lastName: "Kavuru",
   fullName: "Rikhin Kavuru",
-  handle: "@rikhinkavuru",
+  handle: "@rikhin.kavuru",
   avatar: "/avatar.jpg",
   email: "rikhinkavuru@gmail.com",
   github: "https://github.com/rikhinkavuru",
@@ -86,6 +86,42 @@ export const nowPlaying = {
   album: "UTOPIA",
   art: "/music/telekinesis.jpg",
   url: "https://open.spotify.com/track/1i9lZvlaDdWDPyXEE95aiq",
+};
+
+/**
+ * Data for the hover preview cards on the social icons.
+ *
+ * GitHub's numbers come from its public API and are real. Instagram and
+ * LinkedIn expose no public API, so their stats are left blank on purpose —
+ * fill them in and the card grows the extra row, otherwise it renders without
+ * one rather than showing invented counts.
+ */
+export const socialCards = {
+  github: {
+    handle: "rikhinkavuru",
+    name: "17 | cbio research @broadinstitute",
+    avatar: "/social/github-avatar.jpg",
+    followers: 4,
+    following: 1,
+    repos: 25,
+  },
+  instagram: {
+    handle: "rikhin.kavuru",
+    name: "Rikhin Kavuru",
+    avatar: "/avatar.jpg",
+    /** Fill these in to show the posts/followers/following row. */
+    posts: null as number | null,
+    followers: null as number | null,
+    following: null as number | null,
+  },
+  linkedin: {
+    name: "Rikhin Kavuru",
+    headline: "Machine Learning Engineer at Convexia",
+    location: "Fort Wayne, Indiana",
+    avatar: "/avatar.jpg",
+    /** Fill in to show "· 500+ connections". */
+    connections: null as string | null,
+  },
 };
 
 export type Experience = {
@@ -251,5 +287,4 @@ export const research: Paper[] = [
 
 export const footer = {
   lineOne: "Homestead High School · Class of 2027",
-  lineTwo: "Valedictorian",
 };

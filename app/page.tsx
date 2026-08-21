@@ -6,11 +6,18 @@ import ProfileHeader from "@/components/ProfileHeader";
 import { Badge, Row, SectionHeading } from "@/components/Rows";
 import Socials from "@/components/Socials";
 import { Stagger, StaggerItem } from "@/components/Stagger";
+import { hasPublicFile } from "@/lib/assets";
 import { experience, footer, postcards, projects, research } from "@/lib/content";
 
 // Top three by recency, not by `current`: Yale belongs on the home page
 // even though it has ended.
 const featuredExperience = experience.slice(0, 3);
+
+// Resolved at build time. Rendering a postcard whose file is missing and then
+// removing it on mount reflowed the paragraph mid-animation, which is what
+// made the whole load sequence stutter.
+const showFortWayne = hasPublicFile(postcards.fortWayne.thumb);
+const showBoston = hasPublicFile(postcards.boston.thumb);
 
 export default function Home() {
   return (
@@ -27,7 +34,7 @@ export default function Home() {
                 I&apos;m 17. I grew up in{" "}
                 <span className="whitespace-nowrap">
                   Fort Wayne, Indiana
-                  <Postcard card={postcards.fortWayne} />
+                  {showFortWayne && <Postcard card={postcards.fortWayne} />}
                 </span>{" "}
                 and spend most of my time teaching machines to read biology.
               </p>
@@ -37,7 +44,7 @@ export default function Home() {
                 flights to{" "}
                 <span className="whitespace-nowrap">
                   Cambridge
-                  <Postcard card={postcards.boston} />
+                  {showBoston && <Postcard card={postcards.boston} />}
                 </span>
                 .
               </p>
@@ -59,6 +66,7 @@ export default function Home() {
                   detail={job.detail}
                   mark={job.mark}
                   href={job.href}
+                  logoSize={48}
                   badge={<Badge solid={job.current}>{job.when}</Badge>}
                 />
               ))}
@@ -93,7 +101,6 @@ export default function Home() {
 
           <StaggerItem className="pt-14">
             <p className="text-sm text-muted">{footer.lineOne}</p>
-            <p className="text-sm text-muted">{footer.lineTwo}</p>
           </StaggerItem>
         </Stagger>
       </main>

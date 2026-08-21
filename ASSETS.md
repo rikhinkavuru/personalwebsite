@@ -96,9 +96,16 @@ The equaliser bars are already on the page and already moving; credentials add
 the track name and make them link to Spotify. With a track playing the bars
 animate, and they hold still when playback is paused.
 
-## 5. Instagram — done
+## 5. Social hover cards
 
-Linked to `instagram.com/rikhin.kavuru`.
+Hovering an icon opens a profile preview. Data lives in `socialCards`
+(lib/content.ts).
+
+GitHub's numbers are real, pulled from its public API. Instagram and LinkedIn
+have no public API, so their stats are `null` on purpose rather than invented:
+fill in `posts` / `followers` / `following` and `connections` and the cards
+grow those rows. The GitHub avatar is the default identicon at
+`public/social/github-avatar.jpg` until you set a photo on GitHub.
 
 ## 6. Book a call
 

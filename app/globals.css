@@ -56,8 +56,8 @@
 @keyframes fly-in {
   0% {
     opacity: 0;
-    filter: blur(8px);
-    translate: 0 16px;
+    filter: blur(5px);
+    translate: 0 14px;
   }
 }
 
@@ -70,6 +70,10 @@
  * Pure CSS on purpose: it paints without waiting for hydration, so a slow or
  * failed JS load can never leave the page blank.
  */
+/* No will-change here. Promoting these to their own compositor layer left
+   the layer in place permanently and broke how descendants painted: hover
+   cards inside the socials row rendered transparent with overlapping text
+   despite computing as opaque. The animation is short and cheap without it. */
 .cascade > * {
   animation: fly-in 0.55s cubic-bezier(0.32, 0.72, 0, 1) backwards;
 }
@@ -129,6 +133,55 @@ body {
 
 .animate-fly-in {
   animation: var(--animate-fly-in);
+}
+
+/**
+ * Bento hover choreography.
+ *
+ * Hovering any card grows its column and pushes the other one back, then
+ * dims and desaturates every card except the one under the pointer. Done in
+ * CSS with sibling selectors so no JS runs on pointer move.
+ */
+.bento-col {
+  flex: 1 1 0;
+  transition: flex-grow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bento:hover .bento-col {
+  flex-grow: 0.82;
+}
+
+.bento .bento-col:hover {
+  flex-grow: 1.3;
+}
+
+.bento-card {
+  transition:
+    opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+    flex-grow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.bento:hover .bento-card {
+  opacity: 0.45;
+  filter: saturate(0.45);
+}
+
+.bento .bento-card:hover {
+  opacity: 1;
+  filter: saturate(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento:hover .bento-col,
+  .bento .bento-col:hover {
+    flex-grow: 1;
+  }
+
+  .bento:hover .bento-card {
+    opacity: 1;
+    filter: none;
+  }
 }
 
 /* Ring + dot cursor, restored from the previous design. The native cursor is
