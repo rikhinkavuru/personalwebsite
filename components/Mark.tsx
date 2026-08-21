@@ -99,6 +99,7 @@ export function LogoTile({
 }: {
   name?: keyof typeof marks;
   label: string;
+  /** Set to the height of the text block beside it so they align flush. */
   size?: number;
 }) {
   const mark = name ? marks[name] : undefined;

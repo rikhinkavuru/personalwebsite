@@ -39,7 +39,7 @@ export default function ExperiencePage() {
                   detail={job.detail}
                   mark={job.mark}
                   href={job.href}
-                  logoSize={48}
+                  logoSize={64}
                   badge={<Badge solid={job.current}>{job.when}</Badge>}
                 />
               ))}

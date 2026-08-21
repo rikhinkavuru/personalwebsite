@@ -81,11 +81,11 @@ export const postcards: Record<string, Postcard> = {
  * credentials exist; until then the card shows this.
  */
 export const nowPlaying = {
-  title: "TELEKINESIS",
-  artist: "Travis Scott",
-  album: "UTOPIA",
-  art: "/music/telekinesis.jpg",
-  url: "https://open.spotify.com/track/1i9lZvlaDdWDPyXEE95aiq",
+  title: "collage",
+  artist: "Gunna",
+  album: "One of Wun",
+  art: "/music/collage.jpg",
+  url: "https://open.spotify.com/track/41TXadM22OIJY04xSW9iuv",
 };
 
 /**
@@ -145,8 +145,8 @@ export const experience: Experience[] = [
   },
   {
     org: "Broad Institute of MIT and Harvard",
-    role: "ML Research Intern",
-    detail: "ML methods for drug design and phylogenetics. Currently on SPECTRA.",
+    role: "Machine Learning Research Intern",
+    detail: "Machine learning methods for drug design and phylogenetics.",
     when: "Current",
     mark: "broad",
     current: true,
@@ -211,7 +211,7 @@ export const projects: Project[] = [
     href: "https://virahacks.com",
     mark: "virahacks",
     current: true,
-    shots: [],
+    shots: [{ src: "/projects/virahacks.png", alt: "ViraHacks", width: 600, height: 300 }],
     tags: ["Community", "Healthcare", "1,100+ students"],
   },
   {
@@ -222,7 +222,7 @@ export const projects: Project[] = [
     when: "Current",
     mark: "telo",
     current: true,
-    shots: [],
+    shots: [{ src: "/projects/telo.png", alt: "Telo", width: 600, height: 600 }],
     tags: ["Pharma", "Manufacturing", "Supply chain"],
   },
   {
@@ -233,7 +233,7 @@ export const projects: Project[] = [
     when: "2024-26",
     href: "https://inkr.pro",
     mark: "inkr",
-    shots: [],
+    shots: [{ src: "/projects/inkr.png", alt: "Inkr", width: 660, height: 470 }],
     tags: ["Education", "Marketplace", "60K+ users"],
   },
   {
@@ -244,7 +244,7 @@ export const projects: Project[] = [
     when: "2025",
     href: "https://linkddaily.com",
     mark: "linkd",
-    shots: [],
+    shots: [{ src: "/projects/linkd.png", alt: "Linkd", width: 660, height: 440 }],
     tags: ["Games", "45K+ daily players"],
   },
 ];

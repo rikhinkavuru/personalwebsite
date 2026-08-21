@@ -52,7 +52,7 @@ corresponding `<Postcard card={...} />` in `app/page.tsx`.
 ## 4. Spotify
 
 The track is currently hardcoded in `nowPlaying` (lib/content.ts) to
-TELEKINESIS by Travis Scott, with the cover at `public/music/telekinesis.jpg`.
+collage by Gunna, with the cover at `public/music/collage.jpg`.
 Hovering the equaliser bars opens the album card, which links to the track.
 
 To swap it, change `nowPlaying` and drop a new square cover at that path.
@@ -113,7 +113,17 @@ Set `profile.bookingUrl` in `lib/content.ts` to a cal.com or Calendly link. The
 primary button switches from "Get in touch" (mailto) to "Book a call", and email
 moves into the icon row beside GitHub and LinkedIn.
 
-## 7. Project case studies
+## 7. Bento artwork
+
+Each project's bento card is a composed image in `public/projects/`, built from
+screenshots: Telo is the mark in black on white, ViraHacks is its headline
+floated as a card, and Linkd and Inkr are phone screens on their brand colour.
+
+Swap any of them by replacing the file and updating that project's `shots`
+entry in `lib/content.ts`. Slot placement and the uneven column split live in
+`LAYOUT` at the top of `components/BentoGrid.tsx`.
+
+## 8. Project case studies
 
 Each project already has a page at `/projects/<slug>`. Right now they show the
 logo, title, role, tags, one-line summary, and a link out.

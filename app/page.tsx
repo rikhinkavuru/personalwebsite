@@ -9,9 +9,8 @@ import { Stagger, StaggerItem } from "@/components/Stagger";
 import { hasPublicFile } from "@/lib/assets";
 import { experience, footer, postcards, projects, research } from "@/lib/content";
 
-// Top three by recency, not by `current`: Yale belongs on the home page
-// even though it has ended.
-const featuredExperience = experience.slice(0, 3);
+// Only the ongoing roles on the home page; the rest live behind the link.
+const featuredExperience = experience.filter((job) => job.current);
 
 // Resolved at build time. Rendering a postcard whose file is missing and then
 // removing it on mount reflowed the paragraph mid-animation, which is what
@@ -66,11 +65,11 @@ export default function Home() {
                   detail={job.detail}
                   mark={job.mark}
                   href={job.href}
-                  logoSize={48}
+                  logoSize={64}
                   badge={<Badge solid={job.current}>{job.when}</Badge>}
                 />
               ))}
-              <SeeAll href="/experience">All {experience.length} roles</SeeAll>
+              <SeeAll href="/experience">View all roles</SeeAll>
             </div>
           </StaggerItem>
 

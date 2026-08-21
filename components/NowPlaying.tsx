@@ -148,11 +148,13 @@ export default function NowPlaying({ className }: { className?: string }) {
                 className="mb-3 aspect-square w-full rounded-lg object-cover"
               />
             )}
-            <p className="truncate text-sm font-medium text-white">
+            {/* Spotify's own hierarchy: title in white, artist in grey,
+                both sentence case with no letter-spacing tricks. */}
+            <p className="truncate text-sm font-semibold text-white">
               {track.title}
             </p>
             {track.artist && (
-              <p className="mt-0.5 truncate text-xs font-semibold tracking-[0.08em] text-white/45 uppercase">
+              <p className="mt-0.5 truncate text-xs text-white/60">
                 {track.artist}
               </p>
             )}
