@@ -132,10 +132,16 @@ Each project's bento card is a composed image in `public/projects/`:
 | `linkd.png` | Two app screens on Linkd red |
 | `inkr.png` | Two app screens on indigo |
 
-The Linkd and Inkr phone screens are rebuilt as HTML in the scratch directory
-and rendered at 3x, not upscaled screenshots. That is why they are sharp at
-card size. Re-render from those templates rather than re-photographing the
-sites.
+The Linkd and Inkr phone screens are real captures of linkddaily.com and
+inkr.pro taken at a 390x844 viewport with a 3x device pixel ratio, so they are
+sharp at card size without upscaling. Recapture the same way rather than
+scaling a 1x screenshot.
+
+Clicking a card opens a lightbox. Projects with a `href` get the artwork on the
+left and a write-up beside it, driven by `blurb`, `cardBg`, and `cardDark` on
+the project. `cardBg` must match the artwork's own background exactly or the
+seam shows. Projects without a `href` (Telo) keep the full frame and take a
+caption in the bottom-left corner instead.
 
 Inkr's card is indigo rather than its own orange: Inkr's palette is essentially
 black-and-white with an orange dot, and orange sat too close to Linkd's red for

@@ -229,6 +229,12 @@ export type Project = {
   sections?: CaseSection[];
   /** Figures shown at the end of a case study. */
   stats?: { value: string; label: string; detail?: string }[];
+  /** Sentence or two shown beside the artwork in the lightbox. */
+  blurb?: string;
+  /** Must match the artwork's own background so the two blend seamlessly. */
+  cardBg?: string;
+  /** Set when cardBg is dark enough to need light text. */
+  cardDark?: boolean;
   current?: boolean;
 };
 
@@ -244,6 +250,9 @@ export const projects: Project[] = [
     current: true,
     shots: [{ src: "/projects/virahacks.png", alt: "ViraHacks", width: 600, height: 300 }],
     tags: ["Community", "Healthcare", "1,100+ students"],
+    blurb:
+      "A hackathon network for high schoolers: real venues, mentors, judges, and healthcare problems worth solving, all run by students.",
+    cardBg: "#f2f3f1",
   },
   {
     slug: "telo",
@@ -255,6 +264,10 @@ export const projects: Project[] = [
     current: true,
     shots: [{ src: "/projects/telo.png", alt: "Telo", width: 600, height: 600 }],
     tags: ["Pharma", "Manufacturing", "Supply chain"],
+    blurb:
+      "Decentralized microfactories making the sterile injectables that keep going short.",
+    cardBg: "#17171a",
+    cardDark: true,
   },
   {
     slug: "inkr",
@@ -266,6 +279,10 @@ export const projects: Project[] = [
     mark: "inkr",
     shots: [{ src: "/projects/inkr.png", alt: "Inkr", width: 660, height: 470 }],
     tags: ["Education", "Marketplace", "60K+ users"],
+    blurb:
+      "AI for networking. Connects students with the researchers, mentors, and opportunities that actually move a career forward.",
+    cardBg: "#4a4ac4",
+    cardDark: true,
   },
   {
     slug: "linkd",
@@ -277,6 +294,10 @@ export const projects: Project[] = [
     mark: "linkd",
     shots: [{ src: "/projects/linkd.png", alt: "Linkd", width: 660, height: 440 }],
     tags: ["Games", "45K+ daily players"],
+    blurb:
+      "A daily word chain game. Six to ten words, each pair forming a real compound or common phrase.",
+    cardBg: "#d32b25",
+    cardDark: true,
   },
 ];
 

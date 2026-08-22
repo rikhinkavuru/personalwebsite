@@ -98,14 +98,15 @@ export default function BentoGrid({ projects }: { projects: Project[] }) {
                   role="dialog"
                   aria-modal="true"
                   aria-label={zoomed.name}
-                  className="relative w-[min(92vw,58rem)] overflow-hidden rounded-2xl"
+                  className="relative max-h-[88vh] w-[min(94vw,64rem)] overflow-hidden rounded-2xl"
+                  style={{ backgroundColor: zoomed.cardBg ?? "var(--foreground)" }}
                   initial={{ scale: 0.94, opacity: 0, y: 10 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0.96, opacity: 0, y: 6 }}
                   transition={{ duration: 0.3, ease: EASE }}
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <CardFace project={zoomed} large />
+                  <Lightbox project={zoomed} />
                 </motion.div>
               </motion.div>
             )}
@@ -117,6 +118,79 @@ export default function BentoGrid({ projects }: { projects: Project[] }) {
 }
 
 /* eslint-disable @next/next/no-img-element */
+
+/**
+ * Zoomed view. Projects with a landing page put the artwork on the left and
+ * the write-up beside it; the artwork's own background matches `cardBg`, so
+ * the two halves read as one panel. Telo has no site yet, so it keeps the
+ * full frame with a caption tucked into the bottom-left corner.
+ */
+function Lightbox({ project }: { project: Project }) {
+  const shot = project.shots?.[0];
+  const dark = project.cardDark;
+  const body = dark ? "text-white" : "text-neutral-900";
+  const muted = dark ? "text-white/65" : "text-neutral-600";
+  const rule = dark ? "border-white/20" : "border-black/10";
+
+  if (!shot) return <CardFace project={project} large />;
+
+  if (!project.href) {
+    return (
+      <div className="relative">
+        <img
+          src={shot.src}
+          alt={shot.alt}
+          className="mx-auto block max-h-[88vh] w-auto"
+        />
+        <div className="absolute bottom-0 left-0 p-6 sm:p-8">
+          <p className={`text-lg font-semibold ${body}`}>{project.name}</p>
+          <p className={`mt-1 max-w-sm text-sm leading-relaxed ${muted}`}>
+            {project.blurb ?? project.detail}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex flex-col sm:flex-row">
+      <img
+        src={shot.src}
+        alt={shot.alt}
+        className="block w-full self-stretch object-cover sm:w-[62%] sm:shrink-0"
+      />
+
+      <div className="flex flex-1 flex-col justify-center gap-3 p-6 sm:p-8">
+        <p className={`text-xl font-semibold ${body}`}>{project.name}</p>
+
+        <a
+          href={project.href}
+          target="_blank"
+          rel="noreferrer"
+          className={`inline-flex w-fit items-center gap-1.5 text-sm font-medium ${body} underline decoration-2 underline-offset-4 ${
+            dark ? "decoration-white/40 hover:decoration-white" : "decoration-black/25 hover:decoration-black"
+          }`}
+        >
+          Visit
+          <span className={muted}>{prettyUrl(project.href)}</span>
+        </a>
+
+        <p className={`text-sm leading-relaxed ${muted}`}>
+          {project.blurb ?? project.detail}
+        </p>
+
+        <p className={`mt-1 border-t pt-3 text-xs ${rule} ${muted}`}>
+          Created by Rikhin Kavuru
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/** Strip protocol and trailing slash so the URL reads as a label. */
+function prettyUrl(href: string) {
+  return href.replace(/^https?:\/\//, "").replace(/\/$/, "");
+}
 
 function CardFace({ project, large }: { project: Project; large?: boolean }) {
   const mark = project.mark ? marks[project.mark] : undefined;
