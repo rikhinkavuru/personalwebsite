@@ -43,6 +43,12 @@ public/postcards/sf-thumb.jpg          +  sf.jpg
 disk and still defined in `postcards`, but nothing renders it — the bio dropped
 that clause. Re-adding it is one `<Postcard card={postcards.sf} />`.
 
+The Lake Michigan photo has no camera metadata left — Photos strips EXIF from
+its renders, so `exif` on that postcard is empty and the modal shows only the
+caption. Fill in `postcards.home.exif` (for example
+`Shot on iPhone 16 Pro · 24mm · f/1.8 · ISO 50 · 1/1385s`) and the modal grows
+the specs line on the right.
+
 Inline links can carry a website preview: give that mark a `preview` path in
 `marks` and hovering the name floats the screenshot above the line. Yale and
 Adaptyv use `public/previews/`.

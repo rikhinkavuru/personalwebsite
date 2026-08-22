@@ -87,7 +87,7 @@ export default function Postcard({
         onClick={() => setOpen(true)}
         aria-label={`View postcard of ${card.alt}`}
         data-plain-cursor
-        className={`relative my-[-0.2em] inline-block aspect-3/2 h-[1.8em] bg-white p-[3px] align-middle shadow-[0_3px_12px_rgba(0,0,0,0.20)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-[#3a3733] ${tight ? "ml-3 mr-1.5" : "mx-3"}`}
+        className={`relative my-[-0.2em] inline-block aspect-3/2 h-[1.8em] bg-[#e5dac1] p-[4px] align-middle shadow-[0_3px_12px_rgba(0,0,0,0.20)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-[#3a3733] ${tight ? "ml-3 mr-1.5" : "mx-3"}`}
         style={{ borderRadius: 4 }}
         initial={{ rotate: card.rotate }}
         whileHover={{ rotate: card.rotate, scale: 1.1 }}
@@ -125,7 +125,7 @@ export default function Postcard({
                   role="dialog"
                   aria-modal="true"
                   aria-label={card.alt}
-                  className="w-[min(88vw,100vh,56rem)] bg-[#efece5] p-2 shadow-2xl sm:p-3"
+                  className="w-[min(88vw,100vh,56rem)] bg-[#eee7d9] p-2 shadow-2xl sm:p-3"
                   style={{ borderRadius: 18 }}
                   initial={{ scale: 0.92, opacity: 0, y: 12 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
