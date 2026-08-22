@@ -72,7 +72,11 @@ export default function BentoGrid({ projects }: { projects: Project[] }) {
                   onClick={() => setZoomed(project)}
                   aria-label={`View ${project.name}`}
                   className="bento-card group relative block min-h-24 cursor-pointer overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10"
-                  style={{ flexGrow: grow, flexBasis: 0 }}
+                  style={{
+                    flexGrow: grow,
+                    flexBasis: 0,
+                    backgroundColor: project.cardBg ?? "var(--foreground)",
+                  }}
                 >
                   <CardFace project={project} />
                 </button>

@@ -56,6 +56,10 @@ export const marks: Record<string, Mark> = {
   inkr: { src: "/logos/inkr.webp", tint: "#f4501e", fallbackBg: "#f4501e" },
   linkd: { src: "/logos/linkd.webp", tint: "#d32b25", fallbackBg: "#eaddcb" },
   virahacks: { src: "/logos/virahacks.webp", tint: "#17843f", fallbackBg: "#17843f" },
+  medarc: { tint: "#3b5bdb", fallbackBg: "#3b5bdb" },
+  calma: { tint: "#0f766e", fallbackBg: "#0f766e" },
+  auteur: { tint: "#7c3aed", fallbackBg: "#7c3aed" },
+  spocal: { tint: "#c2410c", fallbackBg: "#c2410c" },
 };
 
 /**
@@ -192,6 +196,14 @@ export const experience: Experience[] = [
     mark: "yale",
   },
   {
+    org: "MedARC",
+    href: "https://medarc.ai",
+    role: "Computational Neuroscience Researcher",
+    detail: "Deep learning models that decode fMRI scans. Under review at ICML.",
+    when: "2025",
+    mark: "medarc",
+  },
+  {
     org: "Adaptyv Bio",
     href: "https://www.adaptyvbio.com/",
     role: "Data Science Intern",
@@ -302,6 +314,35 @@ export const projects: Project[] = [
       "A daily word chain game with 45,000+ daily players. Six to ten words, each pair forming a real compound or common phrase.",
     cardBg: "#d32b25",
     cardDark: true,
+  },
+  {
+    slug: "calma",
+    name: "Calma",
+    detail: "Independent verification lab for deterministic code in finance.",
+    role: "Founder",
+    when: "2025",
+    href: "https://github.com/rikhinkavuru/calma",
+    mark: "calma",
+    tags: ["Finance", "Verification"],
+  },
+  {
+    slug: "auteur",
+    name: "Auteur",
+    detail: "AI copilot for After Effects. Won the Congressional App Challenge.",
+    role: "Creator",
+    when: "2025",
+    href: "https://www.congressionalappchallenge.us/25-in03/",
+    mark: "auteur",
+    tags: ["Creative tools", "Award winner"],
+  },
+  {
+    slug: "spocal",
+    name: "Spocal",
+    detail: "Transformer-based speech fluency scoring. Diamond Challenge finalist.",
+    role: "Creator",
+    when: "2024",
+    mark: "spocal",
+    tags: ["Speech", "ML"],
   },
 ];
 

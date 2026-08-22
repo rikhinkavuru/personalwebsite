@@ -73,6 +73,7 @@ export default function Home() {
           <StaggerItem as="section" className="pt-24">
             <SectionHeading>Projects</SectionHeading>
             <BentoGrid projects={projects} />
+            <SeeAll href="/projects">View all projects</SeeAll>
           </StaggerItem>
 
           <StaggerItem as="section" className="pt-24">
@@ -91,7 +92,7 @@ export default function Home() {
                   }
                 />
               ))}
-              <SeeAll href="/research">All {research.length} papers</SeeAll>
+              <SeeAll href="/research">View all papers</SeeAll>
             </div>
           </StaggerItem>
 
