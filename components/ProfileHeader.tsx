@@ -8,8 +8,18 @@ import Avatar from "./Avatar";
 import CopyEmail from "./CopyEmail";
 import ThemeToggle from "./ThemeToggle";
 
-/** Scroll offset, in px, where the header finishes collapsing. */
-const COLLAPSE_AT = 80;
+/**
+ * Collapse and expand use separate thresholds on purpose.
+ *
+ * Collapsing shortens the header by roughly 50px, which shortens the document.
+ * With one threshold, a scroll position sitting near it could be pushed back
+ * under it by that very height change, expanding the header, lengthening the
+ * page, crossing the threshold again -- a visible loop of the header zooming
+ * in and out. The dead band between these two values is wider than the height
+ * change, so the state cannot flip back on its own.
+ */
+const COLLAPSE_AT = 120;
+const EXPAND_AT = 32;
 
 const EASE = [0.32, 0.72, 0, 1] as const;
 const SPRING = { type: "spring", stiffness: 400, damping: 40, mass: 0.6 } as const;
@@ -28,7 +38,7 @@ export default function ProfileHeader({ crumbs }: { crumbs?: Crumb[] }) {
   const [collapsed, setCollapsed] = useState(false);
 
   useMotionValueEvent(scrollY, "change", (y) => {
-    setCollapsed(y > COLLAPSE_AT);
+    setCollapsed((was) => (was ? y > EXPAND_AT : y > COLLAPSE_AT));
   });
 
   const isSubPage = Boolean(crumbs?.length);

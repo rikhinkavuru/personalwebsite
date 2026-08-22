@@ -20,8 +20,6 @@ export const profile = {
  */
 export type Mark = {
   src?: string;
-  /** Screenshot shown when the linked name is hovered. */
-  preview?: string;
   /** Swapped in under dark mode, for marks that would otherwise disappear. */
   srcDark?: string;
   /** Brand colour the label tints to on hover, matching kominko's inline marks. */
@@ -37,14 +35,12 @@ export const marks: Record<string, Mark> = {
   /** Transparent-background twins, for setting inline in prose. */
   yaleMark: {
     src: "/logos/yale-mark.webp",
-    preview: "/previews/yale.webp",
     tint: "#00356b",
     fallbackBg: "#00356b",
   },
   adaptyv: { src: "/logos/adaptyv.webp", tint: "#5aa8cc", fallbackBg: "#5aa8cc" },
   adaptyvMark: {
     src: "/logos/adaptyv-mark.webp",
-    preview: "/previews/adaptyv.webp",
     tint: "#5aa8cc",
     fallbackBg: "#5aa8cc",
   },
@@ -171,6 +167,7 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     org: "Convexia",
+    href: "https://www.convexia.bio/",
     role: "Machine Learning Engineer",
     detail: "Models that predict clinical trial success for drug assets.",
     when: "Current",
@@ -179,6 +176,7 @@ export const experience: Experience[] = [
   },
   {
     org: "Broad Institute of MIT and Harvard",
+    href: "https://www.broadinstitute.org/",
     role: "Machine Learning Research Intern",
     detail: "Machine learning methods for drug design and phylogenetics.",
     when: "Current",
@@ -187,6 +185,7 @@ export const experience: Experience[] = [
   },
   {
     org: "Yale Department of Neurology",
+    href: "https://medicine.yale.edu/neurology/",
     role: "Computational Biology Research Assistant",
     detail: "Spatial mapping of cell interactions in MS brain tissue.",
     when: "2026",
@@ -194,6 +193,7 @@ export const experience: Experience[] = [
   },
   {
     org: "Adaptyv Bio",
+    href: "https://www.adaptyvbio.com/",
     role: "Data Science Intern",
     detail: "Protein screening analysis. One of six interns from 400+ applicants.",
     when: "2025",
@@ -201,6 +201,7 @@ export const experience: Experience[] = [
   },
   {
     org: "Purdue University Fort Wayne",
+    href: "https://www.pfw.edu/",
     role: "Computational Biochemistry Researcher",
     detail: "Virtual screening and molecular docking against STAT3.",
     when: "2024-25",

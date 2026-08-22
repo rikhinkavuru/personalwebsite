@@ -1,11 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useRef, useState } from "react";
 import { marks } from "@/lib/content";
 import FallbackImage from "./FallbackImage";
-
-const EASE = [0.32, 0.72, 0, 1] as const;
 
 /**
  * Inline company mark, sized in `em` so it tracks the surrounding text.
@@ -72,8 +68,9 @@ export function InlineMark({
 }
 
 /**
- * A company name in prose preceded by its mark. When the mark has a preview
- * screenshot, hovering the link floats it above the line.
+ * A company name in prose, preceded by its mark. The label picks up the brand
+ * colour on hover; no underline and no preview card, which read as too much
+ * decoration inside a short paragraph.
  */
 export function MarkedName({
   name,
@@ -84,33 +81,17 @@ export function MarkedName({
   label: string;
   href?: string;
 }) {
-  const [open, setOpen] = useState(false);
-  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const preview = marks[name]?.preview;
-
-  useEffect(() => {
-    return () => {
-      if (closeTimer.current) clearTimeout(closeTimer.current);
-    };
-  }, []);
-
-  const show = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    setOpen(true);
-  };
-
-  // Closing on a delay leaves the gap between the word and the card
-  // crossable; otherwise the card vanishes the moment the pointer leaves the
-  // text and can never be reached.
-  const hide = () => {
-    if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setOpen(false), 220);
-  };
+  const tint = marks[name]?.tint;
 
   const inner = (
     <>
       <InlineMark name={name} label={label} />
-      <span>{label}</span>
+      <span
+        className="transition-colors group-hover:[color:var(--tint)]"
+        style={{ "--tint": tint } as React.CSSProperties}
+      >
+        {label}
+      </span>
     </>
   );
 
@@ -119,48 +100,14 @@ export function MarkedName({
   }
 
   return (
-    <span
-      className="relative inline-block whitespace-nowrap"
-      onMouseEnter={show}
-      onMouseLeave={hide}
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="group whitespace-nowrap"
     >
-      <a
-        href={href}
-        target="_blank"
-        rel="noreferrer"
-        onFocus={show}
-        onBlur={hide}
-        className="underline decoration-secondary decoration-2 underline-offset-[3px] transition-[text-decoration-color] hover:decoration-primary"
-      >
-        {inner}
-      </a>
-
-      <AnimatePresence>
-        {open && preview && (
-          <motion.span
-            // Hoverable, so moving onto the card keeps it open.
-            onMouseEnter={show}
-            onMouseLeave={hide}
-            className="absolute top-full left-1/2 z-[200] mt-2 block w-72 -translate-x-1/2 rounded-2xl bg-white p-2 shadow-[0_16px_50px_rgba(0,0,0,0.28)] ring-1 ring-black/10"
-            initial={{ opacity: 0, y: -6, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -4, scale: 0.98 }}
-            transition={{ duration: 0.18, ease: EASE }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={preview}
-              alt=""
-              width={780}
-              height={467}
-              loading="lazy"
-              decoding="async"
-              className="block w-full rounded-xl"
-            />
-          </motion.span>
-        )}
-      </AnimatePresence>
-    </span>
+      {inner}
+    </a>
   );
 }
 
