@@ -22,6 +22,8 @@ export type Mark = {
   src?: string;
   /** Screenshot shown when the linked name is hovered. */
   preview?: string;
+  /** Swapped in under dark mode, for marks that would otherwise disappear. */
+  srcDark?: string;
   /** Brand colour the label tints to on hover, matching kominko's inline marks. */
   tint?: string;
   /** Background for the fallback lettered tile. */
@@ -46,7 +48,12 @@ export const marks: Record<string, Mark> = {
   purdue: { src: "/logos/purdue.png", tint: "#9d7f3d", fallbackBg: "#c7b28a" },
   telo: { src: "/logos/telo.png", tint: "#111111", fallbackBg: "#111111" },
   /** Transparent-background mark, for setting inline on a white page. */
-  teloMark: { src: "/logos/telo-mark.png", tint: "#111111", fallbackBg: "#111111" },
+  teloMark: {
+    src: "/logos/telo-mark.png",
+    srcDark: "/logos/telo-mark-dark.png",
+    tint: "#111111",
+    fallbackBg: "#111111",
+  },
   inkr: { src: "/logos/inkr.png", tint: "#f4501e", fallbackBg: "#f4501e" },
   linkd: { src: "/logos/linkd.png", tint: "#d32b25", fallbackBg: "#eaddcb" },
   virahacks: { src: "/logos/virahacks.png", tint: "#17843f", fallbackBg: "#17843f" },
@@ -77,7 +84,7 @@ export const postcards: Record<string, Postcard> = {
     full: "/postcards/fort-wayne.jpg",
     alt: "Southern shore of Lake Michigan, Indiana",
     caption: "Southern shore of Lake Michigan, Indiana",
-    exif: "",
+    exif: "Shot on \uf8ff iPhone 16 Pro · 24mm · ƒ/1.8 · ISO 50 · 1/1385s",
     rotate: -4,
   },
   sf: {

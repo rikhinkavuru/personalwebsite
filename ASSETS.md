@@ -43,11 +43,8 @@ public/postcards/sf-thumb.jpg          +  sf.jpg
 disk and still defined in `postcards`, but nothing renders it — the bio dropped
 that clause. Re-adding it is one `<Postcard card={postcards.sf} />`.
 
-The Lake Michigan photo has no camera metadata left — Photos strips EXIF from
-its renders, so `exif` on that postcard is empty and the modal shows only the
-caption. Fill in `postcards.home.exif` (for example
-`Shot on iPhone 16 Pro · 24mm · f/1.8 · ISO 50 · 1/1385s`) and the modal grows
-the specs line on the right.
+The Lake Michigan photo's camera specs are set by hand in `postcards.home.exif`
+— Photos strips EXIF from its renders, so they could not be read off the file.
 
 Inline links can carry a website preview: give that mark a `preview` path in
 `marks` and hovering the name floats the screenshot above the line. Yale and
@@ -133,7 +130,12 @@ Each project's bento card is a composed image in `public/projects/`:
 | `telo.png` | Cream mark on a charcoal ground, as a flat graphic |
 | `virahacks.png` | A hackathon event card floated on light grey |
 | `linkd.png` | Two app screens on Linkd red |
-| `inkr.png` | Two site screens on indigo |
+| `inkr.png` | Two app screens on indigo |
+
+The Linkd and Inkr phone screens are rebuilt as HTML in the scratch directory
+and rendered at 3x, not upscaled screenshots. That is why they are sharp at
+card size. Re-render from those templates rather than re-photographing the
+sites.
 
 Inkr's card is indigo rather than its own orange: Inkr's palette is essentially
 black-and-white with an orange dot, and orange sat too close to Linkd's red for

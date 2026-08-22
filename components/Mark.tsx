@@ -32,6 +32,8 @@ export function InlineMark({
     </span>
   );
 
+  const dark = mark?.srcDark;
+
   return (
     <span
       role="img"
@@ -40,12 +42,24 @@ export function InlineMark({
       style={{ height: size, width: size }}
     >
       {mark?.src ? (
-        <FallbackImage
-          src={mark.src}
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover"
-          fallback={tile}
-        />
+        <>
+          <FallbackImage
+            src={mark.src}
+            alt=""
+            className={`absolute inset-0 h-full w-full object-cover ${dark ? "dark:hidden" : ""}`}
+            fallback={tile}
+          />
+          {/* A black-on-transparent mark disappears on a dark page, so marks
+              that need it ship a light twin swapped in by theme. */}
+          {dark && (
+            <FallbackImage
+              src={dark}
+              alt=""
+              className="absolute inset-0 hidden h-full w-full object-cover dark:block"
+              fallback={tile}
+            />
+          )}
+        </>
       ) : (
         tile
       )}
