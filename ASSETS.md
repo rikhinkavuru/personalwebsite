@@ -39,10 +39,13 @@ public/postcards/fort-wayne-thumb.jpg  +  fort-wayne.jpg
 public/postcards/sf-thumb.jpg          +  sf.jpg
 ```
 
-The `sf` pair is the San Francisco photo you sent. The `fort-wayne` pair is the
-other photo, but it shows a coastal road and a cruise ship, so its caption is a
-placeholder rather than "Fort Wayne, Indiana" — send the right shot or the
-right caption.
+`fort-wayne` is the southern shore of Lake Michigan. The `sf` pair is still on
+disk and still defined in `postcards`, but nothing renders it — the bio dropped
+that clause. Re-adding it is one `<Postcard card={postcards.sf} />`.
+
+Inline links can carry a website preview: give that mark a `preview` path in
+`marks` and hovering the name floats the screenshot above the line. Yale and
+Adaptyv use `public/previews/`.
 
 Captions, alt text, and the EXIF line live in `postcards` in `lib/content.ts`.
 The `exif` field is blank by default; fill it in for kominko's

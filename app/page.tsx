@@ -43,7 +43,7 @@ export default function Home() {
                 label="Adaptyv"
                 href="https://www.adaptyvbio.com/"
               />
-              . Now slinging drug microfactories at{" "}
+              . Now slingin drug microfactories at{" "}
               <MarkedName name="teloMark" label="Telo" />.
             </p>
           </StaggerItem>

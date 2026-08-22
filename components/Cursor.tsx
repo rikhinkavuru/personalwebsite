@@ -27,6 +27,8 @@ export default function Cursor() {
     let targetY = 0;
     let frame = 0;
 
+    // The ring deliberately does not react to hover targets: growing and
+    // filling it fought with the hover states of the things underneath.
     const move = (e: MouseEvent) => {
       if (!seen) {
         seen = true;
@@ -40,21 +42,13 @@ export default function Cursor() {
       if (dot.current) {
         dot.current.style.transform = `translate(${targetX - 2}px, ${targetY - 2}px)`;
       }
-      const el = e.target as HTMLElement | null;
-      const target = el?.closest("a, button, [role='button']");
-      const hovering = !!target && !target.hasAttribute("data-plain-cursor");
-      ring.current?.classList.toggle("hovering", hovering);
-      if (ring.current) {
-        ring.current.dataset.scale = hovering ? "2" : "1";
-      }
     };
 
     const tick = () => {
       ringX += (targetX - ringX) * 0.18;
       ringY += (targetY - ringY) * 0.18;
       if (ring.current) {
-        const scale = ring.current.dataset.scale ?? "1";
-        ring.current.style.transform = `translate(${ringX - 10}px, ${ringY - 10}px) scale(${scale})`;
+        ring.current.style.transform = `translate(${ringX - 10}px, ${ringY - 10}px)`;
       }
       frame = requestAnimationFrame(tick);
     };

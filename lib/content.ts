@@ -20,6 +20,8 @@ export const profile = {
  */
 export type Mark = {
   src?: string;
+  /** Screenshot shown when the linked name is hovered. */
+  preview?: string;
   /** Brand colour the label tints to on hover, matching kominko's inline marks. */
   tint?: string;
   /** Background for the fallback lettered tile. */
@@ -29,8 +31,18 @@ export type Mark = {
 export const marks: Record<string, Mark> = {
   convexia: { src: "/logos/convexia.png", tint: "#12b866", fallbackBg: "#0a0c0b" },
   broad: { src: "/logos/broad.png", tint: "#006ab2", fallbackBg: "#006ab2" },
-  yale: { src: "/logos/yale.png", tint: "#00356b", fallbackBg: "#00356b" },
-  adaptyv: { src: "/logos/adaptyv.png", tint: "#5aa8cc", fallbackBg: "#5aa8cc" },
+  yale: {
+    src: "/logos/yale.png",
+    preview: "/previews/yale.jpg",
+    tint: "#00356b",
+    fallbackBg: "#00356b",
+  },
+  adaptyv: {
+    src: "/logos/adaptyv.png",
+    preview: "/previews/adaptyv.jpg",
+    tint: "#5aa8cc",
+    fallbackBg: "#5aa8cc",
+  },
   purdue: { src: "/logos/purdue.png", tint: "#9d7f3d", fallbackBg: "#c7b28a" },
   telo: { src: "/logos/telo.png", tint: "#111111", fallbackBg: "#111111" },
   /** Transparent-background mark, for setting inline on a white page. */
@@ -63,9 +75,8 @@ export const postcards: Record<string, Postcard> = {
     id: "home",
     thumb: "/postcards/fort-wayne-thumb.jpg",
     full: "/postcards/fort-wayne.jpg",
-    // PLACEHOLDER caption: the supplied photo is a coastal road, not Fort Wayne.
-    alt: "Coast road",
-    caption: "Coast road",
+    alt: "Southern shore of Lake Michigan, Indiana",
+    caption: "Southern shore of Lake Michigan, Indiana",
     exif: "",
     rotate: -4,
   },
