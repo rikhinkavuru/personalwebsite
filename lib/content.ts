@@ -56,10 +56,10 @@ export const marks: Record<string, Mark> = {
   inkr: { src: "/logos/inkr.webp", tint: "#f4501e", fallbackBg: "#f4501e" },
   linkd: { src: "/logos/linkd.webp", tint: "#d32b25", fallbackBg: "#eaddcb" },
   virahacks: { src: "/logos/virahacks.webp", tint: "#17843f", fallbackBg: "#17843f" },
-  medarc: { tint: "#3b5bdb", fallbackBg: "#3b5bdb" },
-  calma: { tint: "#0f766e", fallbackBg: "#0f766e" },
-  auteur: { tint: "#7c3aed", fallbackBg: "#7c3aed" },
-  spocal: { tint: "#c2410c", fallbackBg: "#c2410c" },
+  medarc: { src: "/logos/medarc.webp", tint: "#1e337a", fallbackBg: "#1e337a" },
+  calma: { src: "/logos/calma.webp", tint: "#d98b45", fallbackBg: "#192826" },
+  auteur: { src: "/logos/auteur.webp", tint: "#0b2a6b", fallbackBg: "#0b2a6b" },
+  spocal: { src: "/logos/spocal.webp", tint: "#a8791a", fallbackBg: "#fae28a" },
 };
 
 /**
@@ -352,6 +352,8 @@ export type Paper = {
   title: string;
   note?: string;
   href?: string;
+  /** PDF under /public/papers, opened in the in-page reader. */
+  pdf?: string;
 };
 
 export const research: Paper[] = [
@@ -361,18 +363,21 @@ export const research: Paper[] = [
     title:
       "How Much of Genomic Language Model Variant-Effect Prediction Is Base Composition?",
     note: "Pending in PMLR",
+    pdf: "/papers/mlcb-base-composition.pdf",
   },
   {
     venue: "ISMB 2026",
     track: "DREAM Challenges track",
     title:
       "Single-Seed Benchmarks Are Unreliable for LLM Coding Agents on Bioinformatics Tasks",
+    pdf: "/papers/ismb-single-seed.pdf",
   },
   {
     venue: "IEEE BIBM 2025",
     track: "Trustworthy AI for Biomedical Discovery track",
     title:
       "Three Routes to Failure: An Interpretable Diagnosis of Task Difficulty and Negative-Set Contamination in Genomic Sequence-Classification Benchmarks",
+    pdf: "/papers/three-routes-to-failure.pdf",
   },
   {
     venue: "INFORMS 2025",

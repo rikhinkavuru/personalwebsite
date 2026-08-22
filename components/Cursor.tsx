@@ -72,10 +72,36 @@ export default function Cursor() {
       frame = requestAnimationFrame(tick);
     };
 
+    const hide = () => {
+      ring.current?.classList.remove("visible");
+      dot.current?.classList.remove("visible");
+    };
+
+    // Re-entering: jump straight to the pointer instead of easing in from
+    // wherever the ring was abandoned.
+    const show = (e: MouseEvent) => {
+      ringX = targetX = e.clientX;
+      ringY = targetY = e.clientY;
+      if (ring.current) {
+        ring.current.style.transform = `translate(${ringX - 10}px, ${ringY - 10}px)`;
+        ring.current.classList.add("visible");
+      }
+      if (dot.current) {
+        dot.current.style.transform = `translate(${ringX - 2}px, ${ringY - 2}px)`;
+        dot.current.classList.add("visible");
+      }
+    };
+
     window.addEventListener("mousemove", move, { passive: true });
+    document.addEventListener("mouseleave", hide);
+    document.addEventListener("mouseenter", show);
+    window.addEventListener("blur", hide);
 
     return () => {
       window.removeEventListener("mousemove", move);
+      document.removeEventListener("mouseleave", hide);
+      document.removeEventListener("mouseenter", show);
+      window.removeEventListener("blur", hide);
       cancelAnimationFrame(frame);
       document.documentElement.classList.remove("cursor-active");
     };

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BentoGrid from "@/components/BentoGrid";
+import PaperList from "@/components/PaperList";
 import Footer from "@/components/Footer";
 import Postcard from "@/components/Postcard";
 import ProfileHeader from "@/components/ProfileHeader";
@@ -79,19 +80,7 @@ export default function Home() {
           <StaggerItem as="section" className="pt-24">
             <SectionHeading>Research</SectionHeading>
             <div className="flex flex-col">
-              {research.slice(0, 2).map((paper) => (
-                <Row
-                  key={paper.title}
-                  title={paper.venue}
-                  detail={paper.title}
-                  href={paper.href}
-                  badge={
-                    <Badge solid={Boolean(paper.note)}>
-                      {paper.note ?? paper.track.replace(" track", "")}
-                    </Badge>
-                  }
-                />
-              ))}
+              <PaperList papers={research.slice(0, 2)} />
               <SeeAll href="/research">View all papers</SeeAll>
             </div>
           </StaggerItem>

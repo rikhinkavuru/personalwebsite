@@ -53,7 +53,8 @@ export default function ProfileHeader({ crumbs }: { crumbs?: Crumb[] }) {
     >
       {/* Blur plate. Separate layer so the content above it stays crisp. */}
       <motion.div
-        className="pointer-events-none absolute inset-0 bg-bg-blur backdrop-blur-xl"
+        className="pointer-events-none absolute inset-0 bg-bg-blur"
+        style={{ backdropFilter: compact ? "blur(16px)" : "none" }}
         animate={{ opacity: compact ? 1 : 0 }}
         transition={{ duration: 0.25, ease: EASE }}
       />

@@ -24,8 +24,8 @@ export default function ProjectsPage() {
               Projects
             </h2>
             <p className="mt-2 text-base text-muted">
-              Things I&apos;m building, and a few that are already out in the
-              world.
+              The best way to predict the future is to invent it.
+
             </p>
           </StaggerItem>
 

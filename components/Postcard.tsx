@@ -49,8 +49,19 @@ export default function Postcard({
   const [failed, setFailed] = useState(false);
   const [mounted, setMounted] = useState(false);
   const thumbRef = useRef<HTMLImageElement>(null);
+  const warmed = useRef(false);
 
   useEffect(() => setMounted(true), []);
+
+  // Fetch the full image as soon as the thumb is hovered, so opening the modal
+  // does not wait on a 200KB download.
+  const warm = () => {
+    if (warmed.current) return;
+    warmed.current = true;
+    // window.Image, since `Image` in this module is next/image.
+    const img = new window.Image();
+    img.src = card.full;
+  };
 
   // The thumb request can finish before hydration, in which case onError never
   // fires. Re-check on mount so a missing file reliably hides the postcard.
@@ -85,6 +96,8 @@ export default function Postcard({
       <motion.button
         type="button"
         onClick={() => setOpen(true)}
+        onMouseEnter={warm}
+        onFocus={warm}
         aria-label={`View postcard of ${card.alt}`}
         data-plain-cursor
         className={`relative my-[-0.2em] inline-block aspect-3/2 h-[1.8em] bg-[#d3c19a] p-[5px] align-middle shadow-[0_3px_12px_rgba(0,0,0,0.20)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary dark:bg-[#3a3733] ${tight ? "ml-3 mr-1.5" : "mx-3"}`}

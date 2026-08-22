@@ -116,8 +116,15 @@ body {
  * CSS with sibling selectors so no JS runs on pointer move.
  */
 .bento-col {
-  flex: 1 1 0;
-  transition: flex-grow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  display: contents;
+}
+
+@media (min-width: 640px) {
+  .bento-col {
+    display: flex;
+    flex: 1 1 0;
+    transition: flex-grow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
 }
 
 .bento:hover .bento-col {
@@ -129,10 +136,20 @@ body {
 }
 
 .bento-card {
+  flex: 0 0 auto;
   transition:
     opacity 0.32s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.32s cubic-bezier(0.22, 1, 0.36, 1),
     flex-grow 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Must come after the base .bento-card rule above: same specificity, so
+   source order decides which flex values apply. */
+@media (min-width: 640px) {
+  .bento-card {
+    flex-grow: var(--grow);
+    flex-basis: 0;
+  }
 }
 
 .bento:hover .bento-card {
@@ -176,7 +193,8 @@ body {
   left: 0;
   pointer-events: none;
   z-index: 10000;
-  transition: background-color 0.15s ease-out, border-color 0.15s ease-out;
+  transition: background-color 0.15s ease-out, border-color 0.15s ease-out,
+    opacity 0.18s ease-out;
   /* difference blending keeps the ring visible in both themes. */
   mix-blend-mode: difference;
   background-color: transparent;
@@ -205,6 +223,7 @@ body {
   z-index: 10001;
   mix-blend-mode: difference;
   opacity: 0;
+  transition: opacity 0.18s ease-out;
 }
 
 body.modal-open {

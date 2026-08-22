@@ -71,12 +71,16 @@ export default function BentoGrid({ projects }: { projects: Project[] }) {
                   type="button"
                   onClick={() => setZoomed(project)}
                   aria-label={`View ${project.name}`}
-                  className="bento-card group relative block min-h-24 cursor-pointer overflow-hidden rounded-xl ring-1 ring-black/5 dark:ring-white/10"
-                  style={{
-                    flexGrow: grow,
-                    flexBasis: 0,
-                    backgroundColor: project.cardBg ?? "var(--foreground)",
-                  }}
+                  className="bento-card group relative block aspect-3/2 w-full cursor-pointer overflow-hidden rounded-xl ring-1 ring-black/5 sm:aspect-auto sm:min-h-24 sm:w-auto dark:ring-white/10"
+                  // The weight is a custom property so it only takes effect at
+                  // the breakpoint where columns exist. As an inline flex-basis
+                  // it gave the stacked mobile cards zero height.
+                  style={
+                    {
+                      "--grow": grow,
+                      backgroundColor: project.cardBg ?? "var(--foreground)",
+                    } as React.CSSProperties
+                  }
                 >
                   <CardFace project={project} />
                 </button>
