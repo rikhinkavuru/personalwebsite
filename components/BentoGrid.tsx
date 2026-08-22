@@ -167,12 +167,18 @@ function Lightbox({ project }: { project: Project }) {
           href={project.href}
           target="_blank"
           rel="noreferrer"
-          className={`inline-flex w-fit items-center gap-1.5 text-sm font-medium ${body} underline decoration-2 underline-offset-4 ${
-            dark ? "decoration-white/40 hover:decoration-white" : "decoration-black/25 hover:decoration-black"
-          }`}
+          className={`group inline-flex w-fit items-center gap-1.5 text-sm font-medium ${body}`}
         >
           Visit
-          <span className={muted}>{prettyUrl(project.href)}</span>
+          <span
+            className={`underline decoration-2 underline-offset-4 ${muted} ${
+              dark
+                ? "decoration-white/35 group-hover:decoration-white"
+                : "decoration-black/25 group-hover:decoration-black"
+            }`}
+          >
+            {prettyUrl(project.href)}
+          </span>
         </a>
 
         <p className={`text-sm leading-relaxed ${muted}`}>

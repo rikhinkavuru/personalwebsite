@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { profile } from "@/lib/content";
 import Avatar from "./Avatar";
+import CopyEmail from "./CopyEmail";
 import ThemeToggle from "./ThemeToggle";
 
 /** Scroll offset, in px, where the header finishes collapsing. */
@@ -85,7 +86,7 @@ export default function ProfileHeader({ crumbs }: { crumbs?: Crumb[] }) {
             animate={{ height: compact ? 0 : 24, opacity: compact ? 0 : 1 }}
             transition={SPRING}
           >
-            <p className="text-base leading-6 text-muted">{profile.handle}</p>
+            <CopyEmail />
           </motion.div>
         </div>
 

@@ -280,7 +280,7 @@ export const projects: Project[] = [
     shots: [{ src: "/projects/inkr.png", alt: "Inkr", width: 660, height: 470 }],
     tags: ["Education", "Marketplace", "60K+ users"],
     blurb:
-      "AI for networking. Connects students with the researchers, mentors, and opportunities that actually move a career forward.",
+      "AI for networking, used by 60,000+ students. Connects them with the researchers, mentors, and opportunities that actually move a career forward.",
     cardBg: "#4a4ac4",
     cardDark: true,
   },
@@ -295,7 +295,7 @@ export const projects: Project[] = [
     shots: [{ src: "/projects/linkd.png", alt: "Linkd", width: 660, height: 440 }],
     tags: ["Games", "45K+ daily players"],
     blurb:
-      "A daily word chain game. Six to ten words, each pair forming a real compound or common phrase.",
+      "A daily word chain game with 45,000+ daily players. Six to ten words, each pair forming a real compound or common phrase.",
     cardBg: "#d32b25",
     cardDark: true,
   },

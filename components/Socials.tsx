@@ -1,5 +1,4 @@
 import { profile } from "@/lib/content";
-import EmailButton from "./EmailButton";
 import NowPlaying from "./NowPlaying";
 import {
   GitHubCard,
@@ -64,8 +63,6 @@ export default function Socials() {
         Get in touch
         <ArrowIcon />
       </a>
-
-      <EmailButton />
 
       <HoverCard card={<InstagramCard />}>
         <a
