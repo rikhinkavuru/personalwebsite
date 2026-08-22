@@ -27,7 +27,7 @@ export default function Home() {
         <Stagger>
           {/* PLACEHOLDER COPY, structured like kominko's: one paragraph with
               the postcards and company marks set inline. */}
-          <StaggerItem as="section" className="pt-6">
+          <StaggerItem as="section" className="pt-12">
             <p className="text-base leading-[2.1] font-medium tracking-[-0.02em] text-primary sm:text-xl">
               17 y/o engineer from Fort Wayne, Indiana
               {showHome && <Postcard card={postcards.home} tight />}. Previously
@@ -48,11 +48,11 @@ export default function Home() {
             </p>
           </StaggerItem>
 
-          <StaggerItem className="mt-6">
+          <StaggerItem className="mt-8">
             <Socials />
           </StaggerItem>
 
-          <StaggerItem as="section" className="pt-14">
+          <StaggerItem as="section" className="pt-24">
             <SectionHeading>Experience</SectionHeading>
             <div className="flex flex-col">
               {featuredExperience.map((job) => (
@@ -70,12 +70,12 @@ export default function Home() {
             </div>
           </StaggerItem>
 
-          <StaggerItem as="section" className="pt-14">
+          <StaggerItem as="section" className="pt-24">
             <SectionHeading>Projects</SectionHeading>
             <BentoGrid projects={projects} />
           </StaggerItem>
 
-          <StaggerItem as="section" className="pt-14">
+          <StaggerItem as="section" className="pt-24">
             <SectionHeading>Research</SectionHeading>
             <div className="flex flex-col">
               {research.slice(0, 2).map((paper) => (

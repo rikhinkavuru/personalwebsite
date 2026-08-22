@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { marks } from "@/lib/content";
 import FallbackImage from "./FallbackImage";
 
@@ -67,7 +67,27 @@ export function MarkedName({
   href?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const preview = marks[name]?.preview;
+
+  useEffect(() => {
+    return () => {
+      if (closeTimer.current) clearTimeout(closeTimer.current);
+    };
+  }, []);
+
+  const show = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    setOpen(true);
+  };
+
+  // Closing on a delay leaves the gap between the word and the card
+  // crossable; otherwise the card vanishes the moment the pointer leaves the
+  // text and can never be reached.
+  const hide = () => {
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpen(false), 220);
+  };
 
   const inner = (
     <>
@@ -83,15 +103,15 @@ export function MarkedName({
   return (
     <span
       className="relative inline-block whitespace-nowrap"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onMouseEnter={show}
+      onMouseLeave={hide}
     >
       <a
         href={href}
         target="_blank"
         rel="noreferrer"
-        onFocus={() => setOpen(true)}
-        onBlur={() => setOpen(false)}
+        onFocus={show}
+        onBlur={hide}
         className="underline decoration-secondary decoration-2 underline-offset-[3px] transition-[text-decoration-color] hover:decoration-primary"
       >
         {inner}
@@ -100,16 +120,17 @@ export function MarkedName({
       <AnimatePresence>
         {open && preview && (
           <motion.span
-            // Decoration only: capturing the pointer would make it flicker as
-            // the cursor moves between the link and the card.
-            className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-2 block w-60 -translate-x-1/2 overflow-hidden rounded-xl bg-white shadow-[0_12px_40px_rgba(0,0,0,0.22)] ring-1 ring-black/10"
-            initial={{ opacity: 0, y: 6, scale: 0.96 }}
+            // Hoverable, so moving onto the card keeps it open.
+            onMouseEnter={show}
+            onMouseLeave={hide}
+            className="absolute top-full left-1/2 z-[200] mt-2 block w-72 -translate-x-1/2 rounded-2xl bg-white p-2 shadow-[0_16px_50px_rgba(0,0,0,0.28)] ring-1 ring-black/10"
+            initial={{ opacity: 0, y: -6, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 4, scale: 0.98 }}
+            exit={{ opacity: 0, y: -4, scale: 0.98 }}
             transition={{ duration: 0.18, ease: EASE }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={preview} alt="" className="block w-full" />
+            <img src={preview} alt="" className="block w-full rounded-xl" />
           </motion.span>
         )}
       </AnimatePresence>

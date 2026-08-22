@@ -47,10 +47,10 @@ export default function ProfileHeader({ crumbs }: { crumbs?: Crumb[] }) {
         transition={{ duration: 0.25, ease: EASE }}
       />
 
-      <div className="relative flex items-center gap-3">
+      <div className="relative flex items-stretch gap-3">
         <Avatar compact={compact} />
 
-        <div className="flex min-w-0 flex-1 flex-col justify-center">
+        <div className="flex min-w-0 flex-1 flex-col justify-end">
           <div className="flex items-baseline gap-2">
             {/* On the home page the name scale-morphs, which is smooth but
                 leaves the pre-scale layout width behind. Sub-pages open

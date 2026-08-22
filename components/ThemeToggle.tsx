@@ -65,7 +65,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggle}
       aria-label="Toggle theme"
-      className="flex size-8 shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-foreground text-primary transition-colors hover:bg-border"
+      className="flex size-8 shrink-0 cursor-pointer items-center justify-center self-start overflow-hidden rounded-xl bg-foreground text-primary transition-colors hover:bg-primary hover:text-bg"
     >
       <AnimatePresence mode="wait" initial={false}>
         <motion.span

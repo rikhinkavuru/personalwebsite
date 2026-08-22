@@ -10,7 +10,7 @@ import {
 } from "./SocialCard";
 
 const iconClass =
-  "relative inline-flex size-9 items-center justify-center rounded-xl bg-foreground text-primary transition-colors hover:bg-surface-hover";
+  "relative inline-flex size-9 items-center justify-center rounded-xl bg-foreground text-primary transition-colors hover:bg-primary hover:text-bg";
 
 const GitHubIcon = () => (
   <svg viewBox="0 0 24 24" fill="currentColor" className="size-4" aria-hidden="true">
