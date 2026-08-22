@@ -186,17 +186,14 @@ body {
 .cursor {
   width: 20px;
   height: 20px;
-  border: 1.5px solid #fff;
+  border: 1.5px solid var(--text-primary);
   border-radius: 50%;
   position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
   z-index: 10000;
-  transition: background-color 0.15s ease-out, border-color 0.15s ease-out,
-    opacity 0.18s ease-out;
-  /* difference blending keeps the ring visible in both themes. */
-  mix-blend-mode: difference;
+  transition: opacity 0.18s ease-out;
   background-color: transparent;
   opacity: 0;
 }
@@ -206,22 +203,16 @@ body {
   opacity: 1;
 }
 
-.cursor.hovering {
-  background-color: #fff;
-  border-color: #fff;
-}
-
 .cursor-dot {
   width: 4px;
   height: 4px;
-  background-color: #fff;
+  background-color: var(--text-primary);
   border-radius: 50%;
   position: fixed;
   top: 0;
   left: 0;
   pointer-events: none;
   z-index: 10001;
-  mix-blend-mode: difference;
   opacity: 0;
   transition: opacity 0.18s ease-out;
 }
@@ -236,7 +227,8 @@ body.modal-open {
   }
 
   .animate-fly-in,
-  .cascade > * {
+  .cascade > *,
+  .eq-bar {
     animation: none;
   }
 

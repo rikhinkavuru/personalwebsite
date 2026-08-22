@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "motion/react";
+import { EASE } from "@/lib/motion";
 
 /**
  * Per-character rolling counter, matching kenemrls's footer number.
@@ -28,7 +29,7 @@ export default function Odometer({ value }: { value: string }) {
                 initial={{ y: "-100%", opacity: 0 }}
                 animate={{ y: "0%", opacity: 1 }}
                 exit={{ y: "100%", opacity: 0 }}
-                transition={{ duration: 0.35, ease: [0.32, 0.72, 0, 1] }}
+                transition={{ duration: 0.35, ease: EASE }}
                 className="inline-block text-center"
                 style={{ width }}
               >

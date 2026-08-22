@@ -2,8 +2,7 @@
 
 import { motion } from "motion/react";
 import type { ReactNode } from "react";
-
-const EASE = [0.32, 0.72, 0, 1] as const;
+import { EASE } from "@/lib/motion";
 
 /**
  * Scroll-triggered entrance. Fires once, slightly before the element reaches

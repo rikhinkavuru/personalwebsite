@@ -1,12 +1,11 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
-import { createPortal } from "react-dom";
 import type { Postcard as PostcardData } from "@/lib/content";
-
-const EASE = [0.32, 0.72, 0, 1] as const;
+import { EASE } from "@/lib/motion";
+import Overlay from "./Overlay";
 
 /**
  * Progressive blur stack. Six layers of increasing blur, each masked to a
@@ -47,11 +46,8 @@ export default function Postcard({
 }) {
   const [open, setOpen] = useState(false);
   const [failed, setFailed] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const thumbRef = useRef<HTMLImageElement>(null);
   const warmed = useRef(false);
-
-  useEffect(() => setMounted(true), []);
 
   // Fetch the full image as soon as the thumb is hovered, so opening the modal
   // does not wait on a 200KB download.
@@ -69,23 +65,6 @@ export default function Postcard({
     const img = thumbRef.current;
     if (img?.complete && img.naturalWidth === 0) setFailed(true);
   }, []);
-
-  // Lock the page behind the modal and wire up Escape to close.
-  useEffect(() => {
-    if (!open) return;
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setOpen(false);
-    };
-
-    document.body.classList.add("modal-open");
-    window.addEventListener("keydown", onKey);
-
-    return () => {
-      document.body.classList.remove("modal-open");
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
 
   // Without a thumbnail on disk there is nothing to show inline, so the
   // sentence reads normally instead of rendering an empty frame.
@@ -123,77 +102,52 @@ export default function Postcard({
         />
       </motion.button>
 
-      {/* Portalled to <body>: this component is used inside a <p>, and a div
-          overlay nested there is invalid HTML that breaks hydration. */}
-      {mounted &&
-        createPortal(
-          <AnimatePresence>
-            {open && (
-              <motion.div
-                className="fixed inset-0 z-200 flex items-center justify-center bg-black/70 p-6"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                onClick={() => setOpen(false)}
-              >
-                <motion.div
-                  role="dialog"
-                  aria-modal="true"
-                  aria-label={card.alt}
-                  className="w-[min(88vw,100vh,56rem)] bg-[#eee7d9] p-2 shadow-2xl sm:p-3"
-                  style={{ borderRadius: 18 }}
-                  initial={{ scale: 0.92, opacity: 0, y: 12 }}
-                  animate={{ scale: 1, opacity: 1, y: 0 }}
-                  exit={{ scale: 0.96, opacity: 0, y: 8 }}
-                  transition={{ duration: 0.32, ease: EASE }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className="relative overflow-hidden rounded-[6px]">
-                    <Image
-                      src={card.full}
-                      alt={card.alt}
-                      width={1600}
-                      height={1067}
-                      className="aspect-3/2 w-full object-cover"
-                      style={{ borderRadius: 6 }}
-                      priority
-                    />
+      <Overlay
+        open={open}
+        onClose={() => setOpen(false)}
+        label={card.alt}
+        backdropClassName="bg-black/70"
+        panelClassName="w-[min(88vw,100vh,56rem)] rounded-[18px] bg-[#eee7d9] p-2 shadow-2xl sm:p-3"
+      >
+        <div className="relative overflow-hidden rounded-[6px]">
+          <Image
+            src={card.full}
+            alt={card.alt}
+            width={1600}
+            height={1067}
+            className="aspect-3/2 w-full rounded-[6px] object-cover"
+            priority
+          />
 
-                    <div className="pointer-events-none absolute inset-x-0 bottom-0">
-                      {BLUR_LAYERS.map((layer) => (
-                        <div
-                          key={layer.blur}
-                          className="absolute inset-0"
-                          style={{
-                            backdropFilter: `blur(${layer.blur}px)`,
-                            WebkitBackdropFilter: `blur(${layer.blur}px)`,
-                            maskImage: layer.mask,
-                            WebkitMaskImage: layer.mask,
-                          }}
-                        />
-                      ))}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0">
+            {BLUR_LAYERS.map((layer) => (
+              <div
+                key={layer.blur}
+                className="absolute inset-0"
+                style={{
+                  backdropFilter: `blur(${layer.blur}px)`,
+                  WebkitBackdropFilter: `blur(${layer.blur}px)`,
+                  maskImage: layer.mask,
+                  WebkitMaskImage: layer.mask,
+                }}
+              />
+            ))}
 
-                      <div className="absolute inset-0 bg-linear-to-t from-black/45 to-transparent" />
+            <div className="absolute inset-0 bg-linear-to-t from-black/45 to-transparent" />
 
-                      <div className="relative flex flex-col gap-0.5 px-4 pt-10 pb-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 sm:pt-14">
-                        <p className="text-sm font-medium tracking-[-0.006em] text-white">
-                          {card.caption}
-                        </p>
-                        {card.exif && (
-                          <p className="text-xs text-white/70 sm:whitespace-nowrap">
-                            {card.exif}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>,
-          document.body,
-        )}
+            <div className="relative flex flex-col gap-0.5 px-4 pt-10 pb-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 sm:pt-14">
+              <p className="text-sm font-medium tracking-[-0.006em] text-white">
+                {card.caption}
+              </p>
+              {card.exif && (
+                <p className="text-xs text-white/70 sm:whitespace-nowrap">
+                  {card.exif}
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </Overlay>
     </>
   );
 }

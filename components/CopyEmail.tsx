@@ -3,39 +3,9 @@
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 import { profile } from "@/lib/content";
-
-const EASE = [0.32, 0.72, 0, 1] as const;
-
-const CopyIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="size-3.5"
-    aria-hidden="true"
-  >
-    <rect width="12" height="14" x="8" y="8" rx="2.5" />
-    <path d="M17 5.5A2.5 2.5 0 0 0 14.5 3H6.5A3.5 3.5 0 0 0 3 6.5v8A2.5 2.5 0 0 0 5.5 17" />
-  </svg>
-);
-
-const CheckIcon = () => (
-  <svg
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2.5"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    className="size-3.5"
-    aria-hidden="true"
-  >
-    <path d="M20 6 9 17l-5-5" />
-  </svg>
-);
+import { copyText } from "@/lib/clipboard";
+import { EASE } from "@/lib/motion";
+import { CheckIcon, CopyIcon } from "./icons";
 
 /**
  * The email address under the name, with a bare copy control beside it.
@@ -54,26 +24,7 @@ export default function CopyEmail() {
   }, []);
 
   const copy = async () => {
-    try {
-      await navigator.clipboard.writeText(profile.email);
-    } catch {
-      // Clipboard blocked (insecure origin or denied permission); fall back so
-      // the click still does something useful.
-      const field = document.createElement("textarea");
-      field.value = profile.email;
-      field.setAttribute("readonly", "");
-      field.style.position = "fixed";
-      field.style.opacity = "0";
-      document.body.appendChild(field);
-      field.select();
-      try {
-        document.execCommand("copy");
-      } catch {
-        return;
-      } finally {
-        document.body.removeChild(field);
-      }
-    }
+    if (!(await copyText(profile.email))) return;
 
     setCopied(true);
     if (timer.current) clearTimeout(timer.current);

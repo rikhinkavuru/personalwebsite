@@ -34,7 +34,7 @@ export default function ProjectsPage() {
               <Row
                 key={project.slug}
                 title={project.name}
-                subtitle={`${project.role} · ${project.when}`}
+                subtitle={project.role}
                 detail={project.detail}
                 mark={project.mark}
                 href={`/projects/${project.slug}`}

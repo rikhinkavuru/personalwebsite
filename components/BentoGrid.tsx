@@ -1,11 +1,8 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useState } from "react";
-import { createPortal } from "react-dom";
+import { useState } from "react";
 import { marks, type Project } from "@/lib/content";
-
-const EASE = [0.32, 0.72, 0, 1] as const;
+import Overlay from "./Overlay";
 
 /**
  * Slot weights, matching the reference: the two columns are equal height but
@@ -34,25 +31,6 @@ const LAYOUT: { slug: string; grow: number }[][] = [
  */
 export default function BentoGrid({ projects }: { projects: Project[] }) {
   const [zoomed, setZoomed] = useState<Project | null>(null);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => setMounted(true), []);
-
-  useEffect(() => {
-    if (!zoomed) return;
-
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setZoomed(null);
-    };
-
-    document.body.classList.add("modal-open");
-    window.addEventListener("keydown", onKey);
-
-    return () => {
-      document.body.classList.remove("modal-open");
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [zoomed]);
 
   const bySlug = new Map(projects.map((p) => [p.slug, p]));
 
@@ -90,37 +68,15 @@ export default function BentoGrid({ projects }: { projects: Project[] }) {
         ))}
       </div>
 
-      {mounted &&
-        createPortal(
-          <AnimatePresence>
-            {zoomed && (
-              <motion.div
-                className="fixed inset-0 z-200 flex items-center justify-center bg-black/80 p-6"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                onClick={() => setZoomed(null)}
-              >
-                <motion.div
-                  role="dialog"
-                  aria-modal="true"
-                  aria-label={zoomed.name}
-                  className="relative max-h-[88vh] w-[min(94vw,64rem)] overflow-hidden rounded-2xl"
-                  style={{ backgroundColor: zoomed.cardBg ?? "var(--foreground)" }}
-                  initial={{ scale: 0.94, opacity: 0, y: 10 }}
-                  animate={{ scale: 1, opacity: 1, y: 0 }}
-                  exit={{ scale: 0.96, opacity: 0, y: 6 }}
-                  transition={{ duration: 0.3, ease: EASE }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Lightbox project={zoomed} />
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>,
-          document.body,
-        )}
+      <Overlay
+        open={Boolean(zoomed)}
+        onClose={() => setZoomed(null)}
+        label={zoomed?.name ?? "Project"}
+        panelClassName="relative max-h-[88vh] w-[min(94vw,64rem)] overflow-hidden rounded-2xl"
+        panelStyle={{ backgroundColor: zoomed?.cardBg ?? "var(--foreground)" }}
+      >
+        {zoomed && <Lightbox project={zoomed} />}
+      </Overlay>
     </>
   );
 }

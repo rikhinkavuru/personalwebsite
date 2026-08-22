@@ -4,6 +4,7 @@ import { motion, useMotionValueEvent, useScroll } from "motion/react";
 import Link from "next/link";
 import { useState } from "react";
 import { profile } from "@/lib/content";
+import { EASE, SPRING } from "@/lib/motion";
 import Avatar from "./Avatar";
 import CopyEmail from "./CopyEmail";
 import ThemeToggle from "./ThemeToggle";
@@ -21,8 +22,6 @@ import ThemeToggle from "./ThemeToggle";
 const COLLAPSE_AT = 120;
 const EXPAND_AT = 32;
 
-const EASE = [0.32, 0.72, 0, 1] as const;
-const SPRING = { type: "spring", stiffness: 400, damping: 40, mass: 0.6 } as const;
 
 export type Crumb = { label: string; href?: string };
 
@@ -54,7 +53,7 @@ export default function ProfileHeader({ crumbs }: { crumbs?: Crumb[] }) {
       {/* Blur plate. Separate layer so the content above it stays crisp. */}
       <motion.div
         className="pointer-events-none absolute inset-0 bg-bg-blur"
-        style={{ backdropFilter: compact ? "blur(16px)" : "none" }}
+        style={{ backdropFilter: compact ? "blur(10px)" : "none" }}
         animate={{ opacity: compact ? 1 : 0 }}
         transition={{ duration: 0.25, ease: EASE }}
       />

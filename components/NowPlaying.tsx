@@ -15,14 +15,10 @@ export type Track = {
 
 const EASE = [0.32, 0.72, 0, 1] as const;
 
-/** Per-bar profile. Staggered and unequal so the four never move in lockstep. */
-const BARS = [
-  { x: 1, peak: 3.0, duration: 0.62, delay: 0 },
-  { x: 5, peak: 1.6, duration: 0.5, delay: 0.16 },
-  { x: 9, peak: 2.6, duration: 0.72, delay: 0.08 },
-  { x: 13, peak: 1.9, duration: 0.56, delay: 0.24 },
-];
-
+/**
+ * Four bars, scaled by CSS keyframes rather than animated from JS. Animating
+ * SVG y1/y2 per frame kept the main thread busy for the life of the page.
+ */
 function Equalizer({ animate }: { animate: boolean }) {
   return (
     <svg
@@ -30,33 +26,18 @@ function Equalizer({ animate }: { animate: boolean }) {
       width="14"
       height="12"
       viewBox="0 0 14 12"
-      className="shrink-0 overflow-visible"
+      className={`shrink-0 overflow-visible ${animate ? "" : "eq-paused"}`}
     >
-      {BARS.map((bar) => (
-        <motion.line
-          key={bar.x}
-          x1={bar.x}
-          x2={bar.x}
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          initial={{ y1: 5, y2: 7 }}
-          animate={
-            animate
-              ? { y1: [5, 6 - bar.peak, 5], y2: [7, 6 + bar.peak, 7] }
-              : { y1: 5, y2: 7 }
-          }
-          transition={
-            animate
-              ? {
-                  duration: bar.duration,
-                  delay: bar.delay,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                  ease: "easeInOut",
-                }
-              : { duration: 0.3 }
-          }
+      {[1, 5, 9, 13].map((x) => (
+        <rect
+          key={x}
+          className="eq-bar"
+          x={x - 1}
+          y={2}
+          width={2}
+          height={8}
+          rx={1}
+          fill="currentColor"
         />
       ))}
     </svg>

@@ -2,9 +2,8 @@
 
 import { AnimatePresence, motion } from "motion/react";
 import { useState, type ReactNode } from "react";
+import { EASE } from "@/lib/motion";
 import { socialCards } from "@/lib/content";
-
-const EASE = [0.32, 0.72, 0, 1] as const;
 
 /**
  * Wraps a social icon so a profile preview opens beneath it on hover or focus.

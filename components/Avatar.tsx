@@ -2,9 +2,8 @@
 
 import { motion } from "motion/react";
 import { profile } from "@/lib/content";
+import { SPRING } from "@/lib/motion";
 import FallbackImage from "./FallbackImage";
-
-const SPRING = { type: "spring", stiffness: 400, damping: 40, mass: 0.6 } as const;
 
 /**
  * Profile photo that shrinks with the sticky header (80px/r12 -> 32px/r10).

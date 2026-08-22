@@ -259,7 +259,7 @@ export const projects: Project[] = [
     slug: "virahacks",
     name: "ViraHacks",
     detail: "Healthcare hackathons across 20+ chapters and 1,100+ students.",
-    role: "Founder",
+    role: "President and CEO",
     when: "Current",
     href: "https://virahacks.com",
     mark: "virahacks",
@@ -274,7 +274,7 @@ export const projects: Project[] = [
     slug: "telo",
     name: "Telo",
     detail: "Decentralized plants making shortage-critical sterile injectables.",
-    role: "Founder",
+    role: "Co-founder",
     when: "Current",
     mark: "telo",
     current: true,
@@ -289,7 +289,7 @@ export const projects: Project[] = [
     slug: "inkr",
     name: "Inkr",
     detail: "Platform matching students with research mentors. 60K+ users.",
-    role: "Founder",
+    role: "Developer",
     when: "2024-26",
     href: "https://inkr.pro",
     mark: "inkr",
@@ -304,7 +304,7 @@ export const projects: Project[] = [
     slug: "linkd",
     name: "Linkd",
     detail: "Daily word chain game. 45K+ daily players.",
-    role: "Creator",
+    role: "Developer",
     when: "2025",
     href: "https://linkddaily.com",
     mark: "linkd",
@@ -329,7 +329,7 @@ export const projects: Project[] = [
     slug: "auteur",
     name: "Auteur",
     detail: "AI copilot for After Effects. Won the Congressional App Challenge.",
-    role: "Creator",
+    role: "Developer",
     when: "2025",
     href: "https://www.congressionalappchallenge.us/25-in03/",
     mark: "auteur",
@@ -339,7 +339,7 @@ export const projects: Project[] = [
     slug: "spocal",
     name: "Spocal",
     detail: "Transformer-based speech fluency scoring. Diamond Challenge finalist.",
-    role: "Creator",
+    role: "Developer",
     when: "2024",
     mark: "spocal",
     tags: ["Speech", "ML"],
@@ -351,9 +351,10 @@ export type Paper = {
   track: string;
   title: string;
   note?: string;
-  href?: string;
   /** PDF under /public/papers, opened in the in-page reader. */
   pdf?: string;
+  /** Rendered first page, shown as the row's preview. */
+  thumb?: string;
 };
 
 export const research: Paper[] = [
@@ -364,6 +365,7 @@ export const research: Paper[] = [
       "How Much of Genomic Language Model Variant-Effect Prediction Is Base Composition?",
     note: "Pending in PMLR",
     pdf: "/papers/mlcb-base-composition.pdf",
+    thumb: "/papers/thumbs/mlcb-base-composition.webp",
   },
   {
     venue: "ISMB 2026",
@@ -371,13 +373,15 @@ export const research: Paper[] = [
     title:
       "Single-Seed Benchmarks Are Unreliable for LLM Coding Agents on Bioinformatics Tasks",
     pdf: "/papers/ismb-single-seed.pdf",
+    thumb: "/papers/thumbs/ismb-single-seed.webp",
   },
   {
-    venue: "IEEE BIBM 2025",
+    venue: "PSB 2027",
     track: "Trustworthy AI for Biomedical Discovery track",
     title:
       "Three Routes to Failure: An Interpretable Diagnosis of Task Difficulty and Negative-Set Contamination in Genomic Sequence-Classification Benchmarks",
     pdf: "/papers/three-routes-to-failure.pdf",
+    thumb: "/papers/thumbs/three-routes-to-failure.webp",
   },
   {
     venue: "INFORMS 2025",
