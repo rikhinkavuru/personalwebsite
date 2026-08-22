@@ -145,6 +145,10 @@ export default function NowPlaying({ className }: { className?: string }) {
               <img
                 src={track.art}
                 alt=""
+                width={320}
+                height={320}
+                loading="lazy"
+                decoding="async"
                 className="mb-3 aspect-square w-full rounded-lg object-cover"
               />
             )}

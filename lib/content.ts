@@ -3,7 +3,7 @@ export const profile = {
   lastName: "Kavuru",
   fullName: "Rikhin Kavuru",
   handle: "@rikhin.kavuru",
-  avatar: "/avatar.jpg",
+  avatar: "/avatar.webp",
   email: "rikhin@virahacks.com",
   github: "https://github.com/rikhinkavuru",
   linkedin: "https://www.linkedin.com/in/rikhin-kavuru-29sb0926/",
@@ -31,32 +31,32 @@ export type Mark = {
 };
 
 export const marks: Record<string, Mark> = {
-  convexia: { src: "/logos/convexia.png", tint: "#12b866", fallbackBg: "#0a0c0b" },
-  broad: { src: "/logos/broad.png", tint: "#006ab2", fallbackBg: "#006ab2" },
+  convexia: { src: "/logos/convexia.webp", tint: "#12b866", fallbackBg: "#0a0c0b" },
+  broad: { src: "/logos/broad.webp", tint: "#006ab2", fallbackBg: "#006ab2" },
   yale: {
-    src: "/logos/yale.png",
-    preview: "/previews/yale.jpg",
+    src: "/logos/yale.webp",
+    preview: "/previews/yale.webp",
     tint: "#00356b",
     fallbackBg: "#00356b",
   },
   adaptyv: {
-    src: "/logos/adaptyv.png",
-    preview: "/previews/adaptyv.jpg",
+    src: "/logos/adaptyv.webp",
+    preview: "/previews/adaptyv.webp",
     tint: "#5aa8cc",
     fallbackBg: "#5aa8cc",
   },
-  purdue: { src: "/logos/purdue.png", tint: "#9d7f3d", fallbackBg: "#c7b28a" },
-  telo: { src: "/logos/telo.png", tint: "#111111", fallbackBg: "#111111" },
+  purdue: { src: "/logos/purdue.webp", tint: "#9d7f3d", fallbackBg: "#c7b28a" },
+  telo: { src: "/logos/telo.webp", tint: "#111111", fallbackBg: "#111111" },
   /** Transparent-background mark, for setting inline on a white page. */
   teloMark: {
-    src: "/logos/telo-mark.png",
-    srcDark: "/logos/telo-mark-dark.png",
+    src: "/logos/telo-mark.webp",
+    srcDark: "/logos/telo-mark-dark.webp",
     tint: "#111111",
     fallbackBg: "#111111",
   },
-  inkr: { src: "/logos/inkr.png", tint: "#f4501e", fallbackBg: "#f4501e" },
-  linkd: { src: "/logos/linkd.png", tint: "#d32b25", fallbackBg: "#eaddcb" },
-  virahacks: { src: "/logos/virahacks.png", tint: "#17843f", fallbackBg: "#17843f" },
+  inkr: { src: "/logos/inkr.webp", tint: "#f4501e", fallbackBg: "#f4501e" },
+  linkd: { src: "/logos/linkd.webp", tint: "#d32b25", fallbackBg: "#eaddcb" },
+  virahacks: { src: "/logos/virahacks.webp", tint: "#17843f", fallbackBg: "#17843f" },
 };
 
 /**
@@ -80,8 +80,8 @@ export type Postcard = {
 export const postcards: Record<string, Postcard> = {
   home: {
     id: "home",
-    thumb: "/postcards/fort-wayne-thumb.jpg",
-    full: "/postcards/fort-wayne.jpg",
+    thumb: "/postcards/fort-wayne-thumb.webp",
+    full: "/postcards/fort-wayne.webp",
     alt: "Southern shore of Lake Michigan, Indiana",
     caption: "Southern shore of Lake Michigan, Indiana",
     exif: "Shot on \uf8ff iPhone 16 Pro · 24mm · ƒ/1.8 · ISO 50 · 1/1385s",
@@ -89,8 +89,8 @@ export const postcards: Record<string, Postcard> = {
   },
   sf: {
     id: "sf",
-    thumb: "/postcards/sf-thumb.jpg",
-    full: "/postcards/sf.jpg",
+    thumb: "/postcards/sf-thumb.webp",
+    full: "/postcards/sf.webp",
     alt: "San Francisco Bay",
     caption: "Looking out over the Bay, San Francisco",
     exif: "",
@@ -106,7 +106,7 @@ export const nowPlaying = {
   title: "collage",
   artist: "Gunna",
   album: "One of Wun",
-  art: "/music/collage.jpg",
+  art: "/music/collage.webp",
   url: "https://open.spotify.com/track/41TXadM22OIJY04xSW9iuv",
 };
 
@@ -122,7 +122,7 @@ export const socialCards = {
   github: {
     handle: "rikhinkavuru",
     name: "17 | cbio research @broadinstitute",
-    avatar: "/social/github-avatar.jpg",
+    avatar: "/social/github-avatar.webp",
     followers: 4,
     following: 1,
     repos: 25,
@@ -130,7 +130,7 @@ export const socialCards = {
   instagram: {
     handle: "rikhin.kavuru",
     name: "Rikhin Kavuru",
-    avatar: "/avatar.jpg",
+    avatar: "/avatar.webp",
     /** Fill these in to show the posts/followers/following row. */
     posts: null as number | null,
     followers: null as number | null,
@@ -140,7 +140,7 @@ export const socialCards = {
     name: "Rikhin Kavuru",
     headline: "Machine Learning Engineer at Convexia",
     location: "Fort Wayne, Indiana",
-    avatar: "/social/x-avatar.jpg",
+    avatar: "/social/x-avatar.webp",
     /** Fill in to show "· 500+ connections". */
     connections: null as string | null,
   },
@@ -148,7 +148,7 @@ export const socialCards = {
     handle: "rikhinkavuru",
     name: "Rikhin Kavuru",
     bio: "ml for biology. building Telo.",
-    avatar: "/social/x-avatar.jpg",
+    avatar: "/social/x-avatar.webp",
     /** Fill in to show the followers/following row. */
     followers: null as number | null,
     following: null as number | null,
@@ -248,7 +248,7 @@ export const projects: Project[] = [
     href: "https://virahacks.com",
     mark: "virahacks",
     current: true,
-    shots: [{ src: "/projects/virahacks.png", alt: "ViraHacks", width: 600, height: 300 }],
+    shots: [{ src: "/projects/virahacks.webp", alt: "ViraHacks", width: 1800, height: 1113 }],
     tags: ["Community", "Healthcare", "1,100+ students"],
     blurb:
       "A hackathon network for high schoolers: real venues, mentors, judges, and healthcare problems worth solving, all run by students.",
@@ -262,7 +262,7 @@ export const projects: Project[] = [
     when: "Current",
     mark: "telo",
     current: true,
-    shots: [{ src: "/projects/telo.png", alt: "Telo", width: 600, height: 600 }],
+    shots: [{ src: "/projects/telo.webp", alt: "Telo", width: 600, height: 604 }],
     tags: ["Pharma", "Manufacturing", "Supply chain"],
     blurb:
       "Decentralized microfactories making the sterile injectables that keep going short.",
@@ -277,7 +277,7 @@ export const projects: Project[] = [
     when: "2024-26",
     href: "https://inkr.pro",
     mark: "inkr",
-    shots: [{ src: "/projects/inkr.png", alt: "Inkr", width: 660, height: 470 }],
+    shots: [{ src: "/projects/inkr.webp", alt: "Inkr", width: 1024, height: 900 }],
     tags: ["Education", "Marketplace", "60K+ users"],
     blurb:
       "AI for networking, used by 60,000+ students. Connects them with the researchers, mentors, and opportunities that actually move a career forward.",
@@ -292,7 +292,7 @@ export const projects: Project[] = [
     when: "2025",
     href: "https://linkddaily.com",
     mark: "linkd",
-    shots: [{ src: "/projects/linkd.png", alt: "Linkd", width: 660, height: 440 }],
+    shots: [{ src: "/projects/linkd.webp", alt: "Linkd", width: 1202, height: 900 }],
     tags: ["Games", "45K+ daily players"],
     blurb:
       "A daily word chain game with 45,000+ daily players. Six to ten words, each pair forming a real compound or common phrase.",

@@ -16,12 +16,17 @@ export default function FallbackImage({
   className,
   style,
   fallback,
+  width,
+  height,
 }: {
   src: string;
   alt: string;
   className?: string;
   style?: React.CSSProperties;
   fallback: React.ReactNode;
+  /** Intrinsic size, so the box is reserved before the bytes arrive. */
+  width?: number;
+  height?: number;
 }) {
   const [failed, setFailed] = useState(false);
   const ref = useRef<HTMLImageElement>(null);
@@ -40,6 +45,9 @@ export default function FallbackImage({
       src={src}
       // Empty until it loads, so a failed request never paints alt text.
       alt={alt}
+      width={width}
+      height={height}
+      decoding="async"
       className={className}
       style={style}
       onError={() => setFailed(true)}

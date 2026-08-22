@@ -60,7 +60,7 @@ export default function Socials() {
         rel="noreferrer"
         className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 text-sm font-medium text-bg transition-opacity hover:opacity-80"
       >
-        Get in touch
+        Book a call
         <ArrowIcon />
       </a>
 

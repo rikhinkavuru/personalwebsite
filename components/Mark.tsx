@@ -46,6 +46,8 @@ export function InlineMark({
           <FallbackImage
             src={mark.src}
             alt=""
+            width={256}
+            height={256}
             className={`absolute inset-0 h-full w-full object-cover ${dark ? "dark:hidden" : ""}`}
             fallback={tile}
           />
@@ -55,6 +57,8 @@ export function InlineMark({
             <FallbackImage
               src={dark}
               alt=""
+              width={256}
+              height={256}
               className="absolute inset-0 hidden h-full w-full object-cover dark:block"
               fallback={tile}
             />
@@ -144,7 +148,15 @@ export function MarkedName({
             transition={{ duration: 0.18, ease: EASE }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={preview} alt="" className="block w-full rounded-xl" />
+            <img
+              src={preview}
+              alt=""
+              width={780}
+              height={467}
+              loading="lazy"
+              decoding="async"
+              className="block w-full rounded-xl"
+            />
           </motion.span>
         )}
       </AnimatePresence>
@@ -186,6 +198,8 @@ export function LogoTile({
         <FallbackImage
           src={mark.src}
           alt=""
+          width={256}
+          height={256}
           className="absolute inset-0 h-full w-full object-cover"
           fallback={tile}
         />

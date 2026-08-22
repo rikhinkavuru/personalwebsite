@@ -37,6 +37,8 @@ export default function Avatar({ compact }: { compact: boolean }) {
       <FallbackImage
         src={profile.avatar}
         alt={profile.fullName}
+        width={400}
+        height={400}
         className="absolute inset-0 h-full w-full object-cover"
         fallback={tile}
       />

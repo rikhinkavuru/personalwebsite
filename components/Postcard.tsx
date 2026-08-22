@@ -101,6 +101,9 @@ export default function Postcard({
           ref={thumbRef}
           src={card.thumb}
           alt={card.alt}
+          width={240}
+          height={160}
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover"
           style={{ borderRadius: 2 }}
           onError={() => setFailed(true)}

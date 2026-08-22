@@ -68,6 +68,9 @@ export function InstagramCard() {
           <img
             src={c.avatar}
             alt=""
+            width={200}
+            height={200}
+            loading="lazy"
             className="block size-11 rounded-full border-2 border-white object-cover"
           />
         </div>
@@ -107,6 +110,9 @@ export function LinkedInCard() {
         <img
           src={c.avatar}
           alt=""
+          width={200}
+          height={200}
+          loading="lazy"
           className="-mt-6 block size-12 rounded-full border-2 border-white object-cover"
         />
         <p className="mt-2 text-sm font-semibold text-neutral-900">{c.name}</p>
@@ -135,6 +141,9 @@ export function GitHubCard() {
         <img
           src={c.avatar}
           alt=""
+          width={200}
+          height={200}
+          loading="lazy"
           className="block size-11 shrink-0 rounded-full object-cover"
         />
 
@@ -169,6 +178,9 @@ export function XCard() {
         <img
           src={c.avatar}
           alt=""
+          width={200}
+          height={200}
+          loading="lazy"
           className="block size-11 shrink-0 rounded-full object-cover"
         />
 

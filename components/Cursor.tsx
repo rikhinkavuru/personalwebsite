@@ -26,6 +26,7 @@ export default function Cursor() {
     let targetX = 0;
     let targetY = 0;
     let frame = 0;
+    let running = false;
 
     // The ring deliberately does not react to hover targets: growing and
     // filling it fought with the hover states of the things underneath.
@@ -39,22 +40,39 @@ export default function Cursor() {
       }
       targetX = e.clientX;
       targetY = e.clientY;
+      start();
       if (dot.current) {
         dot.current.style.transform = `translate(${targetX - 2}px, ${targetY - 2}px)`;
       }
     };
 
+    // The loop only runs while the ring is still catching up. Leaving a
+    // requestAnimationFrame running for the life of the page costs a frame of
+    // main-thread work forever, for nothing once the cursor has settled.
     const tick = () => {
-      ringX += (targetX - ringX) * 0.18;
-      ringY += (targetY - ringY) * 0.18;
+      const dx = targetX - ringX;
+      const dy = targetY - ringY;
+      ringX += dx * 0.18;
+      ringY += dy * 0.18;
+
       if (ring.current) {
         ring.current.style.transform = `translate(${ringX - 10}px, ${ringY - 10}px)`;
+      }
+
+      if (Math.abs(dx) < 0.1 && Math.abs(dy) < 0.1) {
+        running = false;
+        return;
       }
       frame = requestAnimationFrame(tick);
     };
 
-    window.addEventListener("mousemove", move);
-    frame = requestAnimationFrame(tick);
+    const start = () => {
+      if (running) return;
+      running = true;
+      frame = requestAnimationFrame(tick);
+    };
+
+    window.addEventListener("mousemove", move, { passive: true });
 
     return () => {
       window.removeEventListener("mousemove", move);

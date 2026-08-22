@@ -140,6 +140,9 @@ function Lightbox({ project }: { project: Project }) {
         <img
           src={shot.src}
           alt={shot.alt}
+          width={shot.width}
+          height={shot.height}
+          decoding="async"
           className="mx-auto block max-h-[88vh] w-auto"
         />
         <div className="absolute bottom-0 left-0 p-6 sm:p-8">
@@ -157,6 +160,9 @@ function Lightbox({ project }: { project: Project }) {
       <img
         src={shot.src}
         alt={shot.alt}
+        width={shot.width}
+        height={shot.height}
+        decoding="async"
         className="block w-full self-stretch object-cover sm:w-[62%] sm:shrink-0"
       />
 
@@ -207,6 +213,9 @@ function CardFace({ project, large }: { project: Project; large?: boolean }) {
       <img
         src={shot.src}
         alt={shot.alt}
+        width={shot.width}
+        height={shot.height}
+        decoding="async"
         // The lightbox shows the whole image; the tile crops to fill its slot.
         className={
           large
@@ -228,6 +237,9 @@ function CardFace({ project, large }: { project: Project; large?: boolean }) {
           <img
             src={mark.src}
             alt={project.name}
+            width={256}
+            height={256}
+            decoding="async"
             className={`rounded-xl object-cover ${large ? "size-28" : "size-16"}`}
           />
         </span>
