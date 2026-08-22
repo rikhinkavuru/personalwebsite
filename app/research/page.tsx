@@ -25,8 +25,7 @@ export default function ResearchPage() {
               Research
             </h2>
             <p className="mt-2 text-base text-muted">
-              Mostly on whether the benchmarks we trust actually measure what we
-              think they measure.
+              Somewhere, something incredible is waiting to be known.
             </p>
           </StaggerItem>
 

@@ -33,13 +33,13 @@ export default function Home() {
               {showHome && <Postcard card={postcards.home} tight />}. Previously
               comp bio research at{" "}
               <MarkedName
-                name="yale"
+                name="yaleMark"
                 label="Yale"
                 href="https://medicine.yale.edu/neurology/"
               />{" "}
               and data science at{" "}
               <MarkedName
-                name="adaptyv"
+                name="adaptyvMark"
                 label="Adaptyv"
                 href="https://www.adaptyvbio.com/"
               />

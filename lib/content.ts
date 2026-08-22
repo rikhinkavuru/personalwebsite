@@ -33,14 +33,17 @@ export type Mark = {
 export const marks: Record<string, Mark> = {
   convexia: { src: "/logos/convexia.webp", tint: "#12b866", fallbackBg: "#0a0c0b" },
   broad: { src: "/logos/broad.webp", tint: "#006ab2", fallbackBg: "#006ab2" },
-  yale: {
-    src: "/logos/yale.webp",
+  yale: { src: "/logos/yale.webp", tint: "#00356b", fallbackBg: "#00356b" },
+  /** Transparent-background twins, for setting inline in prose. */
+  yaleMark: {
+    src: "/logos/yale-mark.webp",
     preview: "/previews/yale.webp",
     tint: "#00356b",
     fallbackBg: "#00356b",
   },
-  adaptyv: {
-    src: "/logos/adaptyv.webp",
+  adaptyv: { src: "/logos/adaptyv.webp", tint: "#5aa8cc", fallbackBg: "#5aa8cc" },
+  adaptyvMark: {
+    src: "/logos/adaptyv-mark.webp",
     preview: "/previews/adaptyv.webp",
     tint: "#5aa8cc",
     fallbackBg: "#5aa8cc",
@@ -262,7 +265,7 @@ export const projects: Project[] = [
     when: "Current",
     mark: "telo",
     current: true,
-    shots: [{ src: "/projects/telo.webp", alt: "Telo", width: 600, height: 604 }],
+    shots: [{ src: "/projects/telo.webp", alt: "Telo", width: 1600, height: 900 }],
     tags: ["Pharma", "Manufacturing", "Supply chain"],
     blurb:
       "Decentralized microfactories making the sterile injectables that keep going short.",
