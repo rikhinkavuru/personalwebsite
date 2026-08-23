@@ -268,7 +268,7 @@ export const projects: Project[] = [
     tags: ["Community", "Healthcare", "1,100+ students"],
     blurb:
       "A hackathon network for high schoolers: real venues, mentors, judges, and healthcare problems worth solving, all run by students.",
-    cardBg: "#eeebe8",
+    cardBg: "#f5f1ee",
   },
   {
     slug: "telo",

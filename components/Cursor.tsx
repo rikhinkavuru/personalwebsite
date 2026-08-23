@@ -40,6 +40,7 @@ export default function Cursor() {
       }
       targetX = e.clientX;
       targetY = e.clientY;
+      reveal();
       start();
       if (dot.current) {
         dot.current.style.transform = `translate(${targetX - 2}px, ${targetY - 2}px)`;
@@ -72,6 +73,11 @@ export default function Cursor() {
       frame = requestAnimationFrame(tick);
     };
 
+    const reveal = () => {
+      ring.current?.classList.add("visible");
+      dot.current?.classList.add("visible");
+    };
+
     const hide = () => {
       ring.current?.classList.remove("visible");
       dot.current?.classList.remove("visible");
@@ -95,13 +101,11 @@ export default function Cursor() {
     window.addEventListener("mousemove", move, { passive: true });
     document.addEventListener("mouseleave", hide);
     document.addEventListener("mouseenter", show);
-    window.addEventListener("blur", hide);
 
     return () => {
       window.removeEventListener("mousemove", move);
       document.removeEventListener("mouseleave", hide);
       document.removeEventListener("mouseenter", show);
-      window.removeEventListener("blur", hide);
       cancelAnimationFrame(frame);
       document.documentElement.classList.remove("cursor-active");
     };

@@ -217,6 +217,49 @@ body {
   transition: opacity 0.18s ease-out;
 }
 
+/**
+ * Equaliser bars. CSS transforms rather than per-frame JS updates to SVG
+ * geometry, so the compositor owns them and they cost nothing during scroll.
+ *
+ * transform-box: fill-box is required: without it an SVG child resolves
+ * transform-origin against the viewBox, so the bars would scale about the
+ * canvas corner rather than their own centres.
+ */
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.28);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.eq-bar {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: eq 0.62s ease-in-out infinite;
+}
+
+.eq-bar:nth-child(2) {
+  animation-duration: 0.5s;
+  animation-delay: 0.16s;
+}
+
+.eq-bar:nth-child(3) {
+  animation-duration: 0.74s;
+  animation-delay: 0.08s;
+}
+
+.eq-bar:nth-child(4) {
+  animation-duration: 0.56s;
+  animation-delay: 0.24s;
+}
+
+.eq-paused .eq-bar {
+  animation-play-state: paused;
+}
+
 body.modal-open {
   overflow: hidden;
 }
