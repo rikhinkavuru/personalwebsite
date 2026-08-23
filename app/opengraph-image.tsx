@@ -72,7 +72,6 @@ export default function OpengraphImage() {
           }}
         >
           <div style={{ display: "flex" }}>Fort Wayne, Indiana</div>
-          <div style={{ display: "flex" }}>Convexia · Broad Institute</div>
         </div>
       </div>
     ),
