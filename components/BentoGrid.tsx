@@ -134,7 +134,29 @@ function Lightbox({ project }: { project: Project }) {
           </a>
         ) : (
           project.team && (
-            <p className={`text-sm font-medium ${muted}`}>{project.team}</p>
+            <p className={`text-sm font-medium ${muted}`}>
+              {project.team.map((person, i) => (
+                <span key={person.name}>
+                  {i > 0 && ", "}
+                  {person.href ? (
+                    <a
+                      href={person.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={`underline decoration-2 underline-offset-4 transition-[text-decoration-color] ${
+                        dark
+                          ? "decoration-white/35 hover:decoration-white"
+                          : "decoration-black/25 hover:decoration-black"
+                      }`}
+                    >
+                      {person.name}
+                    </a>
+                  ) : (
+                    person.name
+                  )}
+                </span>
+              ))}
+            </p>
           )
         )}
 
