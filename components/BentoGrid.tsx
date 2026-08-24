@@ -84,10 +84,12 @@ export default function BentoGrid({ projects }: { projects: Project[] }) {
 /* eslint-disable @next/next/no-img-element */
 
 /**
- * Zoomed view. Projects with a landing page put the artwork on the left and
- * the write-up beside it; the artwork's own background matches `cardBg`, so
- * the two halves read as one panel. Telo has no site yet, so it keeps the
- * full frame with a caption tucked into the bottom-left corner.
+ * Zoomed view: the artwork on the left, the write-up beside it. The artwork's
+ * own background matches `cardBg`, so the two halves read as one panel.
+ *
+ * Under the title sits either a link to the project's site or, for work with
+ * more than one author, the credits. Projects that name a team do not repeat a
+ * byline underneath.
  */
 function Lightbox({ project }: { project: Project }) {
   const shot = project.shots?.[0];
@@ -97,27 +99,6 @@ function Lightbox({ project }: { project: Project }) {
   const rule = dark ? "border-white/20" : "border-black/10";
 
   if (!shot) return <CardFace project={project} large />;
-
-  if (!project.href) {
-    return (
-      <div className="relative">
-        <img
-          src={shot.src}
-          alt={shot.alt}
-          width={shot.width}
-          height={shot.height}
-          decoding="async"
-          className="mx-auto block max-h-[88vh] w-auto"
-        />
-        <div className="absolute bottom-0 left-0 p-6 sm:p-8">
-          <p className={`text-lg font-semibold ${body}`}>{project.name}</p>
-          <p className={`mt-1 max-w-sm text-sm leading-relaxed ${muted}`}>
-            {project.blurb ?? project.detail}
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex flex-col sm:flex-row">
@@ -133,31 +114,39 @@ function Lightbox({ project }: { project: Project }) {
       <div className="flex flex-1 flex-col justify-center gap-3 p-6 sm:p-8">
         <p className={`text-xl font-semibold ${body}`}>{project.name}</p>
 
-        <a
-          href={project.href}
-          target="_blank"
-          rel="noreferrer"
-          className={`group inline-flex w-fit items-center gap-1.5 text-sm font-medium ${body}`}
-        >
-          Visit
-          <span
-            className={`underline decoration-2 underline-offset-4 ${muted} ${
-              dark
-                ? "decoration-white/35 group-hover:decoration-white"
-                : "decoration-black/25 group-hover:decoration-black"
-            }`}
+        {project.href ? (
+          <a
+            href={project.href}
+            target="_blank"
+            rel="noreferrer"
+            className={`group inline-flex w-fit items-center gap-1.5 text-sm font-medium ${body}`}
           >
-            {prettyUrl(project.href)}
-          </span>
-        </a>
+            Visit
+            <span
+              className={`underline decoration-2 underline-offset-4 ${muted} ${
+                dark
+                  ? "decoration-white/35 group-hover:decoration-white"
+                  : "decoration-black/25 group-hover:decoration-black"
+              }`}
+            >
+              {prettyUrl(project.href)}
+            </span>
+          </a>
+        ) : (
+          project.team && (
+            <p className={`text-sm font-medium ${muted}`}>{project.team}</p>
+          )
+        )}
 
         <p className={`text-sm leading-relaxed ${muted}`}>
           {project.blurb ?? project.detail}
         </p>
 
-        <p className={`mt-1 border-t pt-3 text-xs ${rule} ${muted}`}>
-          Created by Rikhin Kavuru
-        </p>
+        {!project.team && (
+          <p className={`mt-1 border-t pt-3 text-xs ${rule} ${muted}`}>
+            Created by Rikhin Kavuru
+          </p>
+        )}
       </div>
     </div>
   );

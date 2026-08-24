@@ -233,6 +233,8 @@ export type Project = {
   shots?: { src: string; alt: string; width: number; height: number }[];
   /** Sentence or two shown beside the artwork in the lightbox. */
   blurb?: string;
+  /** Credits shown under the title, for work with more than one author. */
+  team?: string;
   /** Must match the artwork's own background so the two blend seamlessly. */
   cardBg?: string;
   /** Set when cardBg is dark enough to need light text. */
@@ -264,8 +266,9 @@ export const projects: Project[] = [
     mark: "telo",
     current: true,
     shots: [{ src: "/projects/telo.webp", alt: "Telo", width: 1600, height: 900 }],
+    team: "Rikhin Kavuru, Barry Abejide, Arnay Garhyan",
     blurb:
-      "Decentralized microfactories making the sterile injectables that keep going short.",
+      "Autonomous microfactories for drug manufacturing. Biological foundation models trained on pre-clinical data forecast human clinical response, surfacing shelved drugs worth reviving. We manufacture them at decentralized plants on an AI-native pharma OS that already beats state-of-the-art benchmarks, going after the shortages and centralization that keep pharma slow.",
     cardBg: "#17171a",
     cardDark: true,
   },
