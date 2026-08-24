@@ -37,7 +37,7 @@ export default function ProjectsPage() {
                 subtitle={project.role}
                 detail={project.detail}
                 mark={project.mark}
-                href={`/projects/${project.slug}`}
+                href={project.href}
                 logoSize={48}
                 badge={
                   project.current ? <Badge solid>Current</Badge> : undefined

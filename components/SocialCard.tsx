@@ -22,7 +22,7 @@ export function HoverCard({
 
   return (
     <div
-      className="relative inline-flex"
+      className="static inline-flex sm:relative"
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
       onFocus={() => setOpen(true)}
@@ -36,7 +36,7 @@ export function HoverCard({
             // pointer-events-none: the card is decoration, and letting it
             // capture the pointer would make it flicker as the cursor leaves
             // the icon underneath.
-            className="pointer-events-none absolute top-full left-0 z-50 mt-2"
+            className="pointer-events-none absolute top-full left-1/2 z-50 mt-2 -translate-x-1/2 sm:left-0 sm:translate-x-0"
             initial={{ opacity: 0, y: -4, scale: 0.97 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -2, scale: 0.98 }}
@@ -51,7 +51,7 @@ export function HoverCard({
 }
 
 const shell =
-  "w-64 overflow-hidden rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.18)] ring-1 ring-black/5";
+  "w-64 max-w-[calc(100vw-2rem)] overflow-hidden rounded-2xl bg-white text-left shadow-[0_12px_40px_rgba(0,0,0,0.18)] ring-1 ring-black/5";
 
 /* eslint-disable @next/next/no-img-element */
 

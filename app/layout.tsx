@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import Cursor from "@/components/Cursor";
 import { profile } from "@/lib/content";
 import { siteDescription, siteName, siteUrl } from "@/lib/site";
 import "./globals.css";
@@ -103,7 +102,6 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body className="flex min-h-screen flex-col bg-bg">
-        <Cursor />
         {children}
         <script
           type="application/ld+json"

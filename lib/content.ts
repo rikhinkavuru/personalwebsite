@@ -221,14 +221,6 @@ export const experience: Experience[] = [
   },
 ];
 
-/** One section of a case study. Paragraphs render in order; `image` is optional. */
-export type CaseSection = {
-  id: string;
-  heading: string;
-  paragraphs: string[];
-  image?: { src: string; alt: string; caption?: string };
-};
-
 export type Project = {
   slug: string;
   name: string;
@@ -239,12 +231,6 @@ export type Project = {
   mark?: keyof typeof marks;
   /** Screenshots for the justified gallery. Empty renders the row without one. */
   shots?: { src: string; alt: string; width: number; height: number }[];
-  /** Chips under the title on the case-study page. */
-  tags?: string[];
-  /** Long-form case study. Absent means the page shows the summary only. */
-  sections?: CaseSection[];
-  /** Figures shown at the end of a case study. */
-  stats?: { value: string; label: string; detail?: string }[];
   /** Sentence or two shown beside the artwork in the lightbox. */
   blurb?: string;
   /** Must match the artwork's own background so the two blend seamlessly. */
@@ -265,7 +251,6 @@ export const projects: Project[] = [
     mark: "virahacks",
     current: true,
     shots: [{ src: "/projects/virahacks.webp", alt: "ViraHacks", width: 1800, height: 1113 }],
-    tags: ["Community", "Healthcare", "1,100+ students"],
     blurb:
       "A hackathon network for high schoolers: real venues, mentors, judges, and healthcare problems worth solving, all run by students.",
     cardBg: "#f5f1ee",
@@ -279,7 +264,6 @@ export const projects: Project[] = [
     mark: "telo",
     current: true,
     shots: [{ src: "/projects/telo.webp", alt: "Telo", width: 1600, height: 900 }],
-    tags: ["Pharma", "Manufacturing", "Supply chain"],
     blurb:
       "Decentralized microfactories making the sterile injectables that keep going short.",
     cardBg: "#17171a",
@@ -294,7 +278,6 @@ export const projects: Project[] = [
     href: "https://inkr.pro",
     mark: "inkr",
     shots: [{ src: "/projects/inkr.webp", alt: "Inkr", width: 1024, height: 900 }],
-    tags: ["Education", "Marketplace", "60K+ users"],
     blurb:
       "AI for networking, used by 60,000+ students. Connects them with the researchers, mentors, and opportunities that actually move a career forward.",
     cardBg: "#4a4ac4",
@@ -309,7 +292,6 @@ export const projects: Project[] = [
     href: "https://linkddaily.com",
     mark: "linkd",
     shots: [{ src: "/projects/linkd.webp", alt: "Linkd", width: 1202, height: 900 }],
-    tags: ["Games", "45K+ daily players"],
     blurb:
       "A daily word chain game with 45,000+ daily players. Six to ten words, each pair forming a real compound or common phrase.",
     cardBg: "#d32b25",
@@ -323,7 +305,6 @@ export const projects: Project[] = [
     when: "2025",
     href: "https://github.com/rikhinkavuru/calma",
     mark: "calma",
-    tags: ["Finance", "Verification"],
   },
   {
     slug: "auteur",
@@ -333,7 +314,6 @@ export const projects: Project[] = [
     when: "2025",
     href: "https://www.congressionalappchallenge.us/25-in03/",
     mark: "auteur",
-    tags: ["Creative tools", "Award winner"],
   },
   {
     slug: "spocal",
@@ -342,7 +322,6 @@ export const projects: Project[] = [
     role: "Developer",
     when: "2024",
     mark: "spocal",
-    tags: ["Speech", "ML"],
   },
 ];
 

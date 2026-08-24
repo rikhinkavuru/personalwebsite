@@ -90,7 +90,7 @@ export default function NowPlaying({ className }: { className?: string }) {
 
   return (
     <span
-      className={`relative inline-flex ${className ?? ""}`}
+      className={`static inline-flex sm:relative ${className ?? ""}`}
       onMouseEnter={() => setOpen(true)}
       onMouseLeave={() => setOpen(false)}
     >
@@ -115,10 +115,10 @@ export default function NowPlaying({ className }: { className?: string }) {
             tabIndex={-1}
             // Anchored to the right of the bars so it never pushes layout
             // around and never covers the bio above.
-            className="absolute top-1/2 left-full z-50 ml-2 block w-36 -translate-y-1/2 rounded-2xl bg-[#111214] p-3 shadow-[0_12px_40px_rgba(0,0,0,0.35)]"
-            initial={{ opacity: 0, x: -6, scale: 0.94 }}
-            animate={{ opacity: 1, x: 0, scale: 1 }}
-            exit={{ opacity: 0, x: -4, scale: 0.97 }}
+            className="absolute top-full left-1/2 z-50 mt-2 block w-36 max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl bg-[#111214] p-3 shadow-[0_12px_40px_rgba(0,0,0,0.35)] sm:top-1/2 sm:left-full sm:mt-0 sm:ml-2 sm:-translate-x-0 sm:-translate-y-1/2"
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.97 }}
             transition={{ duration: 0.2, ease: EASE }}
           >
             {track.art && (

@@ -174,49 +174,6 @@ body {
   }
 }
 
-/* Ring + dot cursor, restored from the previous design. The native cursor is
-   hidden only on real pointer devices, never on touch. */
-@media (hover: hover) and (pointer: fine) {
-  .cursor-active,
-  .cursor-active * {
-    cursor: none !important;
-  }
-}
-
-.cursor {
-  width: 20px;
-  height: 20px;
-  border: 1.5px solid var(--text-primary);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 10000;
-  transition: opacity 0.18s ease-out;
-  background-color: transparent;
-  opacity: 0;
-}
-
-.cursor.visible,
-.cursor-dot.visible {
-  opacity: 1;
-}
-
-.cursor-dot {
-  width: 4px;
-  height: 4px;
-  background-color: var(--text-primary);
-  border-radius: 50%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 10001;
-  opacity: 0;
-  transition: opacity 0.18s ease-out;
-}
-
 /**
  * Equaliser bars. CSS transforms rather than per-frame JS updates to SVG
  * geometry, so the compositor owns them and they cost nothing during scroll.
@@ -273,11 +230,6 @@ body.modal-open {
   .cascade > *,
   .eq-bar {
     animation: none;
-  }
-
-  .cursor,
-  .cursor-dot {
-    display: none;
   }
 
   *,

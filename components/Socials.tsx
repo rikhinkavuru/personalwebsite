@@ -28,7 +28,7 @@ const iconClass =
 export default function Socials() {
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
+    <div className="relative flex flex-wrap items-center gap-2">
       <a
         href={profile.bookingUrl}
         target="_blank"
