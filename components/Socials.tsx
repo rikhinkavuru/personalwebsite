@@ -21,9 +21,9 @@ const iconClass =
 /**
  * Primary CTA, icon links, then the now-playing equaliser on the same line.
  *
- * The CTA is "Book a call" once `profile.bookingUrl` is set, which pushes
- * email down into the icon row. Instagram always renders, becoming a link
- * once its URL is set.
+ * The CTA is "Let's chat!" pointing at `profile.bookingUrl`; its arrow sits
+ * at northeast and swings to east on hover. Instagram always renders,
+ * becoming a link once its URL is set.
  */
 export default function Socials() {
 
@@ -33,10 +33,10 @@ export default function Socials() {
         href={profile.bookingUrl}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 text-sm font-medium text-bg transition-opacity hover:opacity-80"
+        className="group inline-flex h-9 items-center justify-center gap-1.5 rounded-xl bg-primary px-3 text-sm font-medium text-bg transition-opacity hover:opacity-80"
       >
-        Book a call
-        <ArrowIcon />
+        Let&rsquo;s chat!
+        <ArrowIcon className="size-3.5 -rotate-45 transition-transform duration-300 ease-out group-hover:rotate-0" />
       </a>
 
       <HoverCard card={<InstagramCard />}>
