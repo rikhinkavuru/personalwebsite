@@ -31,19 +31,7 @@ export type Mark = {
 export const marks: Record<string, Mark> = {
   convexia: { src: "/logos/convexia.webp", tint: "#12b866", fallbackBg: "#0a0c0b" },
   broad: { src: "/logos/broad.webp", tint: "#006ab2", fallbackBg: "#006ab2" },
-  yale: { src: "/logos/yale.webp", tint: "#00356b", fallbackBg: "#00356b" },
-  /** Transparent-background twins, for setting inline in prose. */
-  yaleMark: {
-    src: "/logos/yale-mark.webp",
-    tint: "#00356b",
-    fallbackBg: "#00356b",
-  },
-  adaptyv: { src: "/logos/adaptyv.webp", tint: "#5aa8cc", fallbackBg: "#5aa8cc" },
-  adaptyvMark: {
-    src: "/logos/adaptyv-mark.webp",
-    tint: "#5aa8cc",
-    fallbackBg: "#5aa8cc",
-  },
+  thinkneuro: { src: "/logos/thinkneuro.webp", tint: "#1c3e5a", fallbackBg: "#cad5eb" },
   purdue: { src: "/logos/purdue.webp", tint: "#9d7f3d", fallbackBg: "#c7b28a" },
   telo: { src: "/logos/telo.webp", tint: "#111111", fallbackBg: "#111111" },
   /** Transparent-background mark, for setting inline on a white page. */
@@ -53,10 +41,9 @@ export const marks: Record<string, Mark> = {
     tint: "#111111",
     fallbackBg: "#111111",
   },
-  inkr: { src: "/logos/inkr.webp", tint: "#f4501e", fallbackBg: "#f4501e" },
+  rkfantasy: { src: "/logos/rkfantasy.webp", tint: "#1f5c2e", fallbackBg: "#1f5c2e" },
   linkd: { src: "/logos/linkd.webp", tint: "#d32b25", fallbackBg: "#eaddcb" },
   virahacks: { src: "/logos/virahacks.webp", tint: "#17843f", fallbackBg: "#17843f" },
-  medarc: { src: "/logos/medarc.webp", tint: "#1e337a", fallbackBg: "#1e337a" },
   calma: { src: "/logos/calma.webp", tint: "#d98b45", fallbackBg: "#192826" },
   auteur: { src: "/logos/auteur.webp", tint: "#0b2a6b", fallbackBg: "#0b2a6b" },
   spocal: { src: "/logos/spocal.webp", tint: "#a8791a", fallbackBg: "#fae28a" },
@@ -106,11 +93,11 @@ export const postcards: Record<string, Postcard> = {
  * credentials exist; until then the card shows this.
  */
 export const nowPlaying = {
-  title: "collage",
-  artist: "Gunna",
-  album: "One of Wun",
-  art: "/music/collage.webp",
-  url: "https://open.spotify.com/track/41TXadM22OIJY04xSW9iuv",
+  title: "When the Sun Hits",
+  artist: "Slowdive",
+  album: "Souvlaki",
+  art: "/music/when-the-sun-hits.webp",
+  url: "https://open.spotify.com/track/0oxYB9GoOIDrdzniNdKC44",
 };
 
 /**
@@ -188,28 +175,13 @@ export const experience: Experience[] = [
     current: true,
   },
   {
-    org: "Yale Department of Neurology",
-    href: "https://medicine.yale.edu/neurology/",
-    role: "Computational Biology Research Assistant",
-    detail: "Spatial mapping of cell interactions in MS brain tissue.",
+    org: "ThinkNeuro",
+    href: "https://www.thinkneuro.org/",
+    role: "Research Intern, Summer Research Intensive",
+    detail:
+      "Bibliometric audit of 100 top-cited studies of drug delivery across the blood-brain barrier. Poster at MIT URTC.",
     when: "2026",
-    mark: "yale",
-  },
-  {
-    org: "MedARC",
-    href: "https://medarc.ai",
-    role: "Computational Neuroscience Researcher",
-    detail: "Deep learning models that decode fMRI scans. Under review at ICML.",
-    when: "2025",
-    mark: "medarc",
-  },
-  {
-    org: "Adaptyv Bio",
-    href: "https://www.adaptyvbio.com/",
-    role: "Data Science Intern",
-    detail: "Protein screening analysis. One of six interns from 400+ applicants.",
-    when: "2025",
-    mark: "adaptyv",
+    mark: "thinkneuro",
   },
   {
     org: "Purdue University Fort Wayne",
@@ -280,17 +252,18 @@ export const projects: Project[] = [
     cardDark: true,
   },
   {
-    slug: "inkr",
-    name: "Inkr",
-    detail: "Platform matching students with research mentors. 60K+ users.",
+    slug: "rkfantasy",
+    name: "RKFantasy",
+    detail: "Fantasy football rankings and start/sit in your league's exact scoring.",
     role: "Developer",
-    when: "2024-26",
-    href: "https://inkr.pro",
-    mark: "inkr",
-    shots: [{ src: "/projects/inkr.webp", alt: "Inkr", width: 1024, height: 900 }],
+    when: "2026",
+    href: "https://rkfantasy.com",
+    mark: "rkfantasy",
+    current: true,
+    shots: [{ src: "/projects/rkfantasy.webp", alt: "RKFantasy", width: 1536, height: 1350 }],
     blurb:
-      "AI for networking, used by 60,000+ students. Connects them with the researchers, mentors, and opportunities that actually move a career forward.",
-    cardBg: "#4a4ac4",
+      "Connect a Sleeper or ESPN league and get rankings, start/sit calls, waiver bids and trade grades in your exact scoring, with the uncertainty shown instead of hidden. Backtested on 2023 to 2025, it beats the expert consensus at QB, RB, WR and TE.",
+    cardBg: "#1f5c2e",
     cardDark: true,
   },
   {
@@ -348,13 +321,13 @@ export type Paper = {
 
 export const research: Paper[] = [
   {
-    venue: "MLCB 2026",
-    track: "Full paper track",
+    venue: "IEEE BIBM 2026",
+    track: "Regular paper",
     title:
-      "How Much of Genomic Language Model Variant-Effect Prediction Is Base Composition?",
-    note: "Pending in PMLR",
-    pdf: "/papers/mlcb-base-composition.pdf",
-    thumb: "/papers/thumbs/mlcb-base-composition.webp",
+      "Three Routes to Failure: An Interpretable Diagnosis of Task Difficulty and Negative-Set Contamination in Genomic Sequence-Classification Benchmarks",
+    note: "Pending in IEEE Xplore",
+    pdf: "/papers/bibm-three-routes.pdf",
+    thumb: "/papers/thumbs/bibm-three-routes.webp",
   },
   {
     venue: "ISMB 2026",
@@ -365,12 +338,9 @@ export const research: Paper[] = [
     thumb: "/papers/thumbs/ismb-single-seed.webp",
   },
   {
-    venue: "PSB 2027",
-    track: "Trustworthy AI for Biomedical Discovery track",
-    title:
-      "Three Routes to Failure: An Interpretable Diagnosis of Task Difficulty and Negative-Set Contamination in Genomic Sequence-Classification Benchmarks",
-    pdf: "/papers/three-routes-to-failure.pdf",
-    thumb: "/papers/thumbs/three-routes-to-failure.webp",
+    venue: "MIT URTC 2026",
+    track: "Poster",
+    title: "Clinical-Bibliometric Landscape Audit of Cross-BBB Delivery Vectors",
   },
   {
     venue: "INFORMS 2025",

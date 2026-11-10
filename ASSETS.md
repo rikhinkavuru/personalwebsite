@@ -18,11 +18,11 @@ edge rather than sitting contained inside it).
 
 | Logo | Source |
 | --- | --- |
-| `telo.png`, `inkr.png`, `linkd.png` | Files you sent, trimmed and squared |
+| `telo.png`, `linkd.png` | Files you sent, trimmed and squared |
+| `rkfantasy.webp` | rkfantasy.com maskable icon, cropped so the mark fills the tile |
 | `convexia.png` | convexia.bio web clip |
 | `broad.png` | Blue mark cropped from the Broad wordmark |
-| `yale.png` | Yale School of Medicine shield |
-| `adaptyv.png` | adaptyvbio.com icon |
+| `thinkneuro.webp` | Brain mark from thinkneuro.org's logo, on its favicon blue |
 | `purdue.png` | pfw.edu touch icon |
 | `virahacks.png` | virahacks.com favicon, inverted onto brand green |
 
@@ -47,8 +47,8 @@ The Lake Michigan photo's camera specs are set by hand in `postcards.home.exif`
 — Photos strips EXIF from its renders, so they could not be read off the file.
 
 Inline links can carry a website preview: give that mark a `preview` path in
-`marks` and hovering the name floats the screenshot above the line. Yale and
-Adaptyv use `public/previews/`.
+`marks` and hovering the name floats the screenshot above the line. Previews
+go in `public/previews/`.
 
 Captions, alt text, and the EXIF line live in `postcards` in `lib/content.ts`.
 The `exif` field is blank by default; fill it in for kominko's
@@ -61,7 +61,7 @@ corresponding `<Postcard card={...} />` in `app/page.tsx`.
 ## 4. Spotify
 
 The track is currently hardcoded in `nowPlaying` (lib/content.ts) to
-collage by Gunna, with the cover at `public/music/collage.jpg`.
+When the Sun Hits by Slowdive, with the cover at `public/music/when-the-sun-hits.webp`.
 Hovering the equaliser bars opens the album card, which links to the track.
 
 To swap it, change `nowPlaying` and drop a new square cover at that path.
@@ -130,22 +130,19 @@ Each project's bento card is a composed image in `public/projects/`:
 | `telo.png` | Cream mark on a charcoal ground, as a flat graphic |
 | `virahacks.png` | A hackathon event card floated on light grey |
 | `linkd.png` | Two app screens on Linkd red |
-| `inkr.png` | Two app screens on indigo |
+| `rkfantasy.webp` | Two site screens on the RKFantasy logo green |
 
-The Linkd and Inkr phone screens are real captures of linkddaily.com and
-inkr.pro taken at a 390x844 viewport with a 3x device pixel ratio, so they are
-sharp at card size without upscaling. Recapture the same way rather than
-scaling a 1x screenshot.
+The Linkd and RKFantasy phone screens are real captures of linkddaily.com and
+rkfantasy.com taken at a 390x844 viewport with a 3x device pixel ratio, so they
+are sharp at card size without upscaling. Recapture the same way rather than
+scaling a 1x screenshot. On rkfantasy.com, hide the fixed scroll-progress pill
+first.
 
 Clicking a card opens a lightbox. Projects with a `href` get the artwork on the
 left and a write-up beside it, driven by `blurb`, `cardBg`, and `cardDark` on
 the project. `cardBg` must match the artwork's own background exactly or the
 seam shows. Projects without a `href` (Telo) keep the full frame and take a
 caption in the bottom-left corner instead.
-
-Inkr's card is indigo rather than its own orange: Inkr's palette is essentially
-black-and-white with an orange dot, and orange sat too close to Linkd's red for
-the two tiles to read apart.
 
 Images are rendered at each slot's measured aspect ratio, so `object-cover`
 never crops the composition. If you change the `grow` weights in `LAYOUT`,
@@ -173,7 +170,7 @@ sections: [
     id: "overview",
     heading: "Overview",
     paragraphs: ["First paragraph.", "Second paragraph."],
-    image: { src: "/projects/inkr-1.png", alt: "...", caption: "..." },
+    image: { src: "/projects/rkfantasy-1.png", alt: "...", caption: "..." },
   },
 ],
 stats: [

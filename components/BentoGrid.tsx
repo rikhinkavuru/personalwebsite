@@ -17,7 +17,7 @@ const LAYOUT: { slug: string; grow: number }[][] = [
     { slug: "virahacks", grow: 38 },
   ],
   [
-    { slug: "inkr", grow: 46 },
+    { slug: "rkfantasy", grow: 46 },
     { slug: "linkd", grow: 54 },
   ],
 ];

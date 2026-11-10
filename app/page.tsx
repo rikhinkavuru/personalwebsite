@@ -31,20 +31,8 @@ export default function Home() {
           <StaggerItem as="section" className="pt-12">
             <p className="text-base leading-[2.1] font-medium tracking-[-0.02em] text-primary sm:text-xl">
               17 y/o engineer from Fort Wayne, Indiana
-              {showHome && <Postcard card={postcards.home} tight />}. Previously
-              comp bio research at{" "}
-              <MarkedName
-                name="yaleMark"
-                label="Yale"
-                href="https://medicine.yale.edu/neurology/"
-              />{" "}
-              and data science at{" "}
-              <MarkedName
-                name="adaptyvMark"
-                label="Adaptyv"
-                href="https://www.adaptyvbio.com/"
-              />
-              . Now crafting drug microfactories at{" "}
+              {showHome && <Postcard card={postcards.home} tight />}. Now
+              crafting drug microfactories at{" "}
               <MarkedName name="teloMark" label="Telo" />.
             </p>
           </StaggerItem>
